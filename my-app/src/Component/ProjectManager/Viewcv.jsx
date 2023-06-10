@@ -15,10 +15,10 @@ const Viewcv = () => {
     <hr />
     <div className="row row-margin-bottom justify-content-center">
 
-            <div className="col-md-6">
+            <div className="col-md-4">
               <img
                 className="lib-img"
-                src="img/pic/archnew.webp"
+                src="img/pic/cvimage.jpg"
               />
                <button className='btn btn-success'>Accept</button>
                <button className='btn btn-danger'>Reject</button> 

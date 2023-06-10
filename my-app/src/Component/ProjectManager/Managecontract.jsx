@@ -20,7 +20,7 @@ const Managecontract = () => {
          <td>News</td>
          <td>News Cate</td>
          <td className="text-center">
-           <a className="btn btn-info btn-xs" href="#">
+           <a className="btn btn-info btn-xs" href="cv">
              <span className="glyphicon glyphicon-edit" /> View C.V
            </a>{" "}
            
@@ -31,7 +31,7 @@ const Managecontract = () => {
          <td>Products</td>
          <td>Main Products</td>
          <td className="text-center">
-           <a className="btn btn-info btn-xs" href="#">
+           <a className="btn btn-info btn-xs" href="cv">
              <span className="glyphicon glyphicon-edit" /> View C.V
            </a>{" "}
           
@@ -42,7 +42,7 @@ const Managecontract = () => {
          <td>Blogs</td>
          <td>Parent Blogs</td>
          <td className="text-center">
-           <a className="btn btn-info btn-xs" href="#">
+           <a className="btn btn-info btn-xs" href="cv">
              <span className="glyphicon glyphicon-edit" /> View C.V
            </a>{" "}
            

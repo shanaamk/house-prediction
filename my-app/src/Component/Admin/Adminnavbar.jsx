@@ -32,6 +32,24 @@ const Adminnavbar = () => {
             className="nav-link dropdown-toggle"
             data-bs-toggle="dropdown"
           >
+            Choose
+          </a>
+          <div className="dropdown-menu m-0">
+            <a href="carchitecture" className="dropdown-item">
+              architecture
+            </a>
+            <a href="cprojectmanager" className="dropdown-item">
+            Project Manager
+            </a>
+           
+          </div>
+        </div>
+        <div className="nav-item dropdown">
+          <a
+            href="managepage"
+            className="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+          >
             manage User
           </a>
           <div className="dropdown-menu m-0">

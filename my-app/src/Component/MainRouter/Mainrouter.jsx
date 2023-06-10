@@ -49,6 +49,23 @@ import Addworkcategoy from '../ProjectManager/Addworkcategoy'
 import AddWorker from '../ProjectManager/AddWorker'
 import ManageWorker from '../ProjectManager/ManageWorker'
 import ManageWorkcategory from '../ProjectManager/ManageWorkcategory'
+import ViewPlan from '../Admin/ViewPlan'
+import Viewarchnotification from '../USER/Viewarchnotification'
+import Chatboxwithadmin from '../USER/Chatboxwithadmin'
+import Viewallprojects from '../Admin/Viewallprojects'
+import ChooseArchitecture from '../Admin/ChooseArchitecture'
+import ChooseProjectmanager from '../Admin/ChooseProjectmanager'
+import Projectreportform from '../ProjectManager/Projectreportform'
+import Manageprjctreportform from '../ProjectManager/Manageprjctreportform'
+import ProjectmanagerNotifications from '../ProjectManager/ProjectmanagerNotifications'
+import Workerstable from '../Workers/Workerstable'
+import Notifications from '../Workers/Notifications'
+import Tests from '../USER/Tests'
+import Control from '../Admin/Control'
+import Arccontrol from '../Architecture2/Arccontrol'
+import Testers from '../Architecture2/Testers'
+
+
 
 
 const Mainrouter = () => {
@@ -65,6 +82,8 @@ const Mainrouter = () => {
 <Route path="workersreg" element={<Workers/>}/>
 <Route path="userhome" element={<Userhome/>}/>
 <Route path="userreq" element={<Userrequirementpage/>}/>
+<Route path="notfctn" element={<Viewarchnotification/>}/>
+<Route path="box" element={<Chatboxwithadmin/>}/>
 <Route path="userrent" element={<Userrentalpage/>}/>
 <Route path="userview" element={<Viewprojectpage/>}/>
 <Route path="adminhome" element={<Adminhome/>}/>
@@ -74,13 +93,26 @@ const Mainrouter = () => {
 <Route path="userviewplan" element={<Userviewplan/>}/>
 <Route path="status" element={<Projectstatuspage/>}/>
 <Route path="archpredictn" element={<Architecturepredictionpage/>}/>
+
 <Route path="rentpage" element={<Adminrentpage/>}/>
+
+<Route path="viewallprojucts" element={<Viewallprojects/>}/>
 <Route path="managepage" element={<Adminusermanagepage/>}/>
 <Route path="reports" element={<Projectreportviewpage/>}/>
 <Route path="viewteam" element={<Workresviewteampage/>}/>
+<Route path="table" element={<Workerstable/>}/>
+<Route path="worknotfctn" element={<Notifications/>}/>
 <Route path="viewproject" element={<ProjectmanagerViewprojectpage/>}/>
+<Route path="notification" element={<ProjectmanagerNotifications/>}/>
 <Route path="projectreport" element={<ProjectReportpage/>}/>
+<Route path="projectreportform" element={<Projectreportform/>}/>
+<Route path="form" element={<Manageprjctreportform/>}/>
 <Route path="cv" element={<Viewcvpage/>}/>
+<Route path="tst" element={<Tests/>}/>
+<Route path="admcontrol" element={<Control/>}/>
+<Route path="arccontrol" element={<Arccontrol/>}/>
+
+<Route path="testpage" element={<Testers/>}/>
 
 <Route path="Work" element={<WorkStatuspage/>}/>
 <Route path="view" element={<Viewreqpage/>}/>
@@ -100,6 +132,11 @@ const Mainrouter = () => {
 <Route path="addworker" element={<AddWorker/>}/>
 <Route path="manageworker" element={<ManageWorker/>}/>
 <Route path="manageworkercategory" element={<ManageWorkcategory/>}/>
+<Route path="carchitecture" element={<ChooseArchitecture/>}/>
+<Route path="cprojectmanager" element={<ChooseProjectmanager/>}/>
+
+
+
 
 
 

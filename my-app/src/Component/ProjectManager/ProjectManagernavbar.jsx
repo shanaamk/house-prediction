@@ -26,6 +26,7 @@ const ProjectManagernavbar = () => {
           <a href="pages" className="nav-item nav-link">
             Manage contract
           </a>
+          
           {/* <a href="" class="nav-item nav-link">Contact</a> */}
           <div className="nav-item dropdown">
             <a
@@ -36,11 +37,14 @@ const ProjectManagernavbar = () => {
               Project
             </a>
             <div className="dropdown-menu m-0">
-              <a href="viewproject" className="dropdown-item">
-                View project
+              <a href="projectreportform" className="dropdown-item">
+                Add project Report
+              </a>
+              <a href="form" className="dropdown-item">
+               Manage project Report
               </a>
               <a href="projectreport" className="dropdown-item">
-                project Report
+                View project Report
               </a>
               <a href="Work" className="dropdown-item">
                 Project Status
@@ -90,6 +94,7 @@ const ProjectManagernavbar = () => {
               {/* <a href="workers.html" class="dropdown-item">Workers</a> */}
               {/* <a href="detail.html" class="dropdown-item">Blog Detail</a> */}
             </div>
+            
           </div>
           <a href="Sign in.html" className="nav-item nav-link">
             Logout

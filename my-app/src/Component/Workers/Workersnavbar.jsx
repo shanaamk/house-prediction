@@ -53,11 +53,12 @@ const Workersnavbar = () => {
             <div className="dropdown-menu m-0">
               <a href="viewteam" className="dropdown-item">
                 View team
-              </a>
-              
-             
+              </a>            
             </div>
           </div>
+          <a href="pages" className="nav-item nav-link">
+           Notifications
+          </a>
           <a href="Sign in.html" className="nav-item nav-link">
             Logout
           </a>

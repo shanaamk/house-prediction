@@ -58,12 +58,10 @@ const Adminslider = () => {
   <div className="container">
   <div className="row">
     <div className="col-md-4">
-      <div className="dbox dbox--color-1">
-        <div className="dbox__icon">
-          <i className="glyphicon glyphicon-cloud" />
-        </div>
+      <div className="dbox dbox--color-2">
+        
         <div className="dbox__body">
-          <span className="dbox__count">Approvel Requestes</span>
+          <span>Approvel Requestes</span>
           <span className="dbox__title"></span>
         </div>
         <div className="dbox__action">
@@ -71,79 +69,70 @@ const Adminslider = () => {
         </div>
       </div>
     </div>
+    
+   
     <div className="col-md-4">
       <div className="dbox dbox--color-2">
-        <div className="dbox__icon">
-          <i className="glyphicon glyphicon-download" />
-        </div>
         <div className="dbox__body">
-          <span className="dbox__count">Upcoming Events</span>
+          <span>View projects</span>
           <span className="dbox__title"></span>
         </div>
         <div className="dbox__action">
-          <button className="dbox__action__btn"><a href='ongoing'>Click</a></button>
-        </div>
-      </div>
-    </div>
-    <div className="col-md-4">
-      <div className="dbox dbox--color-3">
-        <div className="dbox__icon">
-          <i className="glyphicon glyphicon-heart" />
-        </div>
-        <div className="dbox__body">
-          <span className="dbox__count">Ongoing Events</span>
-          <span className="dbox__title"></span>
-        </div>
-        <div className="dbox__action">
-          <button className="dbox__action__btn" ><a href='upcoming'>Click</a></button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="row">
-    <div className="col-md-4">
-      <div className="dbox dbox--color-1">
-        <div className="dbox__icon">
-          <i className="glyphicon glyphicon-cloud" />
-        </div>
-        <div className="dbox__body">
-          <span className="dbox__count">Manage User</span>
-          <span className="dbox__title"></span>
-        </div>
-        <div className="dbox__action">
-          <button className="dbox__action__btn"><a href='managepage'>Click</a></button>
+          <button className="dbox__action__btn" ><a href='viewallprojucts'>Click</a></button>
         </div>
       </div>
     </div>
     <div className="col-md-4">
       <div className="dbox dbox--color-2">
-        <div className="dbox__icon">
-          <i className="glyphicon glyphicon-download" />
-        </div>
         <div className="dbox__body">
-          <span className="dbox__count">Manage Projectmanager</span>
+        <i className="fa fa-user" style={{fontSize:36}}></i>
           <span className="dbox__title"></span>
         </div>
         <div className="dbox__action">
-          <button className="dbox__action__btn"><a href='manage'>Click</a></button>
+          <button className="dbox__action__btn"><a href='managepage'>Manage User</a></button>
+        </div>
+      </div>
+    </div>
+    
+    <div className="col-md-4">
+      <div className="dbox dbox--color-2">
+        
+        <div className="dbox__body">
+        <i className="fa fa-cap" style={{fontSize:36}}></i>
+          <span className="dbox__title"></span>
+        </div>
+        <div className="dbox__action">
+          <button className="dbox__action__btn"><a href='manage'>Manage projectmanager</a></button>
         </div>
       </div>
     </div>
     <div className="col-md-4">
-      <div className="dbox dbox--color-3">
-        <div className="dbox__icon">
-          <i className="glyphicon glyphicon-heart" />
-        </div>
+      <div className="dbox dbox--color-2">
+        
         <div className="dbox__body">
-          <span className="dbox__count">Manage architecture</span>
+        <i className="fa fa-pen" style={{fontSize:36}}></i>
           <span className="dbox__title"></span>
         </div>
         <div className="dbox__action">
-          <button className="dbox__action__btn"><a href='arch'>Click</a></button>
+          <button className="dbox__action__btn"><a href='arch'>manage Architecture</a></button>
+        </div>
+      </div>
+    </div>
+    
+    <div className="col-md-4">
+      <div className="dbox dbox--color-2">
+        
+        <div className="dbox__body">
+        <i className="fa fa-home" style={{fontSize:36}}></i>
+          <span className="dbox__title"></span>
+        </div>
+        <div className="dbox__action">
+          <button className="dbox__action__btn"><a href='rentpage'>manage Rental</a></button>
         </div>
       </div>
     </div>
   </div>
+  
 </div>
 
 </>

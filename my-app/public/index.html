@@ -101,54 +101,14 @@
     <script src="js/main.js"></script>
     
     <script>
-      function openPage(pageName, elmnt, color="grey") {
-    // Hide all elements with class="tabcontent" by default */
-    var i, reporttabcontent, reporttablinks;
-    reporttabcontent = document.getElementsByClassName("reporttabcontent");
-    for (i = 0; i < reporttabcontent.length; i++) {
-      reporttabcontent[i].style.display = "none";
-    }
-  
-    // Remove the background color of all tablinks/buttons
-    reporttablinks = document.getElementsByClassName("reporttablink");
-    for (i = 0; i < reporttablinks.length; i++) {
-      reporttablinks[i].style.backgroundColor = "";
-    }
-  
-    // Show the specific tab content
-    document.getElementById(pageName).style.display = "block";
-  
-    // Add the specific color to the button used to open the tab content
-    elmnt.style.backgroundColor = color;
-  }
-  
-  // Get the element with id="defaultOpen" and click on it
-  document.getElementById("defaultOpen").click();
-  </script>
-
-
-
-
-
-
-<!-- <script>
-  function toggleDiv() {
-      var div = document.getElementById("myDiv");
-      if (div.style.display === "none") {
-          div.style.display = "block";
-      } else {
+       function formhide(show) {
+      var div = document.getElementById("no");
+    
           div.style.display = "none";
-      }
+      
   }
 
-  function toggleDivVisibility(show) {
-      var div = document.getElementById("myDiv");
-      if (show) {
-          div.style.display = "block";
-      } else {
-          div.style.display = "none";
-      }
-  }
-</script> -->
+</script>
+
   </body>
 </html>

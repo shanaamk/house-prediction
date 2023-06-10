@@ -30,75 +30,6 @@ const ViewPlan = () => {
               />
             </div>
             <div className="col-md-6">
-            <table className="table table-striped custab" style={{color:'black'}}>
-        <thead>
-          <tr>
-          
-            <th>Title</th>
-            <th>Values</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-           
-            <td style={{color:'black'}}>size(sq.ft)</td>
-            <td>2500</td>
-          </tr>
-          <tr>
-           
-            <td>Balcony</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            
-            <td>Total Floors</td>
-            <td>2</td>
-          </tr>
-          <tr>
-           
-            <td>Bedrooms</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            
-            <td>Bathrooms</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            
-            <td>kitchen</td>
-            <td>1</td>
-          </tr>
-          <tr >
-            
-            <td style={{ textAlign: 'center',fontSize:27,color:'green' }} colSpan={2}>Rs.1689500/-</td>
-      
-          </tr>
-        </tbody>
-      </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="row row-margin-bottom">
-      <div className="col-md-12 no-padding lib-item" data-category="view">
-        <div className="lib-panel">
-          <div className="row box-shadow">
-          </div>
-        </div>
-      </div>
-      <div className="col-md-3" />
-      <div className="col-md-12 no-padding lib-item" data-category="ui">
-        <div className="lib-panel">
-          <div className="row box-shadow">
-            <div className="col-md-6">
-              <img
-                className="lib-img"
-                src="img/pic/archnew.webp"
-              />
-            </div>
-            <div className="col-md-6">
             <img
                 className="lib-img"
                 src="img/pic/archnew.webp"
@@ -107,6 +38,9 @@ const ViewPlan = () => {
           </div>
         </div>
       </div>
+    </div>
+    <div className='col-md-12 text-center'>
+        <h1>Rs 9874512/-</h1>
     </div>
     <div className='row'>
     <div className='col-md-3'></div>
@@ -119,6 +53,7 @@ const ViewPlan = () => {
       
       <div className='col-md-3'></div>
     </div>
+   
     
   </div>
   

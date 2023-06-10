@@ -56,6 +56,9 @@ const Usernavbar = () => {
               {/* <a href="detail.html" class="dropdown-item">Blog Detail</a> */}
              </div>
           </div>   
+          <a href="notfctn" className="nav-item nav-link">
+            Notifications
+          </a>
           <a href="" className="nav-item nav-link">
             LOGOUT
           </a>

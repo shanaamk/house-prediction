@@ -34,11 +34,7 @@ const ApprovQuote = () => {
                 <span className="followers">ARCHTCTR Waiting for plan Approvel</span>
               </div>
           
-            <div className="d-flex flex-row align-items-center mt-2">
-              <button className="btn btn-outline-primary btn-sm" type="button"><a href='plan'>
-                View</a>
-              </button>
-            </div>
+            
           </div>
           <div className="d-flex flex-row justify-content-between align-items-center mt-2">
             <div className="d-flex flex-row align-items-center">
@@ -56,11 +52,7 @@ const ApprovQuote = () => {
               
               <span className="followers">Client Waiting for plan updation</span>
             </div>
-            <div className="d-flex flex-row align-items-center mt-2">
-              <button className="btn btn-outline-primary btn-sm" type="button"><a href='plan'>
-                View</a>
-              </button>
-            </div>
+            
           </div>
           <div className="d-flex flex-row justify-content-between align-items-center mt-2">
             <div className="d-flex flex-row align-items-center">
@@ -78,11 +70,7 @@ const ApprovQuote = () => {
               
               <span className="followers">Client Waiting for plan updation</span>
             </div>
-            <div className="d-flex flex-row align-items-center mt-2">
-            <button className="btn btn-outline-primary btn-sm" type="button"><a href='plan'>
-                View</a>
-              </button>
-            </div>
+            
           </div>
         </div>
       </div>

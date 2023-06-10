@@ -62,6 +62,10 @@ const ProjectReport = () => {
             <td>work completetion date</td>
             <td>10/05/2012</td>
           </tr>
+          <tr>
+            <td>Work Status</td>
+            <td>Pending</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -115,6 +119,8 @@ const ProjectReport = () => {
               <th scope="col">Cabinet\caboard</th>
               <th scope="col">painting\polishing</th>
               <th scope="col">Deigning</th>
+              <th scope="col">Action</th>
+
             </tr>
           </thead>
           <tbody>
@@ -129,6 +135,14 @@ const ProjectReport = () => {
               <td>12/05/2022</td>
               <td>750000</td>
               <td>Thornton</td>
+              <td>
+    <button class="edit-button">
+      <i class="fas fa-edit"></i> Edit
+    </button>
+    <button class="delete-button">
+      <i class="fas fa-trash"></i> Delete
+    </button>
+  </td>
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -141,6 +155,14 @@ const ProjectReport = () => {
               <td>12/05/2022</td>
               <td>750000</td>
               <td>Thornton</td>
+              <td>
+    <button class="edit-button">
+      <i class="fas fa-edit"></i> Edit
+    </button>
+    <button class="delete-button">
+      <i class="fas fa-trash"></i> Delete
+    </button>
+  </td>
             </tr>
             <tr>
               <th scope="row">3</th>
@@ -153,6 +175,14 @@ const ProjectReport = () => {
               <td>12/05/2022</td>
               <td>750000</td>
               <td>Thornton</td>
+              <td>
+    <button class="edit-button">
+      <i class="fas fa-edit"></i> Edit
+    </button>
+    <button class="delete-button">
+      <i class="fas fa-trash"></i> Delete
+    </button>
+  </td>
             </tr>
             <tr>
               <th scope="row">1</th>
@@ -165,6 +195,14 @@ const ProjectReport = () => {
               <td>12/05/2022</td>
               <td>750000</td>
               <td>Thornton</td>
+              <td>
+    <button class="edit-button">
+      <i class="fas fa-edit"></i> Edit
+    </button>
+    <button class="delete-button">
+      <i class="fas fa-trash"></i> Delete
+    </button>
+  </td>
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -177,6 +215,14 @@ const ProjectReport = () => {
               <td>12/05/2022</td>
               <td>750000</td>
               <td>Thornton</td>
+              <td>
+    <button class="edit-button">
+      <i class="fas fa-edit"></i> Edit
+    </button>
+    <button class="delete-button">
+      <i class="fas fa-trash"></i> Delete
+    </button>
+  </td>
             </tr>
             <tr>
               <th scope="row">3</th>
@@ -189,6 +235,14 @@ const ProjectReport = () => {
               <td>12/05/2022</td>
               <td>750000</td>
               <td>Thornton</td>
+              <td>
+    <button class="edit-button">
+      <i class="fas fa-edit"></i> Edit
+    </button>
+    <button class="delete-button">
+      <i class="fas fa-trash"></i> Delete
+    </button>
+  </td>
             </tr>
           </tbody>
         </table>

@@ -7,7 +7,7 @@ const Viewrentdetailes = () => {
     <>
     <Usernavbar/>
        
-    <div className="container mt-4">
+    <div className="chatboxcontainer mt-4">
   <h1 className="text-center"> Rent Property</h1>
   <div className="card">
     <img
