@@ -50,20 +50,35 @@ const WorkStatus = () => {
     </div>
   </div>
 </div>
-<div className="container">
+<div className="container mb-5">
   <div className="row">
     <div className="col-md-12">
-      <div style={{ display: "flex", width: "100%" }}>
+      <div style={{ display: "flex", width: "100%" ,color:'black'}}>
         <form className="statusformrequirement">
-          <select name="cars" className="custom-select">
+        <div style={{ width: "100%" ,}}>
+                 <p>Date</p>
+                 <input type="date" className="custom-select" autofocus="" />
+               </div>
+               <div style={{ width: "100%" }}>
+        <p>Message</p>
+        <textarea name="message" className="custom-select" placeholder="Enter your message here" />
+      </div>
+               <select name="cars" className="custom-select mb-3">
             <option selected="">Select work category</option>
-            <option value="Painter">painter</option>
-            <option value="Plumber">plumber</option>
+            <option value="Painter">painting</option>
+            <option value="Plumber">plumbing</option>
             <option value="Flooring">flooring</option>
+          </select>
+
+          <select name="cars" className="custom-select">
+            <option selected="">Status</option>
+            <option value="Painter">started</option>
+            <option value="Painter">finished</option>
+           
           </select>
           <br />
           <br />
-          <button type="button" className="btn btn-light">
+          <button type="button" className="btn btn-light mr-5">
             Reset
           </button>
           <button type="button" className="btn btn-light">

@@ -26,7 +26,8 @@ const UserSlider = () => {
                   <br /> to take care of your work
                 </i>
               </h2>
-              {/* <a href="Sign in.html" class="btn btn-primary py-md-3 px-md-5 mt-2">Sign in</a> */}
+              <a href="userreq" class="btn btn-primary py-md-3 px-md-5 mt-2 ml-3">BUILD</a>
+              <a href="userrent" class="btn btn-primary py-md-3 px-md-5 mt-2 ml-3">RENT</a>
             </div>
           </div>
         </div>
@@ -46,7 +47,7 @@ const UserSlider = () => {
                   <br /> to take care of your work
                 </i>
               </h4>
-              
+             
             </div>
           </div>
         </div>

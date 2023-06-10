@@ -61,36 +61,36 @@ const Userrequirementslider = () => {
   return (
     <>
       <div className="container">
-     <h5>How it works</h5>
+     <h3><center>How it works!</center></h3>
    <div className="process">
      <div className="process-row" style={{color:'black'}}>
        <div className="process-step" >
          <button
            type="button"
-          className="btn btn-default btn-circle"
+          className="btn btn-success btn-circle"
            disabled="disabled"
          >
-          <i className="fa fa-user fa-3x" />
+          <i className="fa fa-cog fa-3x" />
          </button>
          <p>Build project</p>
        </div>
        <div className="process-step">
          <button
            type="button"
-           className="btn btn-default btn-circle"
+           className="btn btn-success btn-circle"
          disabled="disabled"
          >
-           <i className="fa fa-user fa-3x" />
+           <i className="fa fa-home fa-3x" />
          </button>
          <p>Go with a plan</p>
        </div>
        <div className="process-step">
          <button
            type="button"
-                      className="btn btn-default btn-circle"
+                      className="btn btn-success btn-circle"
            disabled="disabled"
          >
-           <i className="fa fa-thumbs-up fa-3x" />
+           <i className="fa fa-pen fa-3x" />
          </button>
          <p>View work Status</p>
        </div>
@@ -100,7 +100,7 @@ const Userrequirementslider = () => {
            className="btn btn-success btn-circle"
            disabled="disabled"
          >
-           <i className="fa fa-user fa-3x" />
+           <i className="fa fa-handshake fa-3x" />
          </button>
          <p>You pay after Work over</p>
        </div>
@@ -194,9 +194,9 @@ const Userrequirementslider = () => {
                  <input name="phone" className="inputfield" />
                </div>
                <div style={{ width: "100%" }}>
-                  <textarea
-            
-                </div>
+        <p>Message</p>
+        <textarea name="message" className="inputfield" placeholder="Enter your message here" />
+      </div>
                
          <button type="button" className="btn btn-dark" >
            Reset

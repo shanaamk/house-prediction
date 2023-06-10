@@ -22,41 +22,8 @@ const Workersnavbar = () => {
         <div className="navbar-nav ms-auto py-0" style={{ color: "black" }}>
           <a href="" className="nav-item nav-link active">
             Home
-          </a>
-         
-          <div className="nav-item dropdown">
-            <a
-              href="#"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              Works
-            </a>
-            <div className="dropdown-menu m-0">
-              <a href="#Ongoing" className="dropdown-item">
-                Ongoing works
-              </a>
-              <a href="archtctr.html" className="dropdown-item">
-                Upcoming Works
-              </a>
-             
-            </div>
-          </div>
-          <div className="nav-item dropdown">
-            <a
-              href="#"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              Project
-            </a>
-            <div className="dropdown-menu m-0">
-              <a href="viewteam" className="dropdown-item">
-                View team
-              </a>            
-            </div>
-          </div>
-          <a href="pages" className="nav-item nav-link">
+          </a>         
+          <a href="worknotfctn" className="nav-item nav-link">
            Notifications
           </a>
           <a href="Sign in.html" className="nav-item nav-link">

@@ -26,54 +26,13 @@ const ProjectManagernavbar = () => {
           <a href="pages" className="nav-item nav-link">
             Manage contract
           </a>
+          <a href="pmpro" className="nav-item nav-link">
+           Projects
+          </a>
           
           {/* <a href="" class="nav-item nav-link">Contact</a> */}
-          <div className="nav-item dropdown">
-            <a
-              href="#"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              Project
-            </a>
-            <div className="dropdown-menu m-0">
-              <a href="projectreportform" className="dropdown-item">
-                Add project Report
-              </a>
-              <a href="form" className="dropdown-item">
-               Manage project Report
-              </a>
-              <a href="projectreport" className="dropdown-item">
-                View project Report
-              </a>
-              <a href="Work" className="dropdown-item">
-                Project Status
-              </a>
-              {/* <a href="workers.html" class="dropdown-item">Workers</a> */}
-              {/* <a href="detail.html" class="dropdown-item">Blog Detail</a> */}
-            </div>
-          </div>
-          <div className="nav-item dropdown">
-            <a
-              href="#"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              Work category
-            </a>
-            <div className="dropdown-menu m-0">
-              <a href="workcategory" className="dropdown-item">
-                Add
-              </a>
-              <a href="manageworkercategory" className="dropdown-item">
-                Manage
-              </a>
-              {/* <a href="archtctr.html" class="dropdown-item">project Report</a>
-                          <a href="projectmanager.html" class="dropdown-item">Project Status</a> */}
-              {/* <a href="workers.html" class="dropdown-item">Workers</a> */}
-              {/* <a href="detail.html" class="dropdown-item">Blog Detail</a> */}
-            </div>
-          </div>
+          
+         
           <div className="nav-item dropdown">
             <a
               href="#"
@@ -96,6 +55,9 @@ const ProjectManagernavbar = () => {
             </div>
             
           </div>
+          <a href="pmnotification" className="nav-item nav-link">
+           Notifications
+          </a>
           <a href="Sign in.html" className="nav-item nav-link">
             Logout
           </a>

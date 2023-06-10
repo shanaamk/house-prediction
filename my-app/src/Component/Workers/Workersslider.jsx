@@ -4,95 +4,67 @@ const Workersslider = () => {
   return (
     <>
   <div className="container">
-    <div className="row">
-      <div className="col-md-12">
-        <div className="card">
-          <div className="card-header">
-            <h5 id='Ongoing'>Ongoing Works</h5>
-          </div>
-          <div className="gaadiex-list">
-            <div className="gaadiex-list-item">
-              <h4>
-                <a href="#">kalady 2000 squarefeet house</a>
-              </h4>
-              <h5>Current Status:Painting Started</h5>
-              <p ><a href="" style={{color:'black'}}>you are scheduled for 14-05-2024</a></p>
-            </div>
-            <div className="gaadiex-list-item">
-              <h3>
-                <a href="#">irinjalakuda 2500 squarefeet house</a>
-              </h3>
-              <h4>Current Status:Flooringing Started</h4>
-              <p>you are scheduled for 14-05-2024</p>
-              <a href="viewproject" >
-                View project detailes
-              </a>
-            </div>
-            <div className="gaadiex-list-item">
-              <h3>
-                <a href="#">kochi 2000 squarefeet</a>
-              </h3>
-              <h4>Current Status:Furnishing Started</h4>
-              <p>you are scheduled for 14-05-2024 </p>
-            </div>
-            <div className="gaadiex-list-item">
-              <h3>
-                <a href="#">Eric Graves</a>
-              </h3>
-              <h4>Brunch this weekend?</h4>
-              <p> you are scheduled for 14-05-2024</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="container">
-    <div className="row">
-      <div className="col-md-12">
-        <div className="card">
-          <div className="card-header">
-            <h4>Upcoming Works</h4>
-          </div>
-          <div className="gaadiex-list">
-            <div className="gaadiex-list-item">
-              <h3>
-                <a href="#">kalady 2000 squarefeet house</a>
-              </h3>
-              <h5>Current Status:Painting Started</h5>
-              <h6>View more Project Detailes</h6>
-              <p>you are scheduled for 14-05-2024</p>
-            </div>
-            <div className="gaadiex-list-item">
-              <h3>
-                <a href="#">irinjalakuda 2500 squarefeet house</a>
-              </h3>
-              <h5>Current Status:Flooringing Started</h5>
-              <h6>View more Project Detailes</h6>
-              <p>you are scheduled for 14-05-2024</p>
-            </div>
-            <div className="gaadiex-list-item">
-              <h3>
-                <a href="#">kochi 2000 squarefeet</a>
-              </h3>
-              <h5>Current Status:Furnishing Started</h5>
-              <h6>View more Project Detailes</h6>
-              <p>you are scheduled for 14-05-2024 </p>
-            </div>
-            <div className="gaadiex-list-item">
-              <h3>
-                <a href="#">kochi 2000 squarefeet</a>
-              </h3>
-              <h5>Current Status:Furnishing Started</h5>
-              <h6>View more Project Detailes</h6>
-              <p> you are scheduled for 14-05-2024</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
+ <div className="row justify-content-center"  style={{color:'black'}}>
+   <h2><center>Your Workes</center></h2>
+   <div className="[ col-xs-12 col-md-6 col-sm-offset-2 col-sm-8 ]" >
+     <ul className="event-list">
+       <li>
+         <time dateTime="2014-07-20">
+           <span className="day">4</span>
+           <span className="month">Jul</span>
+           <span className="year">2014</span>
+           <span className="time">ALL DAY</span>
+         </time>
+        
+         <div className="info">
+           <h2 className="title"><a href='reportss'>House1</a></h2>
+           <p className="desc">Kalpakanchery </p>
+           <ul>
+             <li style={{ width: "50%" }}>
+               <a href="#website">
+                 <span /> status:
+               </a>
+             </li>
+             <li style={{ width: "50%" }}>
+               <span className="fa fa-money" />Current Work
+             </li>
+           </ul>
+           <h2 className="desc"style={{marginLeft:200}}><a href='viewteam'>View Team</a> </h2>
+         </div>
+         
+       </li>
+       <li>
+         <time dateTime="2014-07-20 0000">
+           <span className="day">8</span>
+           <span className="month">Jul</span>
+           <span className="year">2014</span>
+           <span className="time">12:00 AM</span>
+         </time>
+         <div className="info">
+           <h2 className="title"><a href='reportss'>House2</a></h2>
+           <p className="desc">Tirur</p>
+           <ul>
+             <li style={{ width: "50%" }}>
+               <a href="#website">
+                 <span /> Status:
+               </a>
+             </li>
+             <li style={{ width: "50%" }}>
+               <span className="fa fa-money" /> Upcoming
+             </li>
+           </ul>
+           <h2 className="desc"style={{marginLeft:200}}><a href='viewteam'>View Team</a> </h2>
+         </div>
+         
+       </li>
+       
+      
+     </ul>
+   </div>
+ </div>
+</div>
+  
+  
    
   
 </>

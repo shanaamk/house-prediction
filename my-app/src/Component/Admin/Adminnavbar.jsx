@@ -23,47 +23,10 @@ const Adminnavbar = () => {
         <a href="ongoing" className="nav-item nav-link active">
           Home
         </a>
-        <a href="rentpage" className="nav-item nav-link active">
-          rentalplan
+        <a href="/" className="nav-item nav-link">
+         Notifications
         </a>
-        <div className="nav-item dropdown">
-          <a
-            href="managepage"
-            className="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-          >
-            Choose
-          </a>
-          <div className="dropdown-menu m-0">
-            <a href="carchitecture" className="dropdown-item">
-              architecture
-            </a>
-            <a href="cprojectmanager" className="dropdown-item">
-            Project Manager
-            </a>
-           
-          </div>
-        </div>
-        <div className="nav-item dropdown">
-          <a
-            href="managepage"
-            className="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-          >
-            manage User
-          </a>
-          <div className="dropdown-menu m-0">
-            <a href="managepage" className="dropdown-item">
-              manage architecture
-            </a>
-            <a href="managepage" className="dropdown-item">
-              Manage project manager
-            </a>
-            <a href="rentpage" className="dropdown-item">
-              manage rental
-            </a>
-          </div>
-        </div>
+       <a   href="userchat"className="nav-item nav-link"><i className='far fa-comments' style={{fontSize:36}}></i></a>
         <a href="/" className="nav-item nav-link">
           LOGOUT
         </a>

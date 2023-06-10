@@ -7,7 +7,7 @@ const Viewrentdetailes = () => {
     <>
     <Usernavbar/>
        
-    <div className="chatboxcontainer mt-4">
+    <div className="chatboxcontainer mb-5 ">
   <h1 className="text-center"> Rent Property</h1>
   <div className="card">
     <img
@@ -39,9 +39,9 @@ const Viewrentdetailes = () => {
       </li>
     </ul>
     <div className="card-body">
-      <div className="text-right">
-        <a href="contact" className="btn btn-primary">
-          Contact
+      <div className="text-center">
+       <a className="btn btn-primary">
+          Contact Me
         </a>
       </div>
       {/* <a href="#" class="card-link">View More</a> */}

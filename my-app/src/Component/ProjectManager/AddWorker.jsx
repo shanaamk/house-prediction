@@ -44,17 +44,10 @@ const AddWorker = () => {
         </div>
       </div>
       <div className="form-wrapper">
-          <label htmlFor="">User Name</label>
+          <label htmlFor="">Worker id</label>
           <input type="text" className="form-control" />
         </div>
-      <div className="form-wrapper">
-        <label htmlFor="">Password</label>
-        <input type="password" className="form-control" />
-      </div>
-      <div className="form-wrapper">
-        <label htmlFor="">Confirm Password</label>
-        <input type="password" className="form-control" />
-      </div>
+      
       <div className="checkbox">
         <label>
           <input type="checkbox" /> I caccept the Terms of Use &amp; Privacy

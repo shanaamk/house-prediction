@@ -65,6 +65,7 @@ const Architectureslider = () => {
           <tr>
             <th scope="col">#</th>
             <th scope="col">UserName</th>
+            <th scope="col"> Location</th>
             <th scope="col"> Date</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
@@ -75,8 +76,9 @@ const Architectureslider = () => {
             <th scope="row">1</th>
             <td>Mark</td>
             <td>2-2-2023</td>
+            <td>2-2-2023</td>
             <td>Waiting for Conformation</td>
-            <td>View</td>
+            <button className='btn btn-primary'><a href='view'>View</a></button>
           </tr>
           <tr>
             <th scope="row">2</th>
@@ -84,6 +86,7 @@ const Architectureslider = () => {
             <td>Thornton</td>
             <td>12/05/2022</td>
             <td>750000</td>
+            <button className='btn btn-primary'><a href='view'>View</a></button>
           </tr>
           <tr>
             <th scope="row">3</th>
@@ -91,6 +94,7 @@ const Architectureslider = () => {
             <td>Thornton</td>
             <td>12/05/2022</td>
             <td>750000</td>
+            <button className='btn btn-primary'><a href='view'>View</a></button>
           </tr>
           <tr>
             <th scope="row">1</th>
@@ -98,6 +102,7 @@ const Architectureslider = () => {
             <td>Otto</td>
             <td>12/05/2022</td>
             <td>750000</td>
+            <button className='btn btn-primary'><a href='view'>View</a></button>
           </tr>
           <tr>
             <th scope="row">2</th>
@@ -105,6 +110,7 @@ const Architectureslider = () => {
             <td>Thornton</td>
             <td>12/05/2022</td>
             <td>750000</td>
+            <button className='btn btn-primary'><a href='view'>View</a></button>
           </tr>
           <tr>
             <th scope="row">3</th>
@@ -112,6 +118,7 @@ const Architectureslider = () => {
             <td>Thornton</td>
             <td>12/05/2022</td>
             <td>750000</td>
+            <button className='btn btn-primary'><a href='view'>View</a></button>
           </tr>
         </tbody>
       </table>

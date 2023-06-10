@@ -64,6 +64,12 @@ import Tests from '../USER/Tests'
 import Control from '../Admin/Control'
 import Arccontrol from '../Architecture2/Arccontrol'
 import Testers from '../Architecture2/Testers'
+import Adminnot from '../Admin/Adminnot'
+import Chatboxwithuser from '../Admin/Chatboxwithuser'
+import Projects from '../ProjectManager/Projects'
+import Pmcontrol from '../ProjectManager/Pmcontrol'
+import Assignworkers from '../ProjectManager/Assignworkers'
+import Projectreports from '../Workers/Projectreports'
 
 
 
@@ -101,9 +107,10 @@ const Mainrouter = () => {
 <Route path="reports" element={<Projectreportviewpage/>}/>
 <Route path="viewteam" element={<Workresviewteampage/>}/>
 <Route path="table" element={<Workerstable/>}/>
+<Route path="reportss" element={<Projectreports/>}/>
 <Route path="worknotfctn" element={<Notifications/>}/>
 <Route path="viewproject" element={<ProjectmanagerViewprojectpage/>}/>
-<Route path="notification" element={<ProjectmanagerNotifications/>}/>
+<Route path="pmnotification" element={<ProjectmanagerNotifications/>}/>
 <Route path="projectreport" element={<ProjectReportpage/>}/>
 <Route path="projectreportform" element={<Projectreportform/>}/>
 <Route path="form" element={<Manageprjctreportform/>}/>
@@ -111,10 +118,13 @@ const Mainrouter = () => {
 <Route path="tst" element={<Tests/>}/>
 <Route path="admcontrol" element={<Control/>}/>
 <Route path="arccontrol" element={<Arccontrol/>}/>
-
+<Route path="not" element={<Adminnot/>}/>
 <Route path="testpage" element={<Testers/>}/>
-
+<Route path="userchat" element={<Chatboxwithuser/>}/>
+<Route path="pmpro" element={<Projects/>}/>
+<Route path="pmcontrol" element={<Pmcontrol/>}/>
 <Route path="Work" element={<WorkStatuspage/>}/>
+<Route path="assign" element={<Assignworkers/>}/>
 <Route path="view" element={<Viewreqpage/>}/>
 <Route path="viewuse" element={<ViewUserpage/>}/>
 <Route path="Quote" element={<ApproveQuotepage/>}/>

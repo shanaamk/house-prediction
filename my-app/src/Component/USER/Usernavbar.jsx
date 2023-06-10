@@ -24,38 +24,17 @@ const Usernavbar = () => {
             Home
           </a>
           {/* <a href="" class="nav-item nav-link">Rent</a> */}
-          <a href="userrent" className="nav-item nav-link">
-            Rent
-          </a>
+          
           <a href="userview" className="nav-item nav-link">
-            Build
+           Projects
           </a>
+         
+
           {/* <a href="Userviewplan" className="nav-item nav-link">
             Project
           </a> */}
           {/* <a href="" class="nav-item nav-link">Requirement</a> */}
-           <div className="nav-item dropdown">
-            <a
-              href="Userviewplan"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              Project
-            </a>
-            <div className="dropdown-menu m-0">
-              <a href="status" className="dropdown-item">
-                View Project status
-              </a>
-              {/* <a href="archtctr.html" className="dropdown-item">
-                Manage Plan
-              </a>
-              <a href="projectmanager.html" className="dropdown-item">
-                View quote
-              </a> */}
-              {/* <a href="workers.html" class="dropdown-item">Workers</a> */}
-              {/* <a href="detail.html" class="dropdown-item">Blog Detail</a> */}
-             </div>
-          </div>   
+          
           <a href="notfctn" className="nav-item nav-link">
             Notifications
           </a>

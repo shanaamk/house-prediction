@@ -3,9 +3,9 @@ import React from 'react'
 const Viewreq = () => {
   return (
     <>
-    <div className="container" style={{textAlign:'center',marginLeft:400}}>
+    <div className="container" style={{textAlign:'center'}}>
     <div className="row">
-    <div className="col-md-6 col-md-offset-2 custyle" >
+    <div className="col-md-6" >
       <table className="table table-striped custab" style={{color:'black'}}>
         <thead>
           <tr>
@@ -49,9 +49,9 @@ const Viewreq = () => {
         </tbody>
       </table>
     </div>
-    <div col-md-6>
-    <div className="" >
-  <div className="regcontform-v5-content" style={{border:'2px solid black'}}>
+
+    <div className=" col-md-6" >
+  <div className="" style={{border:'2px solid black'}}>
     <form className="regcontform-detail" action="#" method="post">
       <h2>Upload Plan</h2>
       <div className="regcontform-row">
@@ -94,7 +94,7 @@ const Viewreq = () => {
 </div>
 </div>
     </div>
-  </div>
+
 
 
   <div className="container">

@@ -12,7 +12,7 @@ const ProjectManagerslider = () => {
         <div className="carousel-item active">
           <img
             className="w-100"
-            src="img\pic\imagehoempage.jpg"
+            src="img/service-5.jpg"
             alt="Image"
             height={600}
           />

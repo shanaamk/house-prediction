@@ -61,11 +61,11 @@ const Adminslider = () => {
       <div className="dbox dbox--color-2">
         
         <div className="dbox__body">
-          <span>Approvel Requestes</span>
+        <i className="fa fa-envelope" style={{fontSize:36}}></i>
           <span className="dbox__title"></span>
         </div>
         <div className="dbox__action">
-          <button className="dbox__action__btn"><a href='Quote'>Click</a></button>
+          <button className="dbox__action__btn"><a href='Quote'>Request</a></button>
         </div>
       </div>
     </div>
@@ -74,11 +74,11 @@ const Adminslider = () => {
     <div className="col-md-4">
       <div className="dbox dbox--color-2">
         <div className="dbox__body">
-          <span>View projects</span>
+        <i className="fa fa-eye" style={{fontSize:36}}></i>
           <span className="dbox__title"></span>
         </div>
         <div className="dbox__action">
-          <button className="dbox__action__btn" ><a href='viewallprojucts'>Click</a></button>
+          <button className="dbox__action__btn" ><a href='viewallprojucts'>All Projects</a></button>
         </div>
       </div>
     </div>
@@ -98,11 +98,11 @@ const Adminslider = () => {
       <div className="dbox dbox--color-2">
         
         <div className="dbox__body">
-        <i className="fa fa-cap" style={{fontSize:36}}></i>
+        <i className="fa fa-hat-cowboy" style={{fontSize:36}}></i>
           <span className="dbox__title"></span>
         </div>
         <div className="dbox__action">
-          <button className="dbox__action__btn"><a href='manage'>Manage projectmanager</a></button>
+          <button className="dbox__action__btn"><a href='manage'>Manage PM</a></button>
         </div>
       </div>
     </div>

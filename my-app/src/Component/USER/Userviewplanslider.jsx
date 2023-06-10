@@ -1,8 +1,15 @@
-import React from 'react'
 
+import React, { useState } from 'react';
 
 
 const Userviewplanslider = () => {
+  const [showUploadForm, setShowUploadForm] = useState(false);
+
+  const handlerejectClick = () => {
+    setShowUploadForm(true);
+
+  };
+ 
   return (
     <>
     <div className="container">
@@ -22,17 +29,23 @@ const Userviewplanslider = () => {
           </div>
         </div>
       </div>
-      <div className="col-md-3" />
+      <div className="col-md-4" />
       <div className="col-md-12 no-padding lib-item" data-category="ui">
         <div className="lib-panel">
           <div className="row box-shadow">
-            <div className="col-md-6">
+            <div className="col-md-4">
               <img
                 className="lib-img"
-                src="img/pic/archnew.webp"
+                src="img/pic/userimage5.jpg"
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-4">
+              <img
+                className="lib-img"
+                src="img/pic/planimg.jpg"
+              />
+            </div>
+            <div className="col-md-4">
             <table className="table table-striped custab" style={{color:'black'}}>
         <thead>
           <tr>
@@ -83,67 +96,41 @@ const Userviewplanslider = () => {
           </div>
         </div>
       </div>
-    </div>
-    <div className="row row-margin-bottom">
-      <div className="col-md-12 no-padding lib-item" data-category="view">
-        <div className="lib-panel">
-          <div className="row box-shadow">
-          </div>
-        </div>
-      </div>
-      <div className="col-md-3" />
-      <div className="col-md-12 no-padding lib-item" data-category="ui">
-        <div className="lib-panel">
-          <div className="row box-shadow">
-            <div className="col-md-6">
-              <img
-                className="lib-img"
-                src="img/pic/archnew.webp"
-              />
-            </div>
-            <div className="col-md-6">
-            <img
-                className="lib-img"
-                src="img/pic/archnew.webp"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-   
-    <div className="formthree ptb-100">
-    <div className='row'>
+      <div className='row'>
     <div className='col-md-3'></div>
       <div className='col-md-3 text-center'>
       <button className='btn btn-success'>Accept</button>
    
       </div>
       <div className='col-md-3 text-center'> 
-      <button className='btn btn-danger'>Reject</button></div>
+      <button className='btn btn-danger' onClick={handlerejectClick}>Reject</button></div>
       
       <div className='col-md-3'></div>
     </div>
+    </div>
+    
+    </div>
+    {showUploadForm ? (
+    <div className="formthree ptb-100">
+ 
     <div className="container">
-  <div className="row">
+  <div className="row justify-content-center" >
     <div className="col-sm-4 col-md-4">
       <div className="panel panel-default">
         <div className="panel-body">
           <form acceptCharset="UTF-8" action="" method="POST">
             <textarea
-              className="form-control counted"
+              className="5"
               name="message"
               placeholder="Type in your message"
               rows={5}
+              cols={40}
               style={{ marginBottom: 10 }}
               defaultValue={""}
             />
-            <h6 className="pull-right" id="counter">
-              320 characters remaining
-            </h6>
+           
             <button className="btn btn-info" type="submit">
-              Post New Message
+              Reject with this Message
             </button>
           </form>
         </div>
@@ -152,13 +139,13 @@ const Userviewplanslider = () => {
   </div>
 </div>
 </div>
+) : null}
 
 
+</>
 
-
-  </>
   
-  )
-}
+  );
+};
 
 export default Userviewplanslider

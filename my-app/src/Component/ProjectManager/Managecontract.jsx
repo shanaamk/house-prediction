@@ -23,7 +23,6 @@ const Managecontract = () => {
            <a className="btn btn-info btn-xs" href="cv">
              <span className="glyphicon glyphicon-edit" /> View C.V
            </a>{" "}
-           
          </td>
        </tr>
        <tr>
