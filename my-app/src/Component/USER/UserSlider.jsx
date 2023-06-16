@@ -81,8 +81,7 @@ const UserSlider = () => {
     <div className="text-center mx-auto mb-5" style={{ maxWidth: 600 }}>
       <h2 className="display-5 text-uppercase mb-4">
         <i>
-          We Provide <span className="text-primary">The Best</span> Construction
-          Services
+          Our Constructed <span className="text-primary">projects</span> are
         </i>
       </h2>
     </div>

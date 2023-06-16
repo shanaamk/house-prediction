@@ -11,7 +11,7 @@ const AddWorker = () => {
  
 >
   <div className="inner">
-    <form action="" style={{marginTop:'50px',color:'black'}}>
+    <form action="" style={{marginTop:'50px',color:'black',border: '2px solid #ccc', padding: '20px', borderRadius: '5px'}}>
       <h3 style={{color:'black'}}>Add Workers Form</h3>
     
         <div className="form-wrapper">
@@ -19,13 +19,14 @@ const AddWorker = () => {
           <input type="text" className="form-control" />
         </div>
         <div className="form-wrapper">
+  <label htmlFor="phone">Phone number</label>
+  <input type="tel" id="phone" className="form-control" />
+</div>
+        {/* <div className="form-wrapper">
         <label htmlFor="">Adress</label>
         <input type="text" className="form-control" />
-      </div>
-      <div className="form-wrapper">
-        <label htmlFor="">Phone number</label>
-        <input type="password" className="form-control" />
-      </div>
+      </div> */}
+      
      
       <div className="form-wrapper">
         <label htmlFor="">Email</label>
@@ -42,10 +43,28 @@ const AddWorker = () => {
             <option value="other">RCC Worker</option>
           </select>
         </div>
+        
       </div>
+        <div className="form-wrapper">
+          <label htmlFor="">Work Experience</label>
+          <input type="text" className="form-control" />
+        </div>
+        
       <div className="form-wrapper">
           <label htmlFor="">Worker id</label>
           <input type="text" className="form-control" />
+        </div>
+        <div className="form-wrapper">
+        <label htmlFor="">Username</label>
+        <input type="text" className="form-control" />
+      </div>
+      <div className="form-wrapper">
+          <label htmlFor="">Password</label>
+          <input type="password" className="form-control" />
+        </div>
+        <div className="form-wrapper">
+          <label htmlFor="">Confirm Password</label>
+          <input type="password" className="form-control" />
         </div>
       
       <div className="checkbox">

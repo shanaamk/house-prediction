@@ -7,7 +7,7 @@ const Adminnavbar = () => {
     <a href="index.html" className="navbar-brand">
       <h6 className="text-uppercase text-black">
         <img src="img\pic\logoimge.jpg" width="70px" />
-        &nbsp;&nbsp; HOME CONSTRUCTION
+        &nbsp;&nbsp; BuildScape
       </h6>
     </a>
     <button
@@ -23,7 +23,7 @@ const Adminnavbar = () => {
         <a href="ongoing" className="nav-item nav-link active">
           Home
         </a>
-        <a href="/" className="nav-item nav-link">
+        <a href="not" className="nav-item nav-link">
          Notifications
         </a>
        <a   href="userchat"className="nav-item nav-link"><i className='far fa-comments' style={{fontSize:36}}></i></a>

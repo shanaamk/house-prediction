@@ -34,7 +34,7 @@ const PublicSlider = () => {
         <div className="carousel-item">
           <img
             className="w-100"
-            src="img\pic\imagehoempage.jpg"
+            src="img\pic\websiteimg.jpeg"
             alt="Image"
             height={600}
           />

@@ -2,7 +2,7 @@
 .page-content {
 	width: 100%;
 	margin:  0 auto;
-	background: #eee;
+	background:#ceafc4;
 	display: flex;
 	display: -webkit-flex;
 	justify-content: center;
@@ -44,7 +44,7 @@
 	margin-bottom: 40px;
 }
 .regcontform-detail h2::after {
-	background: #3786bd;
+	background: #ceafc4;
 	width: 50%;
 	height: 2px;
 	content: "";
@@ -123,7 +123,7 @@
 .regcontform-detail .register {
 	font-size: 22px;
 	color: #fff;
-	background: #3786bd;
+	background: #ceafc4;
 	border-radius: 5px;
 	-o-border-radius: 5px;
 	-ms-border-radius: 5px;

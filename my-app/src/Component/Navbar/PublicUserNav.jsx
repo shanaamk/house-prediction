@@ -7,7 +7,7 @@ const PublicUserNav = () => {
       <a href="index.html" className="navbar-brand">
         <h6 className="text-uppercase text-black">
           <img src="img\pic\logoimge.jpg" width="70px" />
-          &nbsp;&nbsp; HOME CONSTRUCTION
+          &nbsp;&nbsp; BuildScape
         </h6>
       </a>
       <button
@@ -56,12 +56,12 @@ const PublicUserNav = () => {
           <a href="login" className="nav-item nav-link">
             Login
           </a>
-          <a
+          {/* <a
             href="contractreg"
             className="nav-item nav-link bg-primary text-white px-5 ms-3 d-none d-lg-block"
           >
             Contract <i className="bi bi-arrow-right" />
-          </a>
+          </a> */}
         </div>
       </div>
     </nav>

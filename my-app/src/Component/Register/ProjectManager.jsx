@@ -7,22 +7,24 @@ const ProjectManager = () => {
     
   >
     <div className="inner">
-      <form action="" style={{marginTop:'50px',color:'black'}}>
+      <form action="" style={{marginTop:'50px',color:'black',border: '1px solid #ccc', padding: '20px', borderRadius: '5px'}}>
         <h3 style={{color:'black'}}>Project manager Registration Form</h3>
-        <div className="form-group">
-          <div className="form-wrapper">
-            <label htmlFor="">First Name</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="form-wrapper">
-            <label htmlFor="">Last Name</label>
-            <input type="text" className="form-control" />
-          </div>
+        <div className="form-wrapper">
+          <label htmlFor="">Name</label>
+          <input type="text" className="form-control" />
         </div>
+        <div className="form-wrapper">
+  <label htmlFor="phone">Phone number</label>
+  <input type="tel" id="phone" className="form-control" />
+</div>
         <div className="form-wrapper">
           <label htmlFor="">Email</label>
           <input type="text" className="form-control" />
         </div>
+        <div className="form-wrapper">
+        <label htmlFor="">Username</label>
+        <input type="text" className="form-control" />
+      </div>
         <div className="form-wrapper">
           <label htmlFor="">Password</label>
           <input type="password" className="form-control" />

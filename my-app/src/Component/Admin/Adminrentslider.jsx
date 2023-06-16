@@ -70,10 +70,12 @@ Continue
                 <th>
                   <input type="checkbox" id="checkall" />
                 </th>
-                <th> Name</th>
+                <th>Name</th>
                 <th>Location</th>
-                <th>Address</th>
-                <th>email</th>
+                <th>Price</th>              
+                <th>Size(sq.ft)</th>
+                <th>Balcony</th>
+                <th>Total Floors</th>
                 <th>Contact</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -84,10 +86,12 @@ Continue
                 <td>
                   <input type="checkbox" className="checkthis" />
                 </td>
-                <td>Mohsin</td>
-                <td>Irshad</td>
-                <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-                <td>isometric.mohsin@gmail.com</td>
+                <td>Layana</td>
+                <td>Mudur</td>
+                <td>6000</td>
+                <td>800</td>
+                <td>1</td>
+                <td>1</td>                            
                 <td>+923335586757</td>
                 <td>
                   <p data-placement="top" data-toggle="tooltip" title="Edit">
@@ -252,7 +256,7 @@ Continue
               </tr>
             </tbody>
           </table>
-          <div className="clearfix" />
+          {/* <div className="clearfix" />
           <ul className="pagination pull-right">
             <li className="disabled">
               <a href="#">
@@ -279,7 +283,37 @@ Continue
                 <span className="glyphicon glyphicon-chevron-right" />
               </a>
             </li>
-          </ul>
+          </ul> */}
+          <div className="row justify-content-center">
+    <nav aria-label="Page navigation justify-content-center">
+      <ul className="pagination">
+        <li className="page-item">
+          <a className="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">«</span>
+          </a>
+        </li>
+        <li className="page-item">
+          <a className="page-link" href="#">
+            1
+          </a>
+        </li>
+        <li className="page-item">
+          <a className="page-link" href="#">
+            2
+          </a>
+        </li>
+        <li className="page-item">
+          <a className="page-link" href="#">
+            3
+          </a>
+        </li>
+        <li className="page-item">
+          <a className="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">»</span>
+          </a>
+        </li>
+      </ul>
+      </nav>
         </div>
       </div>
     </div>
@@ -315,12 +349,11 @@ Continue
             <input className="form-control " type="text" placeholder="Irshad" />
           </div>
           <div className="form-group">
-            <textarea
+            <textarea 
               rows={2}
               className="form-control"
               placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"
-              defaultValue={""}
-            />
+              defaultValue={""}/>
           </div>
         </div>
         <div className="modal-footer ">
@@ -385,6 +418,7 @@ Continue
       {/* /.modal-content */}
     </div>
     {/* /.modal-dialog */}
+  </div>
   </div>
 </>
 

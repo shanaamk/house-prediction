@@ -9,16 +9,14 @@ const Workers = () => {
     <div className="inner">
       <form action="" style={{marginTop:'50px',color:'black'}}>
         <h3 style={{color:'black'}}>workers Registration Form</h3>
-        <div className="form-group">
-          <div className="form-wrapper">
-            <label htmlFor="">First Name</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="form-wrapper">
-            <label htmlFor="">Last Name</label>
-            <input type="text" className="form-control" />
-          </div>
+        <div className="form-wrapper">
+          <label htmlFor="">Name</label>
+          <input type="text" className="form-control" />
         </div>
+        <div className="form-wrapper">
+  <label htmlFor="phone">Phone number</label>
+  <input type="tel" id="phone" className="form-control" />
+</div>
         <div className="form-wrapper">
           <label htmlFor="">Email</label>
           <input type="text" className="form-control" />

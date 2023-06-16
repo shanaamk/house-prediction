@@ -9,7 +9,7 @@ const PublicUserFooter = () => {
           <a href="index.html" className="navbar-brand">
             <h6 className=" text-uppercase text-black">
               <img src="img\pic\logoimge.jpg" width="70px" />
-              &nbsp;&nbsp;HOME CONSTRUCTION
+              &nbsp;&nbsp;BuildScape
             </h6>
           </a>
           <p>We construct your dream home</p>

@@ -26,13 +26,13 @@ const ViewPlan = () => {
             <div className="col-md-6">
               <img
                 className="lib-img"
-                src="img/pic/archnew.webp"
+                src="img\pic\userhomepageimage.jpg"
               />
             </div>
             <div className="col-md-6">
             <img
                 className="lib-img"
-                src="img/pic/archnew.webp"
+                src="img\pic\planimg.jpg"
               />
             </div>
           </div>

@@ -7,7 +7,7 @@ const Usernavbar = () => {
       <a href="index.html" className="navbar-brand">
         <h6 className="text-uppercase text-black">
           <img src="img\pic\logoimge.jpg" width="70px" />
-          &nbsp;&nbsp; HOME CONSTRUCTION
+          &nbsp;&nbsp; BuildScape
         </h6>
       </a>
       <button
@@ -38,8 +38,16 @@ const Usernavbar = () => {
           <a href="notfctn" className="nav-item nav-link">
             Notifications
           </a>
-          <a href="" className="nav-item nav-link">
+          
+          <a   href="box"className="nav-item nav-link"><i className='far fa-comments' style={{fontSize:36}}></i></a>
+          <a href="/" className="nav-item nav-link">
             LOGOUT
+          </a>
+          <a
+            href="contractreg"
+            className="nav-item nav-link bg-primary text-white px-5 ms-3 d-none d-lg-block"
+          >
+            Contract <i className="bi bi-arrow-right" />
           </a>
           {/* <a href="contract.html" class="nav-item nav-link bg-primary text-white px-5 ms-3 d-none d-lg-block">Contract <i class="bi bi-arrow-right"></i></a> */}
         </div>
