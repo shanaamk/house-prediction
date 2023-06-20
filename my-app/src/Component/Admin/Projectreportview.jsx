@@ -55,10 +55,10 @@ const Projectreportview = () => {
           </tr>
           <tr>
             <td>Total amouunt of contract</td>
-            <td>1600000</td>
+            <td>600</td>
           </tr>
           <tr>
-            <td>work completetion date</td>
+            <td>Total number of days</td>
             <td>10/05/2012</td>
           </tr>
         </tbody>

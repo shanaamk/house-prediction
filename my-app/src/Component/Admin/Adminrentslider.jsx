@@ -17,7 +17,7 @@ const Adminrentslider = () => {
       <input name="id" className="inputfield" />
     </div>
     <div style={{ width: "100%" }}>
-      <p>Total Floors</p>
+      <p>Nearby</p>
       <input name="email" className="inputfield" />
     </div>
     <div style={{ width: "100%" }}>
@@ -70,13 +70,13 @@ Continue
                 <th>
                   <input type="checkbox" id="checkall" />
                 </th>
-                <th>Name</th>
+                <th>Project Name</th>
                 <th>Location</th>
                 <th>Price</th>              
                 <th>Size(sq.ft)</th>
                 <th>Balcony</th>
-                <th>Total Floors</th>
-                <th>Contact</th>
+                <th>Nearby</th>
+                <th>Image</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -91,8 +91,11 @@ Continue
                 <td>6000</td>
                 <td>800</td>
                 <td>1</td>
-                <td>1</td>                            
-                <td>+923335586757</td>
+                <td>Railway station</td> 
+                                         
+                <td>
+            <img src="product1.jpg" alt="Product 1" className="product-image" />
+          </td>
                 <td>
                   <p data-placement="top" data-toggle="tooltip" title="Edit">
                     <button
@@ -124,9 +127,13 @@ Continue
                 </td>
                 <td>Mohsin</td>
                 <td>Irshad</td>
-                <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-                <td>isometric.mohsin@gmail.com</td>
-                <td>+923335586757</td>
+                <td>CB 106</td>
+                <td>isometric</td>
+                <td>isometric</td>
+                <td>isometric</td>
+                <td>
+            <img src="product1.jpg" alt="Product 1" className="product-image" />
+          </td>
                 <td>
                   <p data-placement="top" data-toggle="tooltip" title="Edit">
                     <button
@@ -158,9 +165,13 @@ Continue
                 </td>
                 <td>Mohsin</td>
                 <td>Irshad</td>
-                <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-                <td>isometric.mohsin@gmail.com</td>
-                <td>+923335586757</td>
+                <td>CB 106</td>
+                <td>isometric</td>
+                <td>isometric</td>
+                <td>isometric</td>
+                <td>
+            <img src="product1.jpg" alt="Product 1" className="product-image" />
+          </td>
                 <td>
                   <p data-placement="top" data-toggle="tooltip" title="Edit">
                     <button
@@ -192,9 +203,13 @@ Continue
                 </td>
                 <td>Mohsin</td>
                 <td>Irshad</td>
-                <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-                <td>isometric.mohsin@gmail.com</td>
-                <td>+923335586757</td>
+                <td>CB 106</td>
+                <td>isometric</td>
+                <td>isometric</td>
+                <td>isometric</td>
+                <td>
+            <img src="product1.jpg" alt="Product 1" className="product-image" />
+          </td>
                 <td>
                   <p data-placement="top" data-toggle="tooltip" title="Edit">
                     <button
@@ -226,9 +241,13 @@ Continue
                 </td>
                 <td>Mohsin</td>
                 <td>Irshad</td>
-                <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-                <td>isometric.mohsin@gmail.com</td>
-                <td>+923335586757</td>
+                <td>CB 106</td>
+                <td>isometric</td>
+                <td>isometric</td>
+                <td>isometric</td>
+                <td>
+            <img src="product1.jpg" alt="Product 1" className="product-image" />
+          </td>
                 <td>
                   <p data-placement="top" data-toggle="tooltip" title="Edit">
                     <button

@@ -59,8 +59,8 @@ const ProjectReport = () => {
             <td>1600000</td>
           </tr>
           <tr>
-            <td>work completetion date</td>
-            <td>10/05/2012</td>
+            <td>Total number of days</td>
+            <td>680</td>
           </tr>
           <tr>
             <td>Work Status</td>

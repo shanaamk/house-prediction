@@ -81,23 +81,12 @@ const UserSlider = () => {
     <div className="text-center mx-auto mb-5" style={{ maxWidth: 600 }}>
       <h2 className="display-5 text-uppercase mb-4">
         <i>
-          Our Constructed <span className="text-primary">projects</span> are
+          Our Construction <span className="text-primary">workes</span> are
         </i>
       </h2>
     </div>
     <div className="row g-5">
-      <div className="col-lg-4 col-md-6">
-        <div className="service-item bg-white d-flex flex-column align-items-center text-center">
-          <img className="img-fluid" src="img/service-1.jpg" alt="" />
-          <div className="service-icon bg-white">
-            <i className="fa fa-3x fa-building text-primary" />
-          </div>
-          <div className="px-4 pb-4">
-            <h4 className="text-uppercase mb-3">Home Construction</h4>
-          
-          </div>
-        </div>
-      </div>
+      
       <div className="col-lg-4 col-md-6">
         <div className="service-item bg-white rounded d-flex flex-column align-items-center text-center">
           <img className="img-fluid" src="img/service-2.jpg" alt="" />
@@ -105,7 +94,7 @@ const UserSlider = () => {
             <i className="fa fa-3x fa-home text-primary" />
           </div>
           <div className="px-4 pb-4">
-            <h4 className="text-uppercase mb-3">House Renovation</h4>
+            <h4 className="text-uppercase mb-3">House construction</h4>
             
           </div>
         </div>
@@ -158,6 +147,18 @@ const UserSlider = () => {
           </div>
         </div>
       </div>
+       <div className="col-lg-4 col-md-6">
+        <div className="service-item bg-white d-flex flex-column align-items-center text-center">
+          <img className="img-fluid" src="img/service-1.jpg" alt="" />
+          <div className="service-icon bg-white">
+            <i className="fa fa-3x fa-building text-primary" />
+          </div>
+          <div className="px-4 pb-4">
+            <h4 className="text-uppercase mb-3">Designing workes</h4>
+          
+          </div>
+        </div>
+      </div>  
     </div>
   </div>
   {/* Services End */}

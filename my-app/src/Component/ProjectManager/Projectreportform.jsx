@@ -67,7 +67,7 @@ const Projectreportform = () => {
         <input type="password" className="form-control" />
       </div>
       <div className="form-wrapper">
-        <label htmlFor="">Work completion date</label>
+        <label htmlFor="">Total number of days</label>
         <input type="password" className="form-control" />
       </div>
       
@@ -136,8 +136,8 @@ const Projectreportform = () => {
             <td>1600000</td>
           </tr>
           <tr>
-            <td>work completetion date</td>
-            <td>10/05/2012</td>
+            <td>Total number of days</td>
+            <td>600</td>
           </tr>
           <tr>
             <td>Work Status</td>

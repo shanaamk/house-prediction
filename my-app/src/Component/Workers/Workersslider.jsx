@@ -17,8 +17,10 @@ const Workersslider = () => {
          </time>
         
          <div className="info">
-           <h2 className="title"><a href='reportss'>House1</a></h2>
-           <p className="desc">Kalpakanchery </p>
+           <h2 className="title">Project name</h2>
+           <p className="desc">Srarting Date</p>
+           <p className="desc">Dead line</p>
+           {/* <p className="desc">Kalpakanchery </p> */}
            <ul>
              <li style={{ width: "50%" }}>
                <a href="#website">
@@ -41,7 +43,7 @@ const Workersslider = () => {
            <span className="time">12:00 AM</span>
          </time>
          <div className="info">
-           <h2 className="title"><a href='reportss'>House2</a></h2>
+           <h2 className="title">Project name</h2>
            <p className="desc">Tirur</p>
            <ul>
              <li style={{ width: "50%" }}>

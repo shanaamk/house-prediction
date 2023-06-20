@@ -60,6 +60,7 @@
       align-items: center;
       min-width: 850px;
       margin: auto;
+      
     }
    
     .inner h3 {
@@ -73,7 +74,8 @@
   
   form {
     width: 50%;
-    padding-left: 45px; }
+    padding-left: 45px;
+  background-color: white; }
   
   .form-group {
     display: flex; }

@@ -7,7 +7,7 @@ const Login = () => {
   <div className="page-content">
   <div className="regcontform-v5-content">
     <form className="regcontform-detail" action="#" method="post">
-      <h2>Login</h2>
+      <h2 style={{marginTop:'20px'}}>Login</h2>
       <div className="regcontform-row">
         <label htmlFor="full-name">Your User Name</label>
         <input
@@ -46,7 +46,7 @@ const Login = () => {
    
       </div>
       <p>Don't have an Account? <a href=""> Register</a></p><br></br>
-        <p><a href="">Forgot Password?</a></p>
+        <p style={{marginTop:'-20px'}}><a href="">Forgot Password?</a></p>
 
       <div className="regcontform-row-last">
         <button  className="register">

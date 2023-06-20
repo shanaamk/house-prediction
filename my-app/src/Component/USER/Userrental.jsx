@@ -2,6 +2,7 @@ import React from 'react'
 
 const Userrental = () => {
   return (
+    
     <div className="container-fluid bg-light py-6 px-5" id='Rental'>
     <div className="text-center mx-auto mb-5" style={{ maxWidth: 600 }}>
       <h2 className="display-5 text-uppercase mb-4">
@@ -36,10 +37,37 @@ const Userrental = () => {
              
              
             </li>
+            
           </ul>
         </div>
       </div>
+      
     </div>
+    <div className="searchrow" style={{marginLeft:'-400px'}}>
+    <div className="span12">
+  <form
+    id="custom-search-form"
+    className="form-search form-horizontal pull-right"
+  >
+    <div className="input-append span12" style={{ display: 'flex' }}>
+      <input
+        type="text"
+        className="search-query mac-style"
+        placeholder="Search"
+        style={{ flex: '1 0 auto', marginRight: '5px' }}
+      />
+      <button type="submit" className="btn">
+        <i className="fas fa-search" />
+      </button>
+    </div>
+  </form>
+</div>
+
+</div>
+
+
+
+    
     <div className="row g-5 portfolio-container">
       <div className="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
         <div className="position-relative portfolio-box">

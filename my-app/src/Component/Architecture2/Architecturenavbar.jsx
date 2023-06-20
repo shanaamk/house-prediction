@@ -23,42 +23,13 @@ const Architecturenavbar = () => {
           <a href="" className="nav-item nav-link active">
             Home
           </a>
-          <a href="archpredictn" className="nav-item nav-link">
+          <a href="https://e399-169-150-218-87.ngrok-free.app/" className="nav-item nav-link">
             price prediction
           </a>
          
-          <div className="nav-item dropdown">
-            <a
-              href="#"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              Requirements
-            </a>
-            <div className="dropdown-menu m-0">
-              <a href="view" className="dropdown-item">
-                View requirements
-              </a>
-              <a href="view" className="dropdown-item">
-                Manage requirements
-              </a>
-            </div>
-          </div>
-          <div className="nav-item dropdown">
-            <a
-              href="#"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              Admin
-            </a>
-            <div className="dropdown-menu m-0">
-              <a href="user.html" className="dropdown-item">
-                Submit plan and quote
-              </a>
-            </div>
-          </div>
-          <a href="Sign in.html" className="nav-item nav-link">
+          
+          
+          <a href="architecturehome" className="nav-item nav-link">
             LOGOUT
           </a>
         </div>
