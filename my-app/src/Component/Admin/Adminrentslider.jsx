@@ -136,14 +136,14 @@ Continue
           </td>
                 <td>
                   <p data-placement="top" data-toggle="tooltip" title="Edit">
-                    <button
+                   <a href='editrent'> <button
                       className="btn btn-primary btn-xs"
                       data-title="Edit"
                       data-toggle="modal"
                       data-target="#edit"
                     >
                       <span className="glyphicon glyphicon-pencil" />
-                    </button>
+                    </button></a>
                   </p>
                 </td>
                 <td>

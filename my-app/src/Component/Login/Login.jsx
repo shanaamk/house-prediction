@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Login = () => {
+  const[input,setInput]=useState({})
+
+
+
+  const inputChange= (event)=>{
+  const{name,value}=event.target 
+  setInput({...input,[name]:value})
+  }
+  
+  const submit = (e)=>{
+    e.preventDefault()
+    console.log(input);
+  }
+
+
+
   return (
   <>
   
@@ -12,8 +28,7 @@ const Login = () => {
         <label htmlFor="full-name">Your User Name</label>
         <input
           type="text"
-          name="full-name"
-          id="full-name"
+          name='Username' onChange={inputChange}
           className="regcontinput-text"
           placeholder="Your User Name"
           required=""
@@ -37,8 +52,7 @@ const Login = () => {
         <label htmlFor="password">Password</label>
         <input
           type="password"
-          name="password"
-          id="password"
+          name="Password" onChange={inputChange}
           className="input-text"
           placeholder="Your Password"
           required=""
@@ -49,7 +63,7 @@ const Login = () => {
         <p style={{marginTop:'-20px'}}><a href="">Forgot Password?</a></p>
 
       <div className="regcontform-row-last">
-        <button  className="register">
+        <button  className="register" onClick={submit}>
        Login        
       </button>
       </div>

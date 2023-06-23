@@ -70,6 +70,7 @@ import Projects from '../ProjectManager/Projects'
 import Pmcontrol from '../ProjectManager/Pmcontrol'
 import Assignworkers from '../ProjectManager/Assignworkers'
 import Projectreports from '../Workers/Projectreports'
+import Editrent from '../Admin/Editrent'
 
 
 
@@ -144,7 +145,7 @@ const Mainrouter = () => {
 <Route path="manageworkercategory" element={<ManageWorkcategory/>}/>
 <Route path="carchitecture" element={<ChooseArchitecture/>}/>
 <Route path="cprojectmanager" element={<ChooseProjectmanager/>}/>
-
+<Route path="editrent" element={<Editrent/>}/>
 
 
 
