@@ -64,10 +64,10 @@
     margin-bottom: 1rem;
     position: relative;
   }
-  
+/*   
   form input {
     /* margin-top: 10rem; */
-    font-family: inherit;
+    /* font-family: inherit;
     width: 50rem;
     outline: none;
     background-color: #fff;
@@ -79,7 +79,7 @@
     font-size: 17px;
     color: #4A4A4A;
     text-indent: 40px;
-  }
+  } */ 
   
   form .btnlog {
     

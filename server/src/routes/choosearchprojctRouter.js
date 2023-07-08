@@ -1,25 +1,24 @@
 const express = require('express');
-const ProjectReportModel = require('../models/ProjectReportModel');
+const choosearchprojctModel = require('../models/choosearchprojctModel');
 
 
 
+const choosearchprojctRouter = express.Router();
 
-const ProjecrReportRouter = express.Router();
-
-ProjecrReportRouter.post('/projectreport', async (req, res) => {
+choosearchprojctRouter.post('/choosearchproject', async (req, res) => {
     try{
         const data ={
            
-            measure_date:req.body.Measure_date,    
-            report:req.body. Report,
-            contract_amnt:req.body.Contract_amnt,
-            total_days:req.body.Total_days
-          
+            
+            architecture_id:req.body.architecture_id,
+            projectmanager_id:req.body.projectmanager_id,
+            
+           
           
            
         };
-        
-        const savedData = await ProjectReportModel(data).save();
+       
+        const savedData = await choosearchprojctModel(data).save();
 
         if (savedData) {
           return res.status(200).json({
@@ -38,7 +37,7 @@ ProjecrReportRouter.post('/projectreport', async (req, res) => {
         });
       }
     });
-    module.exports = ProjecrReportRouter;
+    module.exports = choosearchprojctRouter;
 
 
 

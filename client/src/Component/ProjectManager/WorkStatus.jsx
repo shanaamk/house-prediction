@@ -1,18 +1,26 @@
 import React, { useState } from 'react'
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const WorkStatus = () => {
+
+  const navigate = useNavigate()
   const[inputs, setinputs]=useState([]);
   console.log("value==>",inputs);
+
   const setRegister=(event)=>{
     const name=event.target.name;
     const value=event.target.value;
     setinputs({...inputs,[name]:value});
     console.log(inputs);
   }
+  
   const registersubmit =(event)=>{
     event.preventDefault();
     console.log("data",inputs);
+    axios.post('http://localhost:5000/register/project',inputs).then((response)=>{
+      navigate('')
+    })
 
   }
   return (

@@ -441,6 +441,7 @@ userregRouter.get('/view-workers', async (req, res) => {
             })
         }
     } catch (error) {
+       
         return res.status(400).json({
             success:false,
             error:true,
@@ -491,7 +492,8 @@ userregRouter.post('/workerreg', async (req, res) => {
                 worktype: req.body.WorkType,
                 workexperience: req.body.WorkExperience,
                 currentproject:null,
-                project_id:save_project_id
+                project_id:req.body.project_id
+                
             }
             const save_register= await workersRegistrationModel (register_data).save()
             if(save_register){
@@ -558,6 +560,7 @@ userregRouter.get('/view-contract', async (req, res) => {
             })
         }
     } catch (error) {
+       
         return res.status(400).json({
             success:false,
             error:true,

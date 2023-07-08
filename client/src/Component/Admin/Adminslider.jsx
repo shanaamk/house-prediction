@@ -78,6 +78,19 @@ const Adminslider = () => {
           <span className="dbox__title"></span>
         </div>
         <div className="dbox__action">
+          <button className="dbox__action__btn" ><a href='reqst'>Project Request</a></button>
+        </div>
+      </div>
+    </div>
+
+
+    <div className="col-md-4">
+      <div className="dbox dbox--color-2">
+        <div className="dbox__body">
+        <i className="fa fa-eye" style={{fontSize:36}}></i>
+          <span className="dbox__title"></span>
+        </div>
+        <div className="dbox__action">
           <button className="dbox__action__btn" ><a href='viewallprojucts'>All Projects</a></button>
         </div>
       </div>

@@ -38,6 +38,7 @@ RentRouter.post('/rent', async (req, res) => {
             projectmanager_id:req.body.projectmanager_id,
 
             propertyname:req.body.Property_name,    
+            address:req.body. Address,
             price:req.body. Price,
             location:req.body.Location,
             landmark:req.body.Landmark,

@@ -13,12 +13,12 @@ RequirementRouter.post('/requirement', async (req, res) => {
            total_floors:req.body. Total_floors,
            bedrooms:req.body.Bedrooms,
            bathrooms:req.body.Bathrooms,
-           kitchen:req.body.Kitchen,
+           kitchen:req.body.kitchen,
            balcony:req.body.Balcony,
            message:req.body.Message,
            
         };
-       
+       console.log(data);
 
         const savedData = await RequirementModel(data).save();
 

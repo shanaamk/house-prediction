@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import Adminnavbar from './Adminnavbar'
 import PublicUserFooter from '../Footer/PublicUserFooter'
 
 const Control = () => {
+  
+  const navigate = useNavigate()
+  const [category, setCategory] = useState([]);
+  const [manager, setmanager] = useState([]);
+
   const[input,setInput]=useState({})
 
 
@@ -16,7 +24,38 @@ const Control = () => {
   const submit = (e)=>{
     e.preventDefault()
     console.log(input);
+  
+    const  architecture_id=input.category;
+    const updatedInputs={...input,architecture_id};
+    const projectmanager_id=input.manager;
+    const finalInputs={...updatedInputs,projectmanager_id};
+    
+    
+
+    axios.post('http://localhost:5000/register/choosearchproject',finalInputs).then((response)=>{
+      console.log(response);
+      navigate('/reqst')
+    })
   }
+  useEffect(() => {
+    axios.get('http://localhost:5000/register/view-architectures')
+      .then((response) => {
+        setCategory(response.data.data);
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/register/view-projectmanagers')
+      .then((response) => {
+        setmanager(response.data.data);
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
+  }, []);
   return (
     <>
     <Adminnavbar/>
@@ -67,16 +106,17 @@ const Control = () => {
          
         </tbody>
       </table>
-      <a href='adminstatus'>Approve Status</a>
+      
         </div>
         <div className='col-md-4'>
         <div className="form-wrapper">
         <label htmlFor="">Architecture</label>
         <div className="form-holder select">
           <select name="choose Architecture" onChange={inputChange} className="form-control">
-            <option value="Architecture1">Architecture1</option>
-            <option value="Architecture2">Architecture2</option>
-            <option value="Architecture3">Architecture3</option>
+            
+            {category.map((data)=>(
+                  <option value={data._id}>{data.name}</option>
+                ))}
           </select>
         </div>
       </div>
@@ -84,9 +124,9 @@ const Control = () => {
         <label htmlFor="">Project Manager</label>
         <div className="form-holder select">
           <select name="choose Projectmanager" onChange={inputChange} className="form-control">
-            <option value="ProjectManager1">ProjectManager1</option>
-            <option value="ProjectManager2">ProjectManager2</option>
-            <option value="ProjectManager3">ProjectManager3</option>
+          {manager.map((data)=>(
+                  <option value={data._id}>{data.name}</option>
+                ))}
           </select>
         </div>
       </div>
@@ -99,40 +139,17 @@ Continue
         </div>
 
         <div className='col-md-4'>
-       <a href='plan'><img
+      <img
                 className="lib-img"
                 src="img\pic\planimg.jpg"
 
-              /></a> 
+              />
         </div>
         
         </div>
     </div>
-    <div className='container'>
-    <div className='row text-center'>
-        <div className='col-md-12'>
-        <div className="progress">
-              <div
-                className="progress-bar"
-                role="progressbar"
-                style={{ width: "50%" }}
-                aria-valuenow={50}
-                aria-valuemin={0}
-                aria-valuemax={100}
-              />
-            </div>
-            <div className="mt-3">
-            
-             
-               <span className="text2"> 50% of work completed </span>
-            
-            </div>
-          
- 
-       
-            </div> 
-      </div>
-        </div>
+   
+      
         
 
 <PublicUserFooter/>

@@ -71,6 +71,9 @@ import Pmcontrol from '../ProjectManager/Pmcontrol'
 import Assignworkers from '../ProjectManager/Assignworkers'
 import Projectreports from '../Workers/Projectreports'
 import Editrent from '../Admin/Editrent'
+import QuestionCarousel from '../USER/Questions'
+import Projectrequest from '../Admin/Projectrequest'
+import PrjctRequestcontrol from '../Admin/PrjctRequestcontrol'
 
 
 
@@ -98,6 +101,7 @@ const Mainrouter = () => {
 <Route path="projectmanagerhome" element={<ProjectManagerhome/>}/>
 <Route path="workershome" element={<Workershome/>}/>
 <Route path="userviewplan" element={<Userviewplan/>}/>
+<Route path="question" element={<QuestionCarousel/>}/>
 <Route path="Status" element={<Projectstatuspage/>}/>
 <Route path="archpredictn" element={<Architecturepredictionpage/>}/>
 
@@ -105,6 +109,8 @@ const Mainrouter = () => {
 
 <Route path="viewallprojucts" element={<Viewallprojects/>}/>
 <Route path="managepage" element={<Adminusermanagepage/>}/>
+<Route path="reqst" element={<Projectrequest/>}/>
+<Route path="allprjctcontrol" element={<PrjctRequestcontrol/>}/>
 <Route path="reports" element={<Projectreportviewpage/>}/>
 <Route path="viewteam" element={<Workresviewteampage/>}/>
 <Route path="table" element={<Workerstable/>}/>

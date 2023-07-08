@@ -1,48 +1,9 @@
 
-// import React from 'react'
-
-// const Userrequirementslider = () => {
-//   return (
-//     <>
-//    
-
-//   <div className="container" >
-//     <div className='row' style={{marginTop:20}}>
-//       <div className='col-md-12 text-center'>
-//       <h2>if you have a plan?</h2>
-//       <button className='btn btn-success' onclick="formhide()">    
-//       yes
-//       </button>
-      
-//     <button className='btn btn-danger'onclick="formhide()">
-//     no
-//     </button>
-    
-     
-    
-//       </div>
-//     </div>
-    
-    
-//   </div>
-//   <div id='no'>
-//   
-//   </div>
-
-
-  
-
-// <div id='no'>
-//     
-//   </>
-  
-
-//   )
-// }
-
-// export default Userrequirementslider
 
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const Userrequirementslider = () => {
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -57,18 +18,27 @@ const Userrequirementslider = () => {
     setshowRequirementForm(true);
     setShowUploadForm(false);
   };
-  const[input,setInput]=useState({})
 
 
 
-  const inputChange= (event)=>{
-  const{name,value}=event.target 
-  setInput({...input,[name]:value})
+  const navigate = useNavigate()
+  const[inputs, setinputs]=useState([]);
+  console.log("value==>",inputs);
+
+  const setRegister=(event)=>{
+    const name=event.target.name;
+    const value=event.target.value;
+    setinputs({...inputs,[name]:value});
+    console.log(inputs);
   }
   
-  const submit = (e)=>{
-    e.preventDefault()
-    console.log(input);
+  const registersubmit =(event)=>{
+    event.preventDefault();
+    console.log("data",inputs);
+    axios.post('http://localhost:5000/register/requirement',inputs).then((response)=>{
+      navigate('/userview')
+    })
+
   }
 
 
@@ -181,41 +151,41 @@ const Userrequirementslider = () => {
        <div className="container" >
            <div style={{ display: "flex", width: "100%",color:'black',marginTop:20,marginBottom:20}}>
               
-             <form className="formrequirement">
+             <form  onSubmit={registersubmit} className="formrequirement">
              <h3>REQUIREMENT COLLECTION</h3><br></br>
                <div style={{ width: "100%" ,}}>
                  <p>size(sq.ft)</p>
-                 <input name="Size_sqft" onChange={inputChange} className="inputfield" autofocus="" />
+                 <input name="Size_sqft" value={inputs.Size_sqft || ""} onChange={setRegister} className="inputfield" autofocus="" />
                </div>
                <div style={{ width: "100%" }}>
                  <p>Balcony</p>
-                 <input name="Balcony" onChange={inputChange} className="inputfield" />
+                 <input name="Balcony" value={inputs.Balcony || ""} onChange={setRegister} className="inputfield" />
                </div>
                <div style={{ width: "100%" }}>
                  <p>Total Floors</p>
-                 <input name="Total Floors" onChange={inputChange} className="inputfield" />
+                 <input name="Total_floors" value={inputs.Total_floors || ""} onChange={setRegister} className="inputfield" />
                </div>
                <div style={{ width: "100%" }}>
                  <p>Bedrooms</p>
-                 <input name="Bedrooms" onChange={inputChange} className="inputfield" />
+                 <input name="Bedrooms" value={inputs.Bedrooms || ""} onChange={setRegister} className="inputfield" />
                </div>
                <div style={{ width: "100%" }}>
                  <p>Bathrooms</p>
-                 <input name="Bathrooms" onChange={inputChange} className="inputfield" />
+                 <input name="Bathrooms" value={inputs.Bathrooms || ""} onChange={setRegister} className="inputfield" />
                </div>
                <div style={{ width: "100%" }}>
                  <p>kitchen</p>
-                 <input name="kitchen" onChange={inputChange} className="inputfield" />
+                 <input name="kitchen" value={inputs.kitchen || ""} onChange={setRegister} className="inputfield" />
                </div>
                <div style={{ width: "100%" }}>
         <p>Message</p>
-        <textarea name="Message" onChange={inputChange} className="inputfield" placeholder="Enter your message here" />
+        <textarea name="Message" value={inputs.Message || ""} onChange={setRegister} className="inputfield" placeholder="Enter your message here" />
       </div>
                
-         <button type="button" className="btn btn-dark" onClick={submit}>
+         <button type="button" className="btn btn-dark" >
            Reset
          </button>
-         <button type="button" className="btn btn-dark" onClick={submit} style={{marginLeft:20}}>
+         <button type="submit" className="btn btn-dark"  style={{marginLeft:20}}>
            Continue
          </button>
        

@@ -26,7 +26,7 @@ const UserSlider = () => {
                   <br /> to take care of your work
                 </i>
               </h2>
-              <a href="userreq" class="btn btn-primary py-md-3 px-md-5 mt-2 ml-3">BUILD</a>
+              <a href="question" class="btn btn-primary py-md-3 px-md-5 mt-2 ml-3">BUILD</a>
               <a href="userrent" class="btn btn-primary py-md-3 px-md-5 mt-2 ml-3">RENT</a>
             </div>
           </div>

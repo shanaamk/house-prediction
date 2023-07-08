@@ -40,7 +40,7 @@ const Viewallprojects = () => {
               <td>send plan</td>
               <td>
     <button class='btn btn-primary sm'>
-    <a href='admcontrol'>control</a>
+    <a href='allprjctcontrol'>control</a>
     </button>
     
   </td>
@@ -59,7 +59,7 @@ const Viewallprojects = () => {
               <td>send requirement</td>
               <td>
               <button class='btn btn-primary sm'>
-              <a href='admcontrol'>control</a>
+              <a href='allprjctcontrol'>control</a>
     </button>
     
   </td>
@@ -77,7 +77,7 @@ const Viewallprojects = () => {
               <td>send requirement</td>
               <td>
               <button class='btn btn-primary sm'>
-              <a href='admcontrol'>control</a>
+              <a href='allprjctcontrol'>control</a>
     </button>
     
   </td>
@@ -131,7 +131,7 @@ const Viewallprojects = () => {
               <td>send requirement</td>
               <td>
               <button class='btn btn-primary sm'>
-   <a href='admcontrol'>control</a>
+   <a href='allprjctcontrol'>control</a>
     </button>
    
   </td>

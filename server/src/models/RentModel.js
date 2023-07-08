@@ -5,6 +5,7 @@ const schema = mongoose.Schema
 const RentModelSchema = new schema({
     login_id:{type:mongoose.Types.ObjectId,ref:"login_tb"},
     propertyname:{type:String},  
+   address:{type:String}, 
     price:{type:String},    
     location:{type:String},
     landmark:{type:String},

@@ -68,6 +68,10 @@ const Adminrentslider = () => {
       <input name='Address' onChange={inputChange} className="inputfield" />
     </div>
     <div style={{ width: "100%" }}>
+      <p>Location</p>
+      <input name='Location' onChange={inputChange} className="inputfield" />
+    </div>
+    <div style={{ width: "100%" }}>
       <p>Price</p>
       <input name='Price' onChange={inputChange} className="inputfield" />
     </div>
@@ -126,6 +130,7 @@ delete
                sl.no
               </th>
               <th>Property Name</th>
+              <th>Address</th>
               <th>Price</th>
               <th>Location</th>
               <th>Landmark</th>
@@ -141,6 +146,7 @@ delete
               <tr key={index}>
                 <td>{indexOfFirstRent + index + 1}</td>
                 <td>{rent.propertyname}</td>
+                <td>{rent.address}</td>
                 <td>{rent.price}</td>
                 <td>{rent.location}</td>
                 <td>{rent.landmark}</td>
