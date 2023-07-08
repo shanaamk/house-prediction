@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Adminnavbar from './Adminnavbar'
 import PublicUserFooter from '../Footer/PublicUserFooter'
 
 const Control = () => {
-  
+  const {id}=useParams()
   const navigate = useNavigate()
   const [category, setCategory] = useState([]);
   const [manager, setmanager] = useState([]);
@@ -25,14 +25,14 @@ const Control = () => {
     e.preventDefault()
     console.log(input);
   
-    const  architecture_id=input.category;
-    const updatedInputs={...input,architecture_id};
-    const projectmanager_id=input.manager;
-    const finalInputs={...updatedInputs,projectmanager_id};
+    // const  architecture_id=input.category;
+    // const updatedInputs={...input,architecture_id};
+    // const projectmanager_id=input.manager;
+    // const finalInputs={...updatedInputs,projectmanager_id};
     
-    
+    // console.log(finalInputs);
 
-    axios.post('http://localhost:5000/register/choosearchproject',finalInputs).then((response)=>{
+    axios.post(`http://localhost:5000/register/choose-archtctr/${id}`,input).then((response)=>{
       console.log(response);
       navigate('/reqst')
     })
@@ -112,7 +112,7 @@ const Control = () => {
         <div className="form-wrapper">
         <label htmlFor="">Architecture</label>
         <div className="form-holder select">
-          <select name="choose Architecture" onChange={inputChange} className="form-control">
+          <select name="architecture_id" onChange={inputChange} className="form-control">
             
             {category.map((data)=>(
                   <option value={data._id}>{data.name}</option>
@@ -123,7 +123,7 @@ const Control = () => {
       <div className="form-wrapper">
         <label htmlFor="">Project Manager</label>
         <div className="form-holder select">
-          <select name="choose Projectmanager" onChange={inputChange} className="form-control">
+          <select name="projectmanager_id" onChange={inputChange} className="form-control">
           {manager.map((data)=>(
                   <option value={data._id}>{data.name}</option>
                 ))}

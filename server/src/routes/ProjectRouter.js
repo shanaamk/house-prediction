@@ -130,7 +130,62 @@ ProjectRouter.get('/project-request', async (req, res) => {
 }
 })
 
+ProjectRouter.post('/choose-archtctr/:id', async (req, res) => {
+  try {
+    const id=req.params.id
+console.log('id',id);
+    const data ={           
+      architecture_id:req.body.architecture_id, 
+      projectmanager_id:req.body.projectmanager_id
+    };
 
+    const approve = await ProjectModel.updateOne({ _id: id }, { $set: data });
+
+    if (approve) {
+      return res.status(200).json({
+        success: true,
+        error: false,
+        message: "Request Added",
+        details: approve
+      });
+    }
+} catch (error) {
+console.log(error);
+    return res.status(400).json({
+      success: false,
+      error: true,
+      message: "Something went wrong",
+      details: error
+    });
+  }
+});
+
+
+  //     const id = req.params.id;
+  
+  //     const approve = await loginModel.updateOne({ _id: id }, { $set: { status: 1 } });
+  
+  //     if (approve && approve.modifiedCount === 1) {
+  //       return res.status(200).json({
+  //         success: true,
+  //         message: 'User approved',
+  //       });
+  //     } else if (approve && approve.modifiedCount === 0) {
+  //       return res.status(400).json({
+  //         success: false,
+  //         message: 'User not found or already approved',
+  //       });
+  //     } else {
+  //       throw new Error('Error updating user');
+  //     }
+  //   } catch (error) {
+  //     return res.status(400).json({
+  //       success: false,
+  //       message: 'Something went wrong',
+  //       details: error.message,
+  //     });
+  //   }
+  // });
 
     module.exports = ProjectRouter;
 

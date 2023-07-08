@@ -123,7 +123,7 @@ const Mainrouter = () => {
 <Route path="form" element={<Manageprjctreportform/>}/>
 <Route path="cv" element={<Viewcvpage/>}/>
 <Route path="tst" element={<Tests/>}/>
-<Route path="admcontrol" element={<Control/>}/>
+<Route path="admcontrol/:id" element={<Control/>}/>
 <Route path="arccontrol" element={<Arccontrol/>}/>
 <Route path="not" element={<Adminnot/>}/>
 <Route path="testpage" element={<Testers/>}/>

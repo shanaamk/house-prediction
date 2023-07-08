@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Adminnavbar from './Adminnavbar';
 import PublicUserFooter from '../Footer/PublicUserFooter';
+import { Link } from 'react-router-dom';
 
 
 const Projectrequest = () => {
@@ -68,7 +69,7 @@ const Projectrequest = () => {
       <td className="text-center">
         <div className="btn-group">
           <button className="btn btn-success btn-sm">
-            <a href="admcontrol">control</a>
+            <Link to={`/admcontrol/${request._id}`}>control</Link>
           </button>
         </div>
       </td>
