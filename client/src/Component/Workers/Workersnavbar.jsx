@@ -16,6 +16,10 @@ const Workersnavbar = () => {
       navigate('/')
     }
   }, [])
+  const workers_id=localStorage.getItem('workers_id')
+  if (!workers_id) {
+    navigate('/login')
+  }
   return (
     <div className="container-fluid sticky-top bg-white bg-light-radial shadow-sm px-5 pe-lg-0">
     <nav className="navbar navbar-expand-lg  bg-white bg-light-radial  navbar-dark py-3 py-lg-0">

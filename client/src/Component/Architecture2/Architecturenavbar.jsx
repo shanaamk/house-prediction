@@ -16,6 +16,10 @@ const Architecturenavbar = () => {
       navigate('/')
     }
   }, [])
+  const architecture_id=localStorage.getItem('architecture_id')
+  if (!architecture_id) {
+    navigate('/login')
+  }
   return (
     <div className="container-fluid sticky-top bg-white bg-light-radial shadow-sm px-5 pe-lg-0">
     <nav className="navbar navbar-expand-lg  bg-white bg-light-radial  navbar-dark py-3 py-lg-0">
@@ -38,7 +42,7 @@ const Architecturenavbar = () => {
           <a href="" className="nav-item nav-link active">
             Home
           </a>
-          <a href="https://e399-169-150-218-87.ngrok-free.app/" className="nav-item nav-link">
+          <a href="http://127.0.0.1:5000/" className="nav-item nav-link">
             price prediction
           </a>
          
