@@ -5,8 +5,21 @@ const archRegistrationModel = require('../models/archregistrationModel')
 const projectmngerRegistrationModel = require('../models/projectmngerRegistrationModel')
 const workersRegistrationModel = require('../models/workersRegistrationModel')
 const contractRegistrationModel = require('../models/contractRegistrationModel')
-
+const multer = require('multer');
 const userregRouter = express.Router()
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "../client/public/upload")
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+  })
+  
+  var upload = multer({ storage: storage })
+  userregRouter.post('/upload', upload.single("file"), (req, res) => {
+    return res.json("file uploaded")
+  })
 userregRouter.get('/approve/:id', async (req, res) => {
 try {
     const id = req.params.id;
@@ -538,7 +551,7 @@ userregRouter.get('/view-contract', async (req, res) => {
                     'email':{"$first":"$email"},
                     'phoneno':{"$first":"$phoneno"},
                     'worktype':{"$first":"$worktype"},
-                    'uploadcv':{"$first":"$uploadcv"},
+                    'uploadcv':{"$first":"$image"},
                     'status':{"$first":"$login.status"},
                     'login_id':{"$first":"$login._id"},
                 }
@@ -611,7 +624,7 @@ userregRouter.post('/contractreg1', async (req, res) => {
                 email: req.body.Email,
                 phoneno: req.body.PhoneNo,
                 worktype: req.body.WorkType,
-                uploadcv: req.body.CV
+                uploadcv: req.body.image
 
             }
             const save_register= await contractRegistrationModel (register_data).save()

@@ -6,7 +6,11 @@ const Viewreq = () => {
 
   const navigate = useNavigate()
   const[input,setInput]=useState({})
+  const [file, setFile] = useState('');
 
+  console.log('value==>', input);
+  console.log("value==>",file.name);
+  console.log("value==>",file);
 
 
   const inputChange= (event)=>{
@@ -17,6 +21,19 @@ const Viewreq = () => {
   
   const submit = (e)=>{
     e.preventDefault()
+    if (file) {
+      const data = new FormData();
+      const filename = file.name
+      data.append('file', file);
+      data.append('name', filename);
+      axios.post('http://localhost:5000/register/upload', data)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      }
    
     axios.post('http://localhost:5000/register/plan',input).then((response)=>{
       navigate('')
@@ -103,7 +120,11 @@ const Viewreq = () => {
         <div className="regcontform1-row" >
         <label htmlFor="full-name"  className='costlabel'>Upload Plan</label>   
   <div className="input-group js-input-file" style={{color:'black'}}>
-    <input className="input-file" type="file" name="file_cv" id="file" />
+    <input className="input-file" type="file" name="planimage" id="file"  onChange={(e) => {
+      setFile(e.target.files[0]);
+      console.log(e.target.files[0].name);
+      setInput({ ...input, planimage: e.target.files[0].name });
+    }} />
     
   </div>
   {/* <div className="label--desc">

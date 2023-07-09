@@ -1,7 +1,26 @@
 const express = require('express');
 const RentModel = require('../models/RentModel');
+const multer = require('multer');
+
 
 const RentRouter = express.Router();
+
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, "../client/public/upload")
+  },
+  filename: function (req, file, cb) {
+      cb(null, file.originalname)
+  }
+})
+
+var upload = multer({ storage: storage })
+RentRouter.post('/upload', upload.single("file"), (req, res) => {
+  return res.json("file uploaded")
+})
+
+
 RentRouter.get('/view-rent', async (req, res) => {
   try {
       const users = await RentModel.find()
@@ -42,7 +61,7 @@ RentRouter.post('/rent', async (req, res) => {
             price:req.body. Price,
             location:req.body.Location,
             landmark:req.body.Landmark,
-            rentimage:req.body.Rentimage,
+            rentimage:req.body.rentimage,
             bedrooms:req.body.Bedrooms,
             bathrooms:req.body.Bathrooms,
             area:req.body.Area

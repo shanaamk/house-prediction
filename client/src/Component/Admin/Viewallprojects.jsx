@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Adminnavbar from './Adminnavbar'
 import PublicUserFooter from '../Footer/PublicUserFooter'
+import { Link } from 'react-router-dom';
 
 const Viewallprojects = () => {
+  const [projects, setProjects] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 10;
+
+    useEffect(() => {
+      fetch('http://localhost:5000/register/view-choose-archtctr')
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            setProjects(data.data);
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching users:', error);
+        });
+    }, []);
+     const totalPages = Math.ceil(projects.length / projectsPerPage);
+  
+    const handlePageClick = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    };
+  
+    const indexOfLastProject = currentPage * projectsPerPage;
+    const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+    const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
+    
+  
+
   return (
     <>
     <Adminnavbar/>
@@ -27,117 +56,69 @@ const Viewallprojects = () => {
             </tr>
           </thead>
           <tbody>
-          <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>send plan</td>
-              <td>
-    <button class='btn btn-primary sm'>
-    <a href='allprjctcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-              <a href='allprjctcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-              <a href='allprjctcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-              <a href='admcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-              <a href='admcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
          
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-   <a href='allprjctcontrol'>control</a>
-    </button>
-   
-  </td>
-            </tr>
+                {currentProjects.map((project, index) => (
+                  <tr key={index}>
+                    <th scope="row">{indexOfFirstProject + index + 1}</th>
+                    <td>{project.name}</td>
+                    <td>{project.address}</td>
+                    <td>{project.phoneno}</td>
+                    <td>{project.architecturename}</td>
+                    <td>{project.projectmanagername}</td>
+                    <td>{project.register_date}</td>
+                    <td>{project.status}</td>
+                    <td className="text-center">
+                  <div className="btn-group">
+                    <button className="btn btn-success btn-sm">
+                    <Link to={`/allprjctcontrol/${project._id}`}>control</Link>
+                    </button>
+                   
+                  </div>
+                </td>
+              </tr>           
+            ))}
           </tbody>
         </table>
+        <div className="row justify-content-center">
+        <nav aria-label="Page navigation">
+          <ul className="pagination">
+            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+              <a
+                className="page-link"
+                href="#"
+                aria-label="Previous"
+                onClick={() => handlePageClick(currentPage - 1)}
+              >
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <li
+                key={index}
+                className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}
+              >
+                <a
+                  className="page-link"
+                  href="#"
+                  onClick={() => handlePageClick(index + 1)}
+                >
+                  {index + 1}
+                </a>
+              </li>
+            ))}
+            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+              <a
+                className="page-link"
+                href="#"
+                aria-label="Next"
+                onClick={() => handlePageClick(currentPage + 1)}
+              >
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+    </div>
       </div>
     </div>
   </div>

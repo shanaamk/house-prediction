@@ -7,7 +7,7 @@ const ProjectModelSchema = new schema({
     architecture_id:{type:mongoose.Types.ObjectId,ref:"arch_registration_tb"},
     projectmanager_id:{type:mongoose.Types.ObjectId,ref:"projectmnger_registration_tb"},
     user_id:{type:mongoose.Types.ObjectId,ref:"user_registration_tb"},
-    Name:{type:mongoose.Types.ObjectId,ref:"user_registration_tb"},
+    name:{type:mongoose.Types.ObjectId,ref:"user_registration_tb"},
     project_name:{type:String},    
     location:{type:String},
     prjctstrt_drtn:{type:String},

@@ -45,6 +45,7 @@ const Projectrequest = () => {
           <thead className="table-dark">
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Name</th>
               <th scope="col">project_name</th>
               <th scope="col">Location</th>
               <th scope="col">prjctstrt_drtn</th>
@@ -61,6 +62,7 @@ const Projectrequest = () => {
     
     <tr key={index}>
       <td>{index + 1}</td>
+      <td>{request.name}</td>
       <td>{request.project_name}</td>
       <td>{request.location}</td>
       <td>{request.prjctstrt_drtn}</td>

@@ -33,11 +33,11 @@ ProjectRouter.post('/add-project', async (req, res) => {
   try {
     const data = {
 
-
+     
       architecture_id: null,
       projectmanager_id: null,
       user_id: req.body.user_id,
-      Name: req.body.Name,
+      name: req.body.Name,
       project_name: req.body.project_name,
       location: req.body.Location,
       prjctstrt_drtn: req.body.prjctstrt_drtn,
@@ -98,6 +98,7 @@ ProjectRouter.get('/project-request', async (req, res) => {
       {
         "$group": {
           '_id': "$_id",
+          // 'name': { "$first": "$name" },
           'project_name': { "$first": "$project_name" },
           'location': { "$first": "$location" },
           'prjctstrt_drtn': { "$first": "$prjctstrt_drtn" },

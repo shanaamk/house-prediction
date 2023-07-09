@@ -7,17 +7,33 @@ const Contract = () => {
   
   const navigate = useNavigate()
   const[input,setInput]=useState({})
-
-
+  const [file, setFile] = useState('');
+  console.log('value==>', input);
+  console.log("value==>",file.name);
+  console.log("value==>",file);
 
   const inputChange= (event)=>{
-  const{name,value}=event.target 
-  setInput({...input,[name]:value})
-  console.log(input);
+    const name = event.target.name;
+    const value = event.target.value;
+    setInput({ ...input, [name]: value });
+    console.log(input);
   }
   
   const submit = (e)=>{
     e.preventDefault()
+    if (file) {
+      const data = new FormData();
+      const filename = file.name
+      data.append('file', file);
+      data.append('name', filename);
+      axios.post('http://localhost:5000/register/upload', data)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
     axios.post('http://localhost:5000/register/contractreg1',input).then((response)=>{
       navigate('')
     })
@@ -79,7 +95,12 @@ const Contract = () => {
         <div className="value">
         <label htmlFor="full-name">Appload C.V</label>   
   <div className="input-group js-input-file">
-    <input className="input-file" type="file" name="image" value={input.image || ""} onChange={inputChange} />
+    <input className="input-file" type="file" name="image" 
+    onChange={(e) => {
+      setFile(e.target.files[0]);
+      console.log(e.target.files[0].name);
+      setInput({ ...input, image: e.target.files[0].name });
+    }}/>
     <label className="label--file" htmlFor="file">
       Choose file
     </label>
