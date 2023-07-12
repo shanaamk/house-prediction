@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Architectureslider = () => {
+  useEffect(() => {
+    fetch('http://localhost:5000/register/view-client-list')
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setRequests(data.data);
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
+ 
   return (
     <>
     <div className="container-fluid p-0">

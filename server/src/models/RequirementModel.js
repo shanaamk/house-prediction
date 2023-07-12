@@ -5,6 +5,7 @@ const schema = mongoose.Schema
 const RequirementModelSchema = new schema({
     login_id:{type:mongoose.Types.ObjectId,ref:"login_tb"},
     project_id:{type:mongoose.Types.ObjectId,ref:"project_tb"},
+    user_id:{type:mongoose.Types.ObjectId,ref:"user_registration_tb"},
     size_sqft:{type:String},    
     total_floors:{type:String},
     bedrooms:{type:String},

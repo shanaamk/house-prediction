@@ -43,7 +43,7 @@ const QuestionCarousel = () => {
         id: 3,
         question: 'What is Your Budget?',
         type: 'multiple',
-        options: ['50L-1CR', '1 CR-1.5 CR', '1.5 CR-2 CR', 'ABOVE 2 CR'],
+        options: ['Enter here','50L-1CR', '1 CR-1.5 CR', '1.5 CR-2 CR', 'ABOVE 2 CR'],
         name: 'expctd_budget'
       },
       {
@@ -83,12 +83,25 @@ const QuestionCarousel = () => {
     const handleSubmit = () => {
       // Process the submitted answers
       console.log('Submitted answers:', answers);
-      axios.post('http://localhost:5000/register/add-project',inputs).then((response)=>{
-        console.log(response);
-         navigate('/userreq');
-      })
-      
+    
+      // Add the project_status and project_date to the inputs object
+      const updatedInputs = {
+        ...inputs,
+        project_status: "created",
+        register_date: new Date()
+      };
+      console.log(updatedInputs);
+      axios.post('http://localhost:5000/register/add-project', updatedInputs)
+        .then((response) => {
+          console.log(response);
+          navigate('/userreq');
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle any errors that occur during the request
+        });
     };
+    
 
     const renderQuestion = () => {
       const question = questions[currentQuestion];
@@ -151,7 +164,7 @@ const QuestionCarousel = () => {
             </button>
           ) : (
             <button className="qstnsubmit-button" onClick={handleSubmit}>
-              <a href=''>Submit</a>
+              <a href='userreq'>Submit</a>
             </button>
           )}
         </div>

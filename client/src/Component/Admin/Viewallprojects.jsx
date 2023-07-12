@@ -44,12 +44,13 @@ const Viewallprojects = () => {
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
+              <th scope="col">project_name</th>
               <th scope="col">Address</th>
               <th scope="col">Mob No</th>
               <th scope="col">Arihitecture</th>
               <th scope="col">Project Manager</th>
               <th scope="col">Date</th>
-              <th scope="col">Status</th>
+              <th scope="col">project_status</th>
 
               <th scope="col">Action</th>
 
@@ -61,12 +62,13 @@ const Viewallprojects = () => {
                   <tr key={index}>
                     <th scope="row">{indexOfFirstProject + index + 1}</th>
                     <td>{project.name}</td>
+                    <td>{project.project_name}</td>
                     <td>{project.address}</td>
                     <td>{project.phoneno}</td>
                     <td>{project.architecturename}</td>
                     <td>{project.projectmanagername}</td>
                     <td>{project.register_date}</td>
-                    <td>{project.status}</td>
+                    <td>{project.project_status}</td>
                     <td className="text-center">
                   <div className="btn-group">
                     <button className="btn btn-success btn-sm">

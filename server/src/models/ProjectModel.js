@@ -13,7 +13,7 @@ const ProjectModelSchema = new schema({
     prjctstrt_drtn:{type:String},
     expctd_budget:{type:String},
     confirmation:{type:String},
-    register_date:{type:String},
+    register_date:{type:Date},
     starting_date:{type:String},
     finishing_date:{type:String},
     project_status:{type:String},

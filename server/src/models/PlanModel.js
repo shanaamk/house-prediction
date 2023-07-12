@@ -4,6 +4,7 @@ const schema = mongoose.Schema
 
 const PlanModelSchema = new schema({
     login_id:{type:mongoose.Types.ObjectId,ref:"login_tb"},
+    user_id:{type:mongoose.Types.ObjectId,ref:"user_registration_tb"},
     project_id:{type:mongoose.Types.ObjectId,ref:"project_tb"},
    
     planimage:{type:String},  

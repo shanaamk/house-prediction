@@ -14,6 +14,7 @@ ChatRouter.post('/chatbox', async (req, res) => {
            message:req.body.Message,
            date:req.body.Date,
            time:req.body.Time,
+           reply:null,
            action:req.body.Action
           
            

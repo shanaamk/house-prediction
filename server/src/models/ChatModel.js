@@ -9,6 +9,7 @@ const ChatModelSchema = new schema({
     message:{type:String},
     date:{type:String},
     time:{type:String},
+    reply:{type:String},
 
 
     

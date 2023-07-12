@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
+
 
 const ViewPlan = () => {
+  // const user_id = localStorage.getItem('user_id')
+  // console.log(user_id);
+
+
+  const approve = (id=1) => {
+    axios
+      .get(`http://localhost:5000/register/approve/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="container">
     <div className="row">
@@ -45,11 +62,17 @@ const ViewPlan = () => {
     <div className='row'>
     <div className='col-md-3'></div>
       <div className='col-md-3'>
-      <button className='btn btn-success'>Approve</button>
+      <button className='btn btn-success'  onClick={() => {
+                    approve();
+                  }}>Approve</button>
    
       </div>
       <div className='col-md-3'> 
       <button className='btn btn-danger'>Disapprove</button></div>
+
+     
+                          
+                        
       
       <div className='col-md-3'></div>
     </div>

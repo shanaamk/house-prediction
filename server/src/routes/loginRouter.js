@@ -38,6 +38,7 @@ loginRouter.post('/login', async (req, res) => {
                     error:false,
                     role:oldUser.role,
                     login_id:oldUser._id,
+                    name:user.name,
                     user_id:user._id,
                     status:oldUser.status,
                     detailes:oldUser

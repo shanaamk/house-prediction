@@ -1,6 +1,9 @@
 import React from 'react'
 
 const UserSlider = () => {
+  const name = localStorage.getItem('name')
+  console.log(name);
+  
   return (
     <>
     <div className="container-fluid p-0">
@@ -21,8 +24,10 @@ const UserSlider = () => {
             <div className="p-3" style={{ maxWidth: 900 }}>
               {/* <i class="fa fa-home fa-4x text-primary mb-4 d-none d-sm-block"></i> */}
               <h2 className="text-uppercase text-white mb-md-4">
-                <i>
-                  We will be happy
+                <i><span>
+                  {name}
+                </span>
+                  ,We will be happy
                   <br /> to take care of your work
                 </i>
               </h2>
@@ -42,7 +47,7 @@ const UserSlider = () => {
             <div className="p-3" style={{ maxWidth: 900 }}>
              
               <h4 className="text-uppercase text-white mb-md-4">
-                <i>
+                <i><span>{name}</span>
                   We will be happy
                   <br /> to take care of your work
                 </i>

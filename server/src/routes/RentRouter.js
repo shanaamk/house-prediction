@@ -21,6 +21,76 @@ RentRouter.post('/upload', upload.single("file"), (req, res) => {
 })
 
 
+// RentRouter.delete('/delete-rent/:id', async (req, res) => {
+//   try {
+//     const rentId = req.params.id;
+//     const deletedrentItem = await addcartModel.findByIdAndDelete(rentId);
+    
+//     if (deletedrentItem) {
+//       return res.status(200).json({
+//         success: true,
+//         error: false,
+//         message: 'rent item deleted successfully',
+//       });
+//     } else {
+//       return res.status(404).json({
+//         success: false,
+//         error: true,
+//         message: 'rent item not found',
+//       });
+//     }
+//   } catch (error) {
+//     return res.status(400).json({
+//       success: false,
+//       error: true,
+//       message: 'Something went wrong',
+//       details: error,
+//     });
+//   }
+// });
+
+// RentRouter.put('/edit-rent/:id', async (req, res) => {
+//   try {
+//     const rentId = req.params.id;
+//     const updatedData = {
+//             user_id:req.body.user_id,          
+//             propertyname:req.body.Property_name,    
+//             address:req.body. Address,
+//             price:req.body. Price,
+//             location:req.body.Location,
+//             landmark:req.body.Landmark,
+//             rentimage:req.body.rentimage,
+//             bedrooms:req.body.Bedrooms,
+//             bathrooms:req.body.Bathrooms,
+//             area:req.body.Area
+//     };
+
+//     const updatedRent = await RentModel.findByIdAndUpdate(rentId, updatedData, { new: true });
+
+//     if (updatedMedicine) {
+//       return res.status(200).json({
+//         success: true,
+//         error: false,
+//         message: 'Rent category updated successfully',
+//         data: updatedRent,
+//       });
+//     } else {
+//       return res.status(404).json({
+//         success: false,
+//         error: true,
+//         message: 'Rent category not found',
+//       });
+//     }
+//   } catch (error) {
+//     return res.status(500).json({
+//       success: false,
+//       error: true,
+//       message: 'Something went wrong',
+//       details: error,
+//     });
+//   }
+// });
+
 RentRouter.get('/view-rent', async (req, res) => {
   try {
       const users = await RentModel.find()
@@ -47,15 +117,38 @@ RentRouter.get('/view-rent', async (req, res) => {
   }
   })
 
+  RentRouter.get('/view-rent/:id', async (req, res) => {
+    try {
+        const users = await RentModel.find({_id:id})
+        if(users[0]!=undefined){
+            return res.status(200).json({
+                success:true,
+                error:false,
+                data:users
+            })
+        }else{
+            return res.status(400).json({
+                success:false,
+                error:true,
+                message:"No data found"
+            })
+        }
+    } catch (error) {
+        return res.status(400).json({
+            success:false,
+            error:true,
+            message:"Something went wrong",
+            details:error
+        })
+    }
+    })
 RentRouter.post('/rent', async (req, res) => {
     try{
         const data ={
            
            
-            architecture_id:req.body.architecture_id, 
-            user_id:req.body.user_id,
-            projectmanager_id:req.body.projectmanager_id,
-
+            
+            user_id:req.body.user_id,          
             propertyname:req.body.Property_name,    
             address:req.body. Address,
             price:req.body. Price,

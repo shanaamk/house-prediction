@@ -143,7 +143,7 @@ const Mainrouter = () => {
 <Route path="page" element={<Usersprojectpage/>}/>
 <Route path="arch" element={<Managearchpage/>}/>
 <Route path="upcoming" element={<Upcominworkpage/>}/>
-<Route path="viewrent" element={<Viewrentdetailes/>}/>
+<Route path="viewrent/:id" element={<Viewrentdetailes/>}/>
 <Route path="contact" element={<Rentcontact/>}/>
 <Route path="workcategory" element={<Addworkcategoy/>}/>
 <Route path="addworker" element={<AddWorker/>}/>

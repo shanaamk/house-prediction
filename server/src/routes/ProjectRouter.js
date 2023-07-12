@@ -36,17 +36,17 @@ ProjectRouter.post('/add-project', async (req, res) => {
      
       architecture_id: null,
       projectmanager_id: null,
-      user_id: req.body.user_id,
-      name: req.body.Name,
+      user_id: req.body.user_id,  
+      name: req.body.name,   
       project_name: req.body.project_name,
       location: req.body.Location,
       prjctstrt_drtn: req.body.prjctstrt_drtn,
       expctd_budget: req.body.expctd_budget,
       confirmation: req.body.confirmation,
-      register_date: null,
+      register_date:req.body.register_date,
       starting_date: null,
       finishing_date: null,
-      project_status: null,
+      project_status: req.body.project_status,
       work_category: null,
       status_date: null,
       status_description: null,
@@ -73,7 +73,7 @@ ProjectRouter.post('/add-project', async (req, res) => {
 });
 
 
-ProjectRouter.get('/project-request', async (req, res) => {
+ProjectRouter.get('/view-project-request', async (req, res) => {
   try {
     const users = await ProjectModel.aggregate([
 
@@ -82,7 +82,7 @@ ProjectRouter.get('/project-request', async (req, res) => {
           'from': 'user_registration_tbs',
           'localField': 'user_id',
           'foreignField': '_id',
-          'as': 'login'
+          'as': 'user'
         }
       },
       {
@@ -92,13 +92,14 @@ ProjectRouter.get('/project-request', async (req, res) => {
       },
 
       {
-        "$unwind": "$login"
+        "$unwind": "$user"
       },
 
       {
         "$group": {
           '_id': "$_id",
-          // 'name': { "$first": "$name" },
+          'name':{"$first":"$name"},
+          'user_id':{"$first":"$user_id"}, 
           'project_name': { "$first": "$project_name" },
           'location': { "$first": "$location" },
           'prjctstrt_drtn': { "$first": "$prjctstrt_drtn" },
@@ -172,11 +173,14 @@ ProjectRouter.get('/view-choose-archtctr', async (req, res) => {
       {
                   "$group":{
                       '_id':"$_id",
-                      'name':{"$first":"$user.name"},              
+                      'name':{"$first":"$user.name"},  
+                      'project_name':{"$first":"$project_name"}, 
                       'address':{"$first":"$user.address"},               
                       'phoneno':{"$first":"$user.phoneno"},
                       'architecturename':{"$first":"$architecture.name"},
                       'projectmanagername':{"$first":"$projectmanager.name"},
+                      'register_date':{"$first":"$register_date"},
+                      'project_status':{"$first":"$project_status"},
                       'status':{"$first":"$login.status"},
                       'login_id':{"$first":"$login._id"},
                   }
@@ -206,6 +210,10 @@ ProjectRouter.get('/view-choose-archtctr', async (req, res) => {
     })
   }
 })
+
+
+
+
 ProjectRouter.post('/choose-archtctr/:id', async (req, res) => {
   try {
     const id = req.params.id
@@ -237,7 +245,59 @@ ProjectRouter.post('/choose-archtctr/:id', async (req, res) => {
 });
 
 
+ProjectRouter.get('/view-client-list', async (req, res) => {
+  try {
+    const users = await ProjectModel.aggregate([
 
+      {
+        '$lookup': {
+          'from': 'user_registration_tbs',
+          'localField': 'user_id',
+          'foreignField': '_id',
+          'as': 'user'
+        }
+      },
+     
+      
+      {
+        "$unwind": "$user"
+      },
+      
+      {
+                  "$group":{
+                      '_id':"$_id",
+                      'name':{"$first":"$user.name"},  
+                      'location': { "$first": "$location" }, 
+                      'register_date':{"$first":"$register_date"},
+                      'status':{"$first":"$login.status"},
+                      'login_id':{"$first":"$login._id"},
+                  }
+              }
+    ])
+
+
+    if (users[0] != undefined) {
+      return res.status(200).json({
+        success: true,
+        error: false,
+        data: users
+      })
+    } else {
+      return res.status(400).json({
+        success: false,
+        error: true,
+        message: "No data found"
+      })
+    }
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: true,
+      message: "Something went wrong",
+      details: error
+    })
+  }
+})
 
 module.exports = ProjectRouter;
 

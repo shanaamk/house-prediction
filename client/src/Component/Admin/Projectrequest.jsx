@@ -72,6 +72,7 @@ const Projectrequest = () => {
         <div className="btn-group">
           <button className="btn btn-success btn-sm">
             <Link to={`/admcontrol/${request._id}`}>control</Link>
+            
           </button>
         </div>
       </td>

@@ -18,8 +18,8 @@ const ProjectManagerslider = () => {
           />
           <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
             <div className="p-3" style={{ maxWidth: 900 }}>
-              <i className="fa fa-home fa-4x text-primary mb-4 d-none d-sm-block" />
-              <h6 className="text-uppercase text-white mb-md-4">
+              {/* <i className="fa fa-home fa-4x text-primary mb-4 d-none d-sm-block" /> */}
+              {/* <h6 className="text-uppercase text-white mb-md-4">
                 Build Your Dream House With Us
               </h6>
               <a
@@ -27,7 +27,7 @@ const ProjectManagerslider = () => {
                 className="btn btn-primary py-md-3 px-md-5 mt-2"
               >
                 Sign in
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

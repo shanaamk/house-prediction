@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Userrequirementslider = () => {
+ 
   const [showUploadForm, setShowUploadForm] = useState(false);
 
   const handleYesButtonClick = () => {
@@ -22,7 +23,10 @@ const Userrequirementslider = () => {
 
 
   const navigate = useNavigate()
-  const[inputs, setinputs]=useState([]);
+  const user_id = localStorage.getItem('user_id')
+  const [inputs, setinputs] = useState({
+    user_id:user_id
+  });
   console.log("value==>",inputs);
 
   const setRegister=(event)=>{
