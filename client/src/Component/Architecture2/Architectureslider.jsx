@@ -1,19 +1,31 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Architectureslider = () => {
+  const [clients, setClients] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const clientsPerPage = 10;
+
   useEffect(() => {
     fetch('http://localhost:5000/register/view-client-list')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          setRequests(data.data);
+          setClients(data.data);
         }
       })
       .catch((error) => {
         console.error('Error fetching users:', error);
       });
   }, []);
- 
+  const totalPages = Math.ceil(clients.length / clientsPerPage);
+  
+    const handlePageClick = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    };
+  
+    const indexOfLastClient = currentPage * clientsPerPage;
+    const indexOfFirstClient = indexOfLastClient - clientsPerPage;
+    const currentClients = clients.slice(indexOfFirstClient, indexOfLastClient);
   return (
     <>
     <div className="container-fluid p-0">
@@ -85,54 +97,20 @@ const Architectureslider = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+        {currentClients
+  .filter(client => client.approvel_status === '0')
+  .map((client, index) => (
+    
+    <tr key={index}>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>2-2-2023</td>
-            <td>2-2-2023</td>
-            <td>Waiting for Conformation</td>
+            <td>{client.name}</td>
+            <td>{client.location}</td>
+            <td>{client.register_date}</td>
+            <td>{client.status}</td>
+            
             <button className='btn btn-primary'><a href='view'>View</a></button>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>12/05/2022</td>
-            <td>750000</td>
-            <button className='btn btn-primary'><a href='view'>View</a></button>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Thornton</td>
-            <td>12/05/2022</td>
-            <td>750000</td>
-            <button className='btn btn-primary'><a href='view'>View</a></button>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>12/05/2022</td>
-            <td>750000</td>
-            <button className='btn btn-primary'><a href='view'>View</a></button>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>12/05/2022</td>
-            <td>750000</td>
-            <button className='btn btn-primary'><a href='view'>View</a></button>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Thornton</td>
-            <td>12/05/2022</td>
-            <td>750000</td>
-            <button className='btn btn-primary'><a href='view'>View</a></button>
-          </tr>
+  ))}
         </tbody>
       </table>
     </div>

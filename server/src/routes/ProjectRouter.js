@@ -271,6 +271,7 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
                       'register_date':{"$first":"$register_date"},
                       'status':{"$first":"$login.status"},
                       'login_id':{"$first":"$login._id"},
+                      'approvel_status':{"$first":"$approvel_status"},
                   }
               }
     ])

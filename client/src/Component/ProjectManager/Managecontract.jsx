@@ -64,6 +64,7 @@ const Managecontract = () => {
          <th>Email</th>
          <th>PhoneNo</th>
          <th>WorkType</th>
+         <th>cv</th>
         
          <th className="text-center">Action</th>
        </tr>
@@ -77,6 +78,7 @@ const Managecontract = () => {
                 <td>{contracter.email}</td>
                 <td>{contracter.phoneno}</td>
                 <td>{contracter.worktype}</td>
+                <td>{contracter.cv}</td>
                 {/* cv */}
                 
          <td className="text-center">
