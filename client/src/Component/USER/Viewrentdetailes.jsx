@@ -14,6 +14,7 @@ const Viewrentdetailes = () => {
 
   const fetchRentalDetails = async () => {
     try {
+      //  const id=req.params.id
       const response = await axios.get(`http://localhost:5000/register/view-rent/${id}`);
       const { data } = response.data;
       setRental(data);

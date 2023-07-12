@@ -119,6 +119,7 @@ RentRouter.get('/view-rent', async (req, res) => {
 
   RentRouter.get('/view-rent/:id', async (req, res) => {
     try {
+        const id=req.params.id
         const users = await RentModel.find({_id:id})
         if(users[0]!=undefined){
             return res.status(200).json({
