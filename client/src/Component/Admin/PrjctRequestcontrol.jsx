@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import PublicUserFooter from '../Footer/PublicUserFooter'
 import Adminnavbar from './Adminnavbar'
-
+import { Link, useNavigate, useParams } from 'react-router-dom';
 const PrjctRequestcontrol = () => {
+
+  const { id ,user_id} = useParams();
+  const [requirements, setRequirements] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/register/view-requirement/${user_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        
+        if (data.success) {
+          
+          console.log(data.data);
+          setRequirements(data.data);
+         
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
   return (
     <>
     <Adminnavbar/>
@@ -19,48 +38,41 @@ const PrjctRequestcontrol = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-           
-            <td style={{color:'black'}}>size(sq.ft)</td>
-            <td>2500</td>
-          </tr>
-          <tr>
-           
-            <td>Balcony</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            
-            <td>Total Floors</td>
-            <td>2</td>
-          </tr>
-          <tr>
-           
-            <td>Bedrooms</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            
-            <td>Bathrooms</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            
-            <td>kitchen</td>
-            <td>1</td>
-          </tr>
-         
+        {requirements.map((requirement) => (
+<React.Fragment key={requirement._id}>
+<tr>
+  <td style={{ color: 'black' }}>size(sq.ft)</td>
+  <td>{requirement.size_sqft}</td>
+</tr>
+<tr>
+  <td>Balcony</td>
+  <td>{requirement.balcony}</td>
+</tr>
+<tr>
+  <td>Total Floors</td>
+  <td>{requirement.total_floors}</td>
+</tr>
+<tr>
+  <td>Bedrooms</td>
+  <td>{requirement.bedrooms}</td>
+</tr>
+<tr>
+  <td>Bathrooms</td>
+  <td>{requirement.bathrooms}</td>
+</tr>
+<tr>
+  <td>kitchen</td>
+  <td>{requirement.kitchen}</td>
+</tr>
+</React.Fragment>
+))}
         </tbody>
       </table>
       <a href='adminstatus'>Approve Status</a>
         </div>
        
         <div className='col-md-4'>
-       <a href='plan'><img
-                className="lib-img"
-                src="img\pic\planimg.jpg"
-
-              /></a> 
+     <Link to={`/plan/${user_id}`}><button >View plan</button></Link>  
         </div>
         
         </div>

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const Architectureslider = () => {
+  const architecture_id = localStorage.getItem('architecture_id');
   const [clients, setClients] = useState([]);
+  console.log(clients);
   const [currentPage, setCurrentPage] = useState(1);
   const clientsPerPage = 10;
 
@@ -90,25 +93,27 @@ const Architectureslider = () => {
           <tr>
             <th scope="col">#</th>
             <th scope="col">UserName</th>
+            <th scope="col">project name</th>
             <th scope="col"> Location</th>
             <th scope="col"> Date</th>
-            <th scope="col">Status</th>
+            {/* <th scope="col">Status</th> */}
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
         {currentClients
-  .filter(client => client.approvel_status === '0')
+  .filter(client => client.approvel_status === '1' && client.architecture_id === architecture_id)
   .map((client, index) => (
     
     <tr key={index}>
             <th scope="row">1</th>
             <td>{client.name}</td>
+             <td>{client.project_name}</td>
             <td>{client.location}</td>
             <td>{client.register_date}</td>
-            <td>{client.status}</td>
+           
             
-            <button className='btn btn-primary'><a href='view'>View</a></button>
+            <button className='btn btn-primary'><Link to={`/view/${client.user_id}`}>View</Link></button>
           </tr>
   ))}
         </tbody>

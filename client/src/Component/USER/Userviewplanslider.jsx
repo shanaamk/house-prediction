@@ -1,151 +1,223 @@
-
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Userviewplanslider = () => {
+  const { id } = useParams();
+  const user_id = localStorage.getItem('user_id');
+
+  const [plan, setPlan] = useState([]);
+  const [input, setInput] = useState({});
+  const [requirements, setRequirements] = useState([]);
   const [showUploadForm, setShowUploadForm] = useState(false);
+
+  const navigate = useNavigate();
+
+  const setRegister = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInput({ ...input, [name]: value });
+  };
+
+  const registersubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:5000/register/plan', input).then((response) => {
+      // navigate('')
+    });
+  };
 
   const handlerejectClick = () => {
     setShowUploadForm(true);
-
   };
- 
+
+  useEffect(() => {
+    const fetchPlan = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/register/view-plan/${user_id}`);
+        const data = await response.json();
+
+        if (data.success) {
+          console.log(data.data);
+          setPlan(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching plan:', error);
+      }
+    };
+
+    fetchPlan();
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/register/view-requirement/${user_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.data);
+          setRequirements(data.data);
+          setInput({ ...input, user_id: id });
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/register/userview-plan/${user_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.data);
+          setPlan(data.data);
+          setInput({ ...input, user_id: id });
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
+
+  const userreject = (id) => {
+    axios
+      .get(`http://localhost:5000/register/userreject-plan/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
-    <div className="container">
-    <div className="row">
-      <h4>
-        Plan Detailes
-        {/* So I've worked on a new project and came up with this UI. Here you can use
+      <div className="container">
+        <div className="row">
+          <h4>
+            Plan Details
+            {/* So I've worked on a new project and came up with this UI. Here you can use
         it. :) Follow me on twitter:{" "} */}
-        <a href="https://twitter.com/AlexMahrt/"></a>
-      </h4>
-    </div>
-    <hr />
-    <div className="row row-margin-bottom">
-      <div className="col-md-12 no-padding lib-item" data-category="view">
-        <div className="lib-panel">
-          <div className="row box-shadow">
-          </div>
+            <a href="https://twitter.com/AlexMahrt/"></a>
+          </h4>
         </div>
-      </div>
-      <div className="col-md-4" />
-      <div className="col-md-12 no-padding lib-item" data-category="ui">
-        <div className="lib-panel">
-          <div className="row box-shadow">
-            <div className="col-md-4">
-              <img
-                className="lib-img"
-                src="img/pic/userimage5.jpg"
-              />
+        <hr />
+        <div className="row row-margin-bottom">
+          <div className="col-md-12 no-padding lib-item" data-category="view">
+            <div className="lib-panel">
+              <div className="row box-shadow"></div>
             </div>
-            <div className="col-md-4">
+          </div>
+          <div className="col-md-4" />
+          <div className="col-md-12 no-padding lib-item" data-category="ui">
+            <div className="lib-panel">
+              <div className="row box-shadow">
+                <div className="col-md-4">
+                {plan[0]?.status !== undefined && (
+  <img className="lib-img" src={`/assets/upload/${plan[0]?.planimage}`} />
+)}
+                </div>
+                {/* <div className="col-md-4">
               <img
                 className="lib-img"
                 src="img/pic/planimg.jpg"
               />
+            </div> */}
+
+                <div className="col-md-4">
+                  <table className="table table-striped custab" style={{ color: 'black' }}>
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Values</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {requirements.map((requirement) => (
+                        <React.Fragment key={requirement._id}>
+                          <tr>
+                            <td style={{ color: 'black' }}>size(sq.ft)</td>
+                            <td>{requirement.size_sqft}</td>
+                          </tr>
+                          <tr>
+                            <td>Balcony</td>
+                            <td>{requirement.balcony}</td>
+                          </tr>
+                          <tr>
+                            <td>Total Floors</td>
+                            <td>{requirement.total_floors}</td>
+                          </tr>
+                          <tr>
+                            <td>Bedrooms</td>
+                            <td>{requirement.bedrooms}</td>
+                          </tr>
+                          <tr>
+                            <td>Bathrooms</td>
+                            <td>{requirement.bathrooms}</td>
+                          </tr>
+                          <tr>
+                            <td>kitchen</td>
+                            <td>{requirement.kitchen}</td>
+                          </tr>
+                        </React.Fragment>
+                      ))}
+                    </tbody>
+                  </table>
+                  <div className="col-md-12 text-center">
+                    <h6>
+                      {plan[0]?.status === undefined
+                        ? 'Architecture is working on your Requirements, wait till then'
+                        : 'Rs:' + (plan[0]?.cost + '/-' ?? '')}
+                    </h6>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="col-md-4">
-            <table className="table table-striped custab" style={{color:'black'}}>
-        <thead>
-          <tr>
-          
-            <th>Title</th>
-            <th>Values</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-           
-            <td style={{color:'black'}}>size(sq.ft)</td>
-            <td>2500</td>
-          </tr>
-          <tr>
-           
-            <td>Balcony</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            
-            <td>Total Floors</td>
-            <td>2</td>
-          </tr>
-          <tr>
-           
-            <td>Bedrooms</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            
-            <td>Bathrooms</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            
-            <td>kitchen</td>
-            <td>1</td>
-          </tr>
-          <tr >
-            
-            <td style={{ textAlign: 'center',fontSize:27,color:'green' }} colSpan={2}>Rs.1689500/-</td>
-      
-          </tr>
-        </tbody>
-      </table>
+          </div>
+          <div className="row">
+            <div className="col-md-3"></div>
+            <div className="col-md-3 text-center">
+              {plan[0]?.status && <button className="btn btn-success">Accept</button>}
             </div>
+            <div className="col-md-3 text-center">
+              {plan[0]?.status && <button className="btn btn-danger" onClick={handlerejectClick}>Reject</button>}
+            </div>
+            <div className="col-md-3"></div>
           </div>
         </div>
       </div>
-      <div className='row'>
-    <div className='col-md-3'></div>
-      <div className='col-md-3 text-center'>
-      <button className='btn btn-success'>Accept</button>
-   
-      </div>
-      <div className='col-md-3 text-center'> 
-      <button className='btn btn-danger' onClick={handlerejectClick}>Reject</button></div>
-      
-      <div className='col-md-3'></div>
-    </div>
-    </div>
-    
-    </div>
-    {showUploadForm ? (
-    <div className="formthree ptb-100">
- 
-    <div className="container">
-  <div className="row justify-content-center" >
-    <div className="col-sm-4 col-md-4">
-      <div className="panel panel-default">
-        <div className="panel-body">
-          <form acceptCharset="UTF-8" action="" method="POST">
-            <textarea
-              className="5"
-              name="message"
-              placeholder="Type in your message"
-              rows={5}
-              cols={40}
-              style={{ marginBottom: 10 }}
-              defaultValue={""}
-            />
-           
-            <button className="btn btn-info" type="submit">
-              Reject with this Message
-            </button>
-          </form>
+      {showUploadForm ? (
+        <div className="formthree ptb-100">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-sm-4 col-md-4">
+                <div className="panel panel-default">
+                  <div className="panel-body">
+                    <form onSubmit={registersubmit} acceptCharset="UTF-8" action="" method="POST">
+                      <textarea
+                        className="5"
+                        name="reject_message"
+                        value={input.reject_message || ''}
+                        onChange={setRegister}
+                        placeholder="Type in your message"
+                        rows={5}
+                        cols={40}
+                        style={{ marginBottom: 10 }}
+                        defaultValue={''}
+                      />
+                      <button className="btn btn-info" type="submit"  onClick={()=>{userreject(plan[0]?.user_id)}}>
+                        Reject with this Message
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-) : null}
-
-
-</>
-
-  
+      ) : null}
+    </>
   );
 };
 
-export default Userviewplanslider
+export default Userviewplanslider;

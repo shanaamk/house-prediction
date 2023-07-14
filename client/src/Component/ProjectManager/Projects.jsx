@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProjectManagernavbar from './ProjectManagernavbar'
 import PublicUserFooter from '../Footer/PublicUserFooter'
-
+import { Link } from 'react-router-dom';
 const Projects = () => {
+
+  const [managers, setManagers] = useState([]);
+  console.log(managers);
+  const [currentPage, setCurrentPage] = useState(1);
+  const managersPerPage = 10;
+
+    useEffect(() => {
+      fetch('http://localhost:5000/register/view-allprjcts-toprjmnger')
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            setManagers(data.data);
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching users:', error);
+        });
+    }, []);
+     const totalPages = Math.ceil(managers.length / managersPerPage);
+  
+    const handlePageClick = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    };
+  
+    const indexOfLastManager = currentPage * managersPerPage;
+    const indexOfFirstManager = indexOfLastManager - managersPerPage;
+    const currentManagers = managers.slice(indexOfFirstManager, indexOfLastManager);
+    
+  
   return (
    <>
    <ProjectManagernavbar/>
@@ -17,133 +46,80 @@ const Projects = () => {
               <th scope="col">Name</th>
               <th scope="col">Address</th>
               <th scope="col">Mob No</th>
-              <th scope="col">Arihitecture</th>
-              <th scope="col">Date</th>
-              <th scope="col">Deadline</th>
-              <th scope="col">Estimate</th>
+              <th scope="col">location</th>
+              <th scope="col">projectname</th>
+              <th scope="col">register_date</th>
+              <th scope="col">Time_Period</th>
+              <th scope="col">cost</th>
               <th scope="col">Status</th>
               <th scope="col">Action</th>
 
             </tr>
           </thead>
           <tbody>
-          <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>12/05/2022</td>
-              <td>send plan</td>
-              <td>
-    <button class='btn btn-primary sm'>
-    <a href='pmcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-              <a href='pmcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-              <a href='pmcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-              <a href='pmcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-              
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-              <a href='pmcontrol'>control</a>
-    </button>
-    
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>Jacob</td>
-             
-         
-              <td>Thornton</td>
-              <td>12/05/2022</td>
-              <td>12/05/2022</td>
-              <td>send requirement</td>
-              <td>
-              <button class='btn btn-primary sm'>
-   <a href='pmcontrol'>control</a>
-    </button>
-   
-  </td>
-            </tr>
+          {currentManagers.map((manager, index) => (
+                  <tr key={index}>
+                    <th scope="row">{indexOfFirstManager + index + 1}</th>
+                    <td>{manager.name}</td>
+                    <td>{manager.address}</td>
+                    <td>{manager.phoneno}</td>
+                    <td>{manager.project_name}</td>
+                    <td>{manager.location}</td>
+                    <td>{manager.register_date}</td>
+                    <td>{manager.time_Period}</td>
+                    <td>{manager.cost}</td>
+                    <td className="text-center">
+                  <div className="btn-group">
+                    <button className="btn btn-success btn-sm">
+                    <Link to={`/pmcontrol/${manager._id}/${manager.user_id}`}>control</Link>
+                    </button>
+                   
+                  </div>
+                </td>
+              </tr>           
+            ))}
           </tbody>
         </table>
+        <div className="row justify-content-center">
+        <nav aria-label="Page navigation">
+          <ul className="pagination">
+            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+              <a
+                className="page-link"
+                href="#"
+                aria-label="Previous"
+                onClick={() => handlePageClick(currentPage - 1)}
+              >
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <li
+                key={index}
+                className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}
+              >
+                <a
+                  className="page-link"
+                  href="#"
+                  onClick={() => handlePageClick(index + 1)}
+                >
+                  {index + 1}
+                </a>
+              </li>
+            ))}
+            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+              <a
+                className="page-link"
+                href="#"
+                aria-label="Next"
+                onClick={() => handlePageClick(currentPage + 1)}
+              >
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+    </div>
       </div>
     </div>
   </div>
@@ -154,5 +130,5 @@ const Projects = () => {
    </>
   )
 }
-
+// pmcontrol
 export default Projects

@@ -7,6 +7,7 @@ const Usernavbar = () => {
     localStorage.removeItem('user_id')
     localStorage.removeItem('login_id')
     localStorage.removeItem('role')
+    localStorage.removeItem('name')
     navigate('/')
   }
   useEffect(() => {

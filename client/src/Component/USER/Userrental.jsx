@@ -86,7 +86,7 @@ const Userrental = () => {
           <div className="col-xl-4 col-lg-6 col-md-6 portfolio-item" key={rental._id}>
             <div className="position-relative portfolio-box">
               {/* Rental property image */}
-              <img className="img-fluid w-100" src={`/upload/${rental.rentimage}`} alt="" />
+              <img className="img-fluid w-100" src={`assets/upload/${rental.rentimage}`} alt="" />
               {/* Rental property details */}
               <Link to={`/viewrent/${rental._id}`} className="portfolio-title shadow-sm">
                 <p className="h4 text-uppercase">{rental.title}</p>

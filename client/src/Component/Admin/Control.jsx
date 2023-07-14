@@ -5,13 +5,31 @@ import Adminnavbar from './Adminnavbar';
 import PublicUserFooter from '../Footer/PublicUserFooter';
 
 const Control = () => {
-  const { id } = useParams();
-
+  const { id,user_id } = useParams();
+console.log(user_id);
   const navigate = useNavigate();
+  const [requirements, setRequirements] = useState([]);
+  console.log(requirements);
   const [category, setCategory] = useState([]);
   const [manager, setManager] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/register/view-requirement/${user_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        
+        if (data.success) {
+          
+          console.log(data.data);
+          setRequirements(data.data);
+          setInput({ ...input,project_id: id });
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
   const [input, setInput] = useState({});
-
+console.log(input);
   const inputChange = (event) => {
     const { name, value } = event.target;
     setInput({ ...input, [name]: value });
@@ -48,25 +66,12 @@ const Control = () => {
       });
   }, []);
 
-  const [requirements, setRequirements] = useState([]);
+  
+  console.log(requirements);
   // const [currentPage, setCurrentPage] = useState(1);
   // const requirementsPerPage = 10;
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/register/view-requirement/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        
-        if (data.success) {
-          
-          console.log(data.data);
-          setRequirements(data.data);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching users:', error);
-      });
-  }, []);
+ 
   // const totalPages = Math.ceil(requirements.length / requirementsPerPage);
 
   // const handlePageClick = (pageNumber) => {

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Viewallprojects = () => {
   const [projects, setProjects] = useState([]);
+  console.log(projects);
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 10;
 
@@ -72,7 +73,7 @@ const Viewallprojects = () => {
                     <td className="text-center">
                   <div className="btn-group">
                     <button className="btn btn-success btn-sm">
-                    <Link to={`/allprjctcontrol/${project._id}`}>control</Link>
+                    <Link to={`/allprjctcontrol/${project._id}/${project.user_id}`}>control</Link>
                     </button>
                    
                   </div>

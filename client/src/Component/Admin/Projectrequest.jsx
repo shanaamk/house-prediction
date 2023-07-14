@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom';
 const Projectrequest = () => {
 
     const [requests, setRequests] = useState([]);
+    console.log(requests);
   const [currentPage, setCurrentPage] = useState(1);
   const requestsPerPage = 10;
 
     useEffect(() => {
-      fetch('http://localhost:5000/register/view-add-project')
+      fetch('http://localhost:5000/register/view-project-request')
         .then((response) => response.json())
         .then((data) => {
           if (data.success) {
@@ -71,7 +72,7 @@ const Projectrequest = () => {
       <td className="text-center">
         <div className="btn-group">
           <button className="btn btn-success btn-sm">
-            <Link to={`/admcontrol/${request._id}`}>control</Link>
+            <Link to={`/admcontrol/${request._id}/${request.user_id}`}>control</Link>
             
           </button>
         </div>

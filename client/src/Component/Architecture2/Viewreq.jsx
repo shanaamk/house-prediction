@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
+
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Viewreq = () => {
 
+  const { id,user_id } = useParams();
+ 
+
   const navigate = useNavigate()
   const[input,setInput]=useState({})
+  // const[plan,setPlan]=useState([])
+
+  const [requirements, setRequirements] = useState([]);
+  // console.log(plan);
+  console.log(requirements);
+
   const [file, setFile] = useState('');
 
   console.log('value==>', input);
@@ -41,7 +51,39 @@ const Viewreq = () => {
    
 
   }
-  
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/register/view-plan/${user_id}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+        
+  //       if (data.success) {
+          
+  //         console.log(data.data);
+  //         setPlan(data.data);
+        
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching users:', error);
+  //     });
+  // }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/register/view-requirement/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        
+        if (data.success) {
+          
+          console.log(data.data);
+          setRequirements(data.data);
+          setInput({ ...input,user_id: id });
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
   return (
     <>
     <div className="container" style={{textAlign:'center'}}>
@@ -56,37 +98,34 @@ const Viewreq = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-           
-            <td style={{color:'black'}}>size(sq.ft)</td>
-            <td>2500</td>
-          </tr>
-          <tr>
-           
-            <td>Balcony</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            
-            <td>Total Floors</td>
-            <td>2</td>
-          </tr>
-          <tr>
-           
-            <td>Bedrooms</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            
-            <td>Bathrooms</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            
-            <td>kitchen</td>
-            <td>1</td>
-          </tr>
-         
+        {requirements.map((requirement) => (
+<React.Fragment key={requirement._id}>
+<tr>
+  <td style={{ color: 'black' }}>size(sq.ft)</td>
+  <td>{requirement.size_sqft}</td>
+</tr>
+<tr>
+  <td>Balcony</td>
+  <td>{requirement.balcony}</td>
+</tr>
+<tr>
+  <td>Total Floors</td>
+  <td>{requirement.total_floors}</td>
+</tr>
+<tr>
+  <td>Bedrooms</td>
+  <td>{requirement.bedrooms}</td>
+</tr>
+<tr>
+  <td>Bathrooms</td>
+  <td>{requirement.bathrooms}</td>
+</tr>
+<tr>
+  <td>kitchen</td>
+  <td>{requirement.kitchen}</td>
+</tr>
+</React.Fragment>
+))}
         </tbody>
       </table>
     </div>

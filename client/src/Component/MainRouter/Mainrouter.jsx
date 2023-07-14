@@ -110,7 +110,7 @@ const Mainrouter = () => {
 <Route path="viewallprojucts" element={<Viewallprojects/>}/>
 <Route path="managepage" element={<Adminusermanagepage/>}/>
 <Route path="reqst" element={<Projectrequest/>}/>
-<Route path="allprjctcontrol/:id" element={<PrjctRequestcontrol/>}/>
+<Route path="allprjctcontrol/:id/:user_id" element={<PrjctRequestcontrol/>}/>
 <Route path="reports" element={<Projectreportviewpage/>}/>
 <Route path="viewteam" element={<Workresviewteampage/>}/>
 <Route path="table" element={<Workerstable/>}/>
@@ -123,7 +123,7 @@ const Mainrouter = () => {
 <Route path="form" element={<Manageprjctreportform/>}/>
 <Route path="cv" element={<Viewcvpage/>}/>
 <Route path="tst" element={<Tests/>}/>
-<Route path="admcontrol/:id" element={<Control/>}/>
+<Route path="admcontrol/:id/:user_id" element={<Control/>}/>
 <Route path="arccontrol" element={<Arccontrol/>}/>
 <Route path="not" element={<Adminnot/>}/>
 <Route path="testpage" element={<Testers/>}/>
@@ -132,10 +132,10 @@ const Mainrouter = () => {
 <Route path="pmcontrol" element={<Pmcontrol/>}/>
 <Route path="Work" element={<WorkStatuspage/>}/>
 <Route path="assign" element={<Assignworkers/>}/>
-<Route path="view" element={<Viewreqpage/>}/>
+<Route path="view/:id" element={<Viewreqpage/>}/>
 <Route path="viewuse" element={<ViewUserpage/>}/>
 <Route path="Quote" element={<ApproveQuotepage/>}/>
-<Route path="plan" element={<ViewPlanpage/>}/>
+<Route path="plan/:id" element={<ViewPlanpage/>}/>
 <Route path="adminstatus" element={<Viewprojectstatuspage/>}/>
 <Route path="ongoing" element={<Ongoingworkpage/>}/>
 <Route path="manage" element={<Mnageprojectmanagerpage/>}/>

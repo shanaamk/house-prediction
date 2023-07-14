@@ -86,26 +86,27 @@ ProjectRouter.get('/view-project-request', async (req, res) => {
         }
       },
       {
+        "$unwind": "$user"
+      },
+      {
         '$match': {
           'approvel_status': '0'
         }
       },
 
-      {
-        "$unwind": "$user"
-      },
+     
 
       {
         "$group": {
           '_id': "$_id",
-          'name':{"$first":"$name"},
+          'name':{"$first":"$user.name"},
           'user_id':{"$first":"$user_id"}, 
           'project_name': { "$first": "$project_name" },
           'location': { "$first": "$location" },
           'prjctstrt_drtn': { "$first": "$prjctstrt_drtn" },
           'expctd_budget': { "$first": "$expctd_budget" },
           'confirmation': { "$first": "$confirmation" },
-          ' approvel_status': { "$first": "$approvel_status" },
+          'approvel_status': { "$first": "$approvel_status" },
           'login_id': { "$first": "$login._id" },
         }
       }
@@ -181,8 +182,9 @@ ProjectRouter.get('/view-choose-archtctr', async (req, res) => {
                       'projectmanagername':{"$first":"$projectmanager.name"},
                       'register_date':{"$first":"$register_date"},
                       'project_status':{"$first":"$project_status"},
-                      'status':{"$first":"$login.status"},
+                      'approvel_status':{"$first":"$approvel_status"},
                       'login_id':{"$first":"$login._id"},
+                      'user_id':{"$first":"$user_id"},
                   }
               }
     ])
@@ -219,8 +221,10 @@ ProjectRouter.post('/choose-archtctr/:id', async (req, res) => {
     const id = req.params.id
     console.log('id', id);
     const data = {
+      requirment_id:req.body.project_id,
       architecture_id: req.body.architecture_id,
-      projectmanager_id: req.body.projectmanager_id
+      projectmanager_id: req.body.projectmanager_id,
+      approvel_status:1
     };
 
     const approve = await ProjectModel.updateOne({ _id: id }, { $set: data });
@@ -257,6 +261,14 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
           'as': 'user'
         }
       },
+      {
+        '$lookup': {
+          'from': 'user_registration_tbs',
+          'localField': 'user_id',
+          'foreignField': '_id',
+          'as': 'user'
+        }
+      },
      
       
       {
@@ -266,12 +278,89 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
       {
                   "$group":{
                       '_id':"$_id",
-                      'name':{"$first":"$user.name"},  
+                      'architecture_id':{"$first":"$architecture_id"},
+                      'name':{"$first":"$user.name"}, 
+                      'project_name':{"$first":"$project_name"}, 
                       'location': { "$first": "$location" }, 
                       'register_date':{"$first":"$register_date"},
                       'status':{"$first":"$login.status"},
                       'login_id':{"$first":"$login._id"},
                       'approvel_status':{"$first":"$approvel_status"},
+                      'user_id':{"$first":"$user_id"},
+                  }
+              }
+    ])
+
+
+    if (users[0] != undefined) {
+      return res.status(200).json({
+        success: true,
+        error: false,
+        data: users
+      })
+    } else {
+      return res.status(400).json({
+        success: false,
+        error: true,
+        message: "No data found"
+      })
+    }
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: true,
+      message: "Something went wrong",
+      details: error
+    })
+  }
+})
+
+
+
+ProjectRouter.get('/view-allprjcts-toprjmnger', async (req, res) => {
+  try {
+    const users = await ProjectModel.aggregate([
+
+      {
+        '$lookup': {
+          'from': 'user_registration_tbs',
+          'localField': 'user_id',
+          'foreignField': '_id',
+          'as': 'user'
+        }
+      },
+      {
+        '$lookup': {
+          'from': 'plan_tbs',
+          'localField': 'plan_id',
+          'foreignField': '_id',
+          'as': 'plan'
+        }
+      },
+     
+      
+      {
+        "$unwind": "$user"
+      },
+      {
+        "$unwind": "$plan"
+      },
+      {
+                  "$group":{
+                      '_id':"$_id",
+                     
+                      'name':{"$first":"$user.name"},
+                      'address':{"$first":"$user.address"},               
+                      'phoneno':{"$first":"$user.phoneno"}, 
+                      'project_name':{"$first":"$project_name"}, 
+                      'location': { "$first": "$location" }, 
+                      'register_date':{"$first":"$register_date"},
+                      'time_Period':{"$first":"$plan.time_Period"}, 
+                       'cost':{"$first":"$plan.cost"},
+                                       
+                      'approvel_status':{"$first":"$approvel_status"},
+                      'login_id':{"$first":"$login._id"},
+                      'user_id':{"$first":"$user_id"},
                   }
               }
     ])
