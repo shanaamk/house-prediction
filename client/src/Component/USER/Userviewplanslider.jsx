@@ -81,7 +81,7 @@ const Userviewplanslider = () => {
 
   const userreject = (id) => {
     axios
-      .get(`http://localhost:5000/register/userreject-plan/${id}`)
+      .get(`http://localhost:5000/register/userreject-plan/${user_id}`)
       .then((response) => {
         console.log(response.data);
         window.location.reload();
