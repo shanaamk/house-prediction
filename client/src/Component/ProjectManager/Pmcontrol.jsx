@@ -1,8 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import ProjectManagernavbar from './ProjectManagernavbar'
 import PublicUserFooter from '../Footer/PublicUserFooter'
 
+import { useParams } from 'react-router-dom';
+
 const Pmcontrol = () => {
+
+    const { id } = useParams();
+  const [plan, setPlan] = useState([]);
+  console.log(plan[0]?.planimage);
+
+    useEffect(() => {
+        const fetchPlan = async () => {
+          try {
+            const response = await fetch(
+              `http://localhost:5000/register/view-plan/${id}`
+            );
+            const data = await response.json();
+    
+            if (data.success) {
+              console.log(data.data);
+              setPlan(data.data);
+            }
+          } catch (error) {
+            console.error('Error fetching plan:', error);
+          }
+        };
+    
+        fetchPlan();
+      }, []);
+
   return (
     <>
     <ProjectManagernavbar/>
@@ -68,15 +96,15 @@ const Pmcontrol = () => {
             <div className="col-md-6">
               <img
                 className="lib-img"
-                src="img/pic/userimage5.jpg"
+                src={`/assets/upload/${plan[0]?.planimage}`}
               />
             </div>
-            <div className="col-md-6">
+            {/* <div className="col-md-6">
               <img
                 className="lib-img"
                 src="img/pic/planimg.jpg"
               />
-            </div>
+            </div> */}
             </div>
             </div>
             </div>

@@ -131,20 +131,20 @@ PlanRouter.get('/view-plan', async (req, res) => {
     try {
         const id = req.params.id;
         console.log(id);
-        const approve = await PlanModel.updateOne({ _id: id }, { $set: { status: 2 } });
+        const approve = await PlanModel.updateOne({ user_id: id }, { $set: { status: 2 } });
     
         if (approve && approve.modifiedCount === 1) {
           return res.status(200).json({
             success: true,
-            message: 'User approved',
+            message: 'plan accepted',
           });
         } else if (approve && approve.modifiedCount === 0) {
           return res.status(400).json({
             success: false,
-            message: 'User not found or already approved',
+            message: 'plan not found or already accepted',
           });
         } else {
-          throw new Error('Error updating user');
+          throw new Error('Error updating plan');
         }
       } catch (error) {
         return res.status(400).json({
@@ -158,7 +158,7 @@ PlanRouter.get('/view-plan', async (req, res) => {
       try {
         const id = req.params.id;
     
-        const reject = await PlanModel.deleteOne({ _id: id });
+        const reject = await PlanModel.deleteOne({user_id: id });
     
         if (reject && reject.deletedCount === 1) {
           return res.status(200).json({
@@ -171,7 +171,7 @@ PlanRouter.get('/view-plan', async (req, res) => {
             message: 'plan not found or already rejected',
           });
         } else {
-          throw new Error('Error deleting user');
+          throw new Error('Error deleting plan');
         }
       } catch (error) {
         return res.status(400).json({

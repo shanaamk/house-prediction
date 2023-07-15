@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const WorkStatus = () => {
+
+  const user_id = localStorage.getItem('user_id')
+  console.log(user_id);
 
   const navigate = useNavigate()
   const[inputs, setinputs]=useState([]);
@@ -18,11 +21,40 @@ const WorkStatus = () => {
   const registersubmit =(event)=>{
     event.preventDefault();
     console.log("data",inputs);
-    axios.post('http://localhost:5000/register/project',inputs).then((response)=>{
+    axios.post(`http://localhost:5000/register/work_status/${user_id}`,inputs).then((response)=>{
       navigate('')
     })
 
   }
+
+  // const [viewprojects, setViewprojects] = useState([]);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const viewprojectsPerPage = 10;
+ 
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/register/view-project-request')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         setViewprojects(data.data);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching users:', error);
+  //     });
+  // }, []);
+  // const totalPages = Math.ceil(viewprojects.length / viewprojectsPerPage);
+  
+  // const handlePageClick = (pageNumber) => {
+  //   setCurrentPage(pageNumber);
+  // };
+
+  // const indexOfLastViewproject= currentPage * viewprojectsPerPage;
+  // const indexOfFirstViewproject = indexOfLastViewproject - viewprojectsPerPage;
+  // const currentViewprojects = viewprojects.slice(indexOfFirstViewproject, indexOfLastViewproject);
+  
+
+
   return (
     <>
     <div className="container py-5">
@@ -102,7 +134,7 @@ const WorkStatus = () => {
             <option value="Flooring">flooring</option>
           </select>
 
-          <select name="Project_status"  value={inputs.Project_status || ""}
+          <select name="work_status"  value={inputs.work_status || ""}
               onChange={setRegister} className="custom-select">
             <option selected="">Status</option>
             <option value="started">started</option>
@@ -115,7 +147,7 @@ const WorkStatus = () => {
           <button type='submit' className="btn btn-light mr-5">
             Reset
           </button>
-          <button type='Continue' className="btn btn-light">
+          <button type='submit' className="btn btn-light">
             Continue
           </button>
         </form>

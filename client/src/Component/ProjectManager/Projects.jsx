@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProjectManagernavbar from './ProjectManagernavbar'
 import PublicUserFooter from '../Footer/PublicUserFooter'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 const Projects = () => {
 
   const [managers, setManagers] = useState([]);
@@ -51,7 +51,7 @@ const Projects = () => {
               <th scope="col">register_date</th>
               <th scope="col">Time_Period</th>
               <th scope="col">cost</th>
-              <th scope="col">Status</th>
+              {/* <th scope="col">Status</th> */}
               <th scope="col">Action</th>
 
             </tr>
@@ -71,7 +71,8 @@ const Projects = () => {
                     <td className="text-center">
                   <div className="btn-group">
                     <button className="btn btn-success btn-sm">
-                    <Link to={`/pmcontrol/${manager._id}/${manager.user_id}`}>control</Link>
+                      <a href='pmcontrol'>control</a>
+                    {/* <Link to={`/pmcontrol/${manager._id}/${manager.user_id}`}>control</Link> */}
                     </button>
                    
                   </div>

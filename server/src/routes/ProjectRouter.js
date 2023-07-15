@@ -47,6 +47,7 @@ ProjectRouter.post('/add-project', async (req, res) => {
       starting_date: null,
       finishing_date: null,
       project_status: req.body.project_status,
+      work_status: null,
       work_category: null,
       status_date: null,
       status_description: null,
@@ -90,7 +91,7 @@ ProjectRouter.get('/view-project-request', async (req, res) => {
       },
       {
         '$match': {
-          'approvel_status': '0'
+          'approvel_status': '1'
         }
       },
 
@@ -332,8 +333,8 @@ ProjectRouter.get('/view-allprjcts-toprjmnger', async (req, res) => {
       {
         '$lookup': {
           'from': 'plan_tbs',
-          'localField': 'plan_id',
-          'foreignField': '_id',
+          'localField': 'user_id',
+          'foreignField': 'user_id',
           'as': 'plan'
         }
       },
@@ -389,5 +390,70 @@ ProjectRouter.get('/view-allprjcts-toprjmnger', async (req, res) => {
   }
 })
 
+
+
+ProjectRouter.post('/work_status/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    console.log('id', id);
+    const data = {
+     
+      status_date: req.body.status_date,
+      status_description: req.body.status_description,
+      work_category:req.body.work_category,
+      work_status: req.body.work_status,
+      // approvel_status:1
+    };
+
+    const approve = await ProjectModel.updateOne({ _id: id }, { $set: data });
+
+    if (approve) {
+      return res.status(200).json({
+        success: true,
+        error: false,
+        message: "Request Added",
+        details: approve
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      success: false,
+      error: true,
+      message: "Something went wrong",
+      details: error
+    });
+  }
+});
+// ProjectRouter.get('/view_work_status/:id', async (req, res) => {
+//   try {
+//     const user_id = req.params.id;
+//     const requirements = await ProjectModel.find({user_id});
+      
+      
+//       if(requirements!=undefined){
+//         console.log('ok');
+//           return res.status(200).json({
+//               success:true,
+//               error:false,
+//               data:requirements
+//           })
+//       }else{
+//        console.log('no');
+//           return res.status(400).json({
+//               success:false,
+//               error:true,
+//               message:"No data found"
+//           })
+//       }
+//   } catch (error) {
+//       return res.status(400).json({
+//           success:false,
+//           error:true,
+//           message:"Something went wrong",
+//           details:error
+//       })
+//   }
+//   })
 module.exports = ProjectRouter;
 

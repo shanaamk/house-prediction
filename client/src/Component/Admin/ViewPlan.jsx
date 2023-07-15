@@ -89,7 +89,8 @@ const ViewPlan = () => {
         </div>
         </>
         :
-        plan[0]?.status==1?
+        plan[0]?.status==0 &&plan[0]?.status==1 &&plan[0]?.status==2 ?
+
         <button className="btn btn-success" onClick={() => approve(plan[0]?._id)}>
         Approved
       </button>:

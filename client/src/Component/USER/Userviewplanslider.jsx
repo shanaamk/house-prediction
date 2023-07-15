@@ -79,9 +79,22 @@ const Userviewplanslider = () => {
       });
   }, []);
 
-  const userreject = (id) => {
+  const userreject = (user_id) => {
     axios
       .get(`http://localhost:5000/register/userreject-plan/${user_id}`)
+      .then((response) => {
+        console.log(response.data);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  const useraccept = (user_id) => {
+    axios
+      .get(`http://localhost:5000/register/useraccept-plan/${user_id}`)
       .then((response) => {
         console.log(response.data);
         window.location.reload();
@@ -176,12 +189,24 @@ const Userviewplanslider = () => {
           </div>
           <div className="row">
             <div className="col-md-3"></div>
+            {/* {plan[0]?.status==1?
+      <> */}
             <div className="col-md-3 text-center">
-              {plan[0]?.status && <button className="btn btn-success">Accept</button>}
+              {plan[0]?.status && <button className="btn btn-success" onClick={() => useraccept(plan[0]?.user_id)}>Accept</button>}
             </div>
             <div className="col-md-3 text-center">
               {plan[0]?.status && <button className="btn btn-danger" onClick={handlerejectClick}>Reject</button>}
             </div>
+            {/* </>
+        //      :
+        //      plan[0]?.status==2?
+        //      <button className="btn btn-success" onClick={() => useraccept(plan[0]?._id)}>
+        //     Accepted
+        //    </button>:
+        //     <button className="btn btn-success" onClick={() => useraccept(plan[0]?._id)}>
+        //     Rejected
+        //   </button>
+        //  } */}
             <div className="col-md-3"></div>
           </div>
         </div>
@@ -208,6 +233,13 @@ const Userviewplanslider = () => {
                       <button className="btn btn-info" type="submit"  onClick={()=>{userreject(plan[0]?.user_id)}}>
                         Reject with this Message
                       </button>
+                      {/* plan[0]?.status==2? */}
+        {/* <button className="btn btn-success" onClick={() => useraccept(plan[0]?.user_id)}>
+        Accepted
+      </button>: */}
+       {/* <button className="btn btn-success" onClick={() => useraccept(plan[0]?._id)}>
+       Rejected
+     </button> */}
                     </form>
                   </div>
                 </div>
