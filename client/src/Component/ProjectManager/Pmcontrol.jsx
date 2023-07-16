@@ -2,20 +2,21 @@ import React, { useEffect, useState } from 'react'
 
 import ProjectManagernavbar from './ProjectManagernavbar'
 import PublicUserFooter from '../Footer/PublicUserFooter'
-
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 const Pmcontrol = () => {
 
-    const { id } = useParams();
+  const { id,user_id } = useParams();
   const [plan, setPlan] = useState([]);
-  console.log(plan[0]?.planimage);
+
+ 
 
     useEffect(() => {
         const fetchPlan = async () => {
           try {
             const response = await fetch(
-              `http://localhost:5000/register/view-plan/${id}`
+              `http://localhost:5000/register/pm-view-plan/${id}`
             );
             const data = await response.json();
     
@@ -30,11 +31,11 @@ const Pmcontrol = () => {
     
         fetchPlan();
       }, []);
-
+      console.log(plan[0]?.planimage);
   return (
     <>
     <ProjectManagernavbar/>
-    <div className='container justify-content-center'>
+    {/* <div className='container justify-content-center'>
         <div className='row'>
            <center><h2 className='mb-5'>Shana-House1</h2></center> 
             <div className='col-md-6'>
@@ -78,7 +79,7 @@ const Pmcontrol = () => {
                 </table>
             </div>
         </div>
-    </div>
+    </div> */}
     <div className='container'>
 
     
@@ -94,10 +95,9 @@ const Pmcontrol = () => {
         <div className="lib-panel">
           <div className="row box-shadow">
             <div className="col-md-6">
-              <img
-                className="lib-img"
-                src={`/assets/upload/${plan[0]?.planimage}`}
-              />
+            <img className="lib-img" src={`/assets/upload/${plan[0]?.planimage}`} alt="Plan" />
+       
+
             </div>
             {/* <div className="col-md-6">
               <img
@@ -119,8 +119,9 @@ const Pmcontrol = () => {
                 <button className='btn btn-success'><a href='assign'>Manage Workers</a></button>
                 </div>
                 <div className='col md-4'>
-                    <button className='btn btn-success'><a href='Work'>Update status</a></button> 
-                </div>            
+                    <button className='btn btn-success'> <Link to={`/Work/${id}`}>update staus</Link> </button> 
+                </div> 
+                         
             </div>
         </div>
            

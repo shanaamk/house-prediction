@@ -12,6 +12,7 @@ const ChatRouter = require('./src/routes/ChatRouter')
 const ProjecrReportRouter = require('./src/routes/ProjectReportRouter')
 const choosearchprojctRouter = require('./src/routes/choosearchprojctRouter')
 const userplanRouter = require('./src/routes/UserplanRouter')
+const workstatusRouter = require('./src/routes/WorkstatusRouter')
 const app = express()
 app.use(bodyParser())
 app.use(express.urlencoded({extended:true}))
@@ -41,6 +42,7 @@ app.use('/register',ChatRouter)
 app.use('/register',ProjecrReportRouter)
 app.use('/register',choosearchprojctRouter)
 app.use('/userplan',userplanRouter)
+app.use('/workstatus',workstatusRouter)
 
 const mongoDBurl='mongodb+srv://shanamk0101:shanamk0101@cluster0.c2ytrmw.mongodb.net/houseprediction?retryWrites=true&w=majority'
 mongoose.connect(mongoDBurl).then(()=>{

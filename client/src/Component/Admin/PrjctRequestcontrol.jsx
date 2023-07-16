@@ -7,7 +7,7 @@ const PrjctRequestcontrol = () => {
   const { id ,user_id} = useParams();
   const [requirements, setRequirements] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/register/view-requirement/${user_id}`)
+    fetch(`http://localhost:5000/register/view-requirement/${id}`)
       .then((response) => response.json())
       .then((data) => {
         

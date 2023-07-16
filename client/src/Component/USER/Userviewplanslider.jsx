@@ -64,20 +64,20 @@ const Userviewplanslider = () => {
       });
   }, []);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/register/userview-plan/${user_id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          console.log(data.data);
-          setPlan(data.data);
-          setInput({ ...input, user_id: id, });
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching users:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/register/userview-plan/${user_id}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         console.log(data.data);
+  //         setPlan(data.data);
+  //         setInput({ ...input, user_id: id, });
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching users:', error);
+  //     });
+  // }, []);
 
   const userreject = (project_id) => {
     axios
@@ -181,6 +181,7 @@ const Userviewplanslider = () => {
                       {plan[0]?.adminaprvl_status === undefined
                         ? 'Architecture is working on your Requirements, wait till then'
                         : 'Rs:' + (plan[0]?.cost + '/-' ?? '')}
+
                     </h6>
                   </div>
                 </div>
@@ -189,14 +190,17 @@ const Userviewplanslider = () => {
           </div>
           <div className="row">
             <div className="col-md-3"></div>
-            {/* {plan[0]?.status==1?
-      <> */}
-            <div className="col-md-3 text-center">
-              <button className="btn btn-success" onClick={() => useraccept(plan[0]?._id)}>Accept</button>
-            </div>
-            <div className="col-md-3 text-center">
-              <button className="btn btn-danger" onClick={handlerejectClick}>Reject</button>
-            </div>
+            {plan[0]?.adminaprvl_status !== undefined && (
+  <div className="col-md-3">
+    <div className="col-md-3 text-center">
+      <button className="btn btn-success" onClick={() => useraccept(plan[0]?._id)}>Accept</button>
+    </div>
+    <div className="col-md-3 text-center">
+      <button className="btn btn-danger" onClick={handlerejectClick}>Reject</button>
+    </div>
+  </div>
+ )}
+
             {/* </>
         //      :
         //      plan[0]?.status==2?

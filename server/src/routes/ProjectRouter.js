@@ -1,5 +1,6 @@
 const express = require('express');
 const ProjectModel = require('../models/ProjectModel');
+const workstatusModel = require('../models/WorkstatusModel');
 
 const ProjectRouter = express.Router();
 
@@ -48,7 +49,7 @@ ProjectRouter.post('/add-project', async (req, res) => {
       finishing_date: null,
       project_status: req.body.project_status,
       work_status: null,
-      work_category: null,
+     
       status_date: null,
       status_description: null,
       approvel_status: 0
@@ -266,19 +267,19 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
         '$lookup': {
           'from': 'plan_tbs',
           'localField': 'user_id',
-          'foreignField': '_id',
+          'foreignField': 'user_id',
           'as': 'plan'
         }
       },
-     
       
+
       {
         "$unwind": "$user"
       },
+      // {
+      //   "$unwind": "$plan"
+      // },
       
-      {
-        "$unwind": "$plan"
-      },
       
       {
                   "$group":{
@@ -290,7 +291,7 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
                       'register_date':{"$first":"$register_date"},
                       'status':{"$first":"$login.status"},
                       'login_id':{"$first":"$login._id"},
-                      // 'useraprvl_status':{"$first":"$plan.useraprvl_status"},
+                      'useraprvl_status':{"$first":"$plan.useraprvl_status"},
                       'approvel_status':{"$first":"$approvel_status"},
                       'user_id':{"$first":"$user_id"},
                   }
@@ -343,14 +344,15 @@ ProjectRouter.get('/view-allprjcts-toprjmnger', async (req, res) => {
           'as': 'plan'
         }
       },
-     
       
+
       {
         "$unwind": "$user"
       },
       {
         "$unwind": "$plan"
       },
+     
       {
                   "$group":{
                       '_id':"$_id",
@@ -358,7 +360,8 @@ ProjectRouter.get('/view-allprjcts-toprjmnger', async (req, res) => {
                       'name':{"$first":"$user.name"},
                       'address':{"$first":"$user.address"},               
                       'phoneno':{"$first":"$user.phoneno"}, 
-                      'project_name':{"$first":"$project_name"}, 
+                      'project_name':{"$first":"$project_name"},
+                      'projectmanager_id':{"$first":"$projectmanager_id"}, 
                       'location': { "$first": "$location" }, 
                       'register_date':{"$first":"$register_date"},
                       'time_Period':{"$first":"$plan.time_Period"}, 
@@ -405,12 +408,23 @@ ProjectRouter.post('/work_status/:id', async (req, res) => {
      
       status_date: req.body.status_date,
       status_description: req.body.status_description,
-      work_category:req.body.work_category,
-      work_status: req.body.work_status,
-      // approvel_status:1
+    
+      project_status: req.body.project_status,
+      
+    };
+    const data1 = {
+      
+      project_id : id,
+      status_date: req.body.status_date,
+      status_description: req.body.status_description,    
+      work_status: req.body.project_status,
+      
     };
 
     const approve = await ProjectModel.updateOne({ _id: id }, { $set: data });
+    const savedData = await workstatusModel(data1).save();
+    console.log(savedData);
+    console.log(data1);
 
     if (approve) {
       return res.status(200).json({

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const WorkStatus = () => {
+  const { id } = useParams();
 
   const user_id = localStorage.getItem('user_id')
   console.log(user_id);
@@ -18,14 +19,29 @@ const WorkStatus = () => {
     console.log(inputs);
   }
   
-  const registersubmit =(event)=>{
+  const registersubmit = (event) => {
     event.preventDefault();
-    console.log("data",inputs);
-    axios.post(`http://localhost:5000/register/work_status/${user_id}`,inputs).then((response)=>{
-      navigate('')
-    })
-
-  }
+  
+    // Concatenate work_category and work_status
+    const project_status = inputs.work_category + ' ' + inputs.work_status;
+  
+    // Create a new object without work_status and work_category
+    const { work_status, work_category, ...updatedInputs } = inputs;
+  
+    // Add concatenatedValue to updatedInputs
+    updatedInputs.project_status = project_status;
+  
+    console.log("data", updatedInputs);
+    
+    axios.post(`http://localhost:5000/register/work_status/${id}`, updatedInputs)
+      .then((response) => {
+        navigate('');
+      })
+      .catch((error) => {
+        // Handle error
+      });
+  };
+  
 
   // const [viewprojects, setViewprojects] = useState([]);
   // const [currentPage, setCurrentPage] = useState(1);
@@ -110,14 +126,14 @@ const WorkStatus = () => {
       <div style={{ display: "flex", width: "100%" ,color:'black'}}>
         <form onSubmit={registersubmit} className="statusformrequirement">
         <div style={{ width: "100%" ,}}>
-                 <p>Status_date</p>
-                 <input type="date" name="Status_date" value={inputs.Status_date || ""}
+                 <p>status_date</p>
+                 <input type="date" name="status_date" value={inputs.status_date || ""}
               onChange={setRegister} className="custom-select" autofocus="" />
                </div>
                
                <div style={{ width: "100%" }}>
         <p>Status_description</p>
-        <textarea name="Status_description" value={inputs.Status_description || ""}
+        <textarea name="status_description" value={inputs.status_description || ""}
               onChange={setRegister} className="custom-select" placeholder="Status description" />
       </div>
                <select name="work_category" value={inputs.work_category || ""}

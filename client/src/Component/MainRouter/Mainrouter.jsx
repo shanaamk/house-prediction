@@ -129,8 +129,8 @@ const Mainrouter = () => {
 <Route path="testpage" element={<Testers/>}/>
 <Route path="userchat" element={<Chatboxwithuser/>}/>
 <Route path="pmpro" element={<Projects/>}/>
-<Route path="pmcontrol" element={<Pmcontrol/>}/>
-<Route path="Work" element={<WorkStatuspage/>}/>
+<Route path="pmcontrol/:id/:user_id" element={<Pmcontrol/>}/>
+<Route path="Work/:id" element={<WorkStatuspage/>}/>
 <Route path="assign" element={<Assignworkers/>}/>
 <Route path="view/:id/:user_id" element={<Viewreqpage/>}/>
 <Route path="viewuse" element={<ViewUserpage/>}/>

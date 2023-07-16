@@ -130,6 +130,8 @@ PlanRouter.get('/view-plan/:id', async (req, res) => {
       })
   }
   })
+
+
 PlanRouter.get('/view-plan', async (req, res) => {
   try {
       const users = await PlanModel.find()
@@ -409,4 +411,33 @@ PlanRouter.post('/plan', async (req, res) => {
     })
   }
 })
+
+
+PlanRouter.get('/pm-view-plan/:id', async (req, res) => {
+  try {
+    const project_id= req.params.id
+      const users = await PlanModel.find({project_id:project_id,useraprvl_status:1})
+    
+      if(users[0]!=undefined){
+          return res.status(200).json({
+              success:true,
+              error:false,
+              data:users
+          })
+      }else{
+          return res.status(400).json({
+              success:false,
+              error:true,
+              message:"No data found"
+          })
+      }
+  } catch (error) {
+      return res.status(400).json({
+          success:false,
+          error:true,
+          message:"Something went wrong",
+          details:error
+      })
+  }
+  })
     module.exports = PlanRouter;

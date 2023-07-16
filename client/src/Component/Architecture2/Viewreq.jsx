@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom';
 
 const Viewreq = () => {
+  
   const [demands, setDemands] = useState([]);
   const architecture_id = localStorage.getItem('architecture_id')
   console.log(architecture_id);

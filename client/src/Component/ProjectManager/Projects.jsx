@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import ProjectManagernavbar from './ProjectManagernavbar'
 import PublicUserFooter from '../Footer/PublicUserFooter'
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const Projects = () => {
-
+  
+  const projectmanager_id = localStorage.getItem('projectmanager_id');
+ 
   const [managers, setManagers] = useState([]);
   console.log(managers);
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,7 +59,7 @@ const Projects = () => {
             </tr>
           </thead>
           <tbody>
-          {currentManagers.map((manager, index) => (
+          {currentManagers.filter(manager => manager.projectmanager_id === projectmanager_id).map((manager, index) => (
                   <tr key={index}>
                     <th scope="row">{indexOfFirstManager + index + 1}</th>
                     <td>{manager.name}</td>
@@ -71,8 +73,8 @@ const Projects = () => {
                     <td className="text-center">
                   <div className="btn-group">
                     <button className="btn btn-success btn-sm">
-                      <a href='pmcontrol'>control</a>
-                    {/* <Link to={`/pmcontrol/${manager._id}/${manager.user_id}`}>control</Link> */}
+                     
+                    <Link to={`/pmcontrol/${manager._id}/${manager.user_id}`}>control</Link>
                     </button>
                    
                   </div>

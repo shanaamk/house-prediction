@@ -13,7 +13,7 @@ console.log(user_id);
   const [category, setCategory] = useState([]);
   const [manager, setManager] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/register/view-requirement/${user_id}`)
+    fetch(`http://localhost:5000/register/view-requirement/${id}`)
       .then((response) => response.json())
       .then((data) => {
         

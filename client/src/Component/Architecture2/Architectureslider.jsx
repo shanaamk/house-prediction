@@ -103,7 +103,7 @@ const Architectureslider = () => {
         </thead>
         <tbody>
         {currentClients
-  .filter(client => client.approvel_status === '1' && client.architecture_id === architecture_id)
+  .filter(client => client.useraprvl_status !== '1' && client.architecture_id === architecture_id)
   .map((client, index) => (
     
     <tr key={index}>
