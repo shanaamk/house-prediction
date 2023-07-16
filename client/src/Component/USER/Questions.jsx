@@ -14,13 +14,13 @@ const [outputs, setOutputs] = useState([]);
     const [inputs, setInputs] = useState({
       user_id:user_id
     });
-    console.log("value==>",inputs);
+    // console.log("value==>",inputs);
 
     const setRegister = (event) => {
       const name = event.target.name;
       const value = event.target.value;
       setInputs({ ...inputs, [name]: value });
-      console.log(inputs);
+      // console.log(inputs);
     }
   
    
@@ -64,7 +64,7 @@ const [outputs, setOutputs] = useState([]);
     ];
     const registersubmit = (event) => {
       event.preventDefault();
-      console.log("data", inputs);
+      // console.log("data", inputs);
       event.preventDefault()
        
       
@@ -96,9 +96,9 @@ const [outputs, setOutputs] = useState([]);
       console.log(updatedInputs);
       axios.post('http://localhost:5000/register/add-project', updatedInputs)
         .then((response) => {
-          console.log(response);
-          
-          navigate('/userreq/');
+          const p_id=response.data.details._id;
+          console.log(p_id);
+          navigate(`/userreq/${p_id}`);
         })
         .catch((error) => {
           console.error(error);
@@ -168,7 +168,7 @@ const [outputs, setOutputs] = useState([]);
             </button>
           ) : (
             <button className="qstnsubmit-button" onClick={handleSubmit}>
-              <a href=''>Submit</a>
+              Submit
             </button>
           )}
         </div>

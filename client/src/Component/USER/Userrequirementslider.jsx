@@ -1,12 +1,15 @@
 
 
 import React, { useState } from 'react';
+
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const Userrequirementslider = () => {
- 
+
+  const { id } = useParams();
+  console.log(id);
   const [showUploadForm, setShowUploadForm] = useState(false);
 
   const handleYesButtonClick = () => {
@@ -20,7 +23,7 @@ const Userrequirementslider = () => {
     setShowUploadForm(false);
   };
 
-
+  
 
   const navigate = useNavigate()
   const user_id = localStorage.getItem('user_id')
@@ -32,10 +35,12 @@ const Userrequirementslider = () => {
   const setRegister=(event)=>{
     const name=event.target.name;
     const value=event.target.value;
-    setinputs({...inputs,[name]:value});
+    setinputs({...inputs,[name]:value,project_id:id});
     console.log(inputs);
   }
   
+  
+
   const registersubmit =(event)=>{
     event.preventDefault();
     console.log("data",inputs);

@@ -94,12 +94,12 @@ const ViewPlan = () => {
       {plan[0]?.adminaprvl_status==0?
       <>
       <div className="col-md-3">
-          <button className="btn btn-success" onClick={() => approve(plan[0]?._id)}>
+          <button className="btn btn-success" onClick={() => approve(plan[0]?.project_id)}>
             Approve
           </button>
         </div>
         <div className="col-md-3">
-          <button className="btn btn-danger" onClick={() => reject(plan[0]?._id)}>Disapprove</button>
+          <button className="btn btn-danger" onClick={() => reject(plan[0]?.project_id)}>Disapprove</button>
         </div>
         </>
         :''

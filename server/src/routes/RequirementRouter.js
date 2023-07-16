@@ -7,8 +7,8 @@ const RequirementRouter = express.Router();
 
 RequirementRouter.get('/view-requirement/:id', async (req, res) => {
   try {
-    const user_id = req.params.id;
-    const requirements = await RequirementModel.find({user_id});
+    const project_id = req.params.id;
+    const requirements = await RequirementModel.find({project_id});
       
       
       if(requirements!=undefined){

@@ -262,18 +262,22 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
           'as': 'user'
         }
       },
-      // {
-      //   '$lookup': {
-      //     'from': 'user_registration_tbs',
-      //     'localField': 'user_id',
-      //     'foreignField': '_id',
-      //     'as': 'user'
-      //   }
-      // },
+      {
+        '$lookup': {
+          'from': 'plan_tbs',
+          'localField': 'user_id',
+          'foreignField': '_id',
+          'as': 'plan'
+        }
+      },
      
       
       {
         "$unwind": "$user"
+      },
+      
+      {
+        "$unwind": "$plan"
       },
       
       {
@@ -286,6 +290,7 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
                       'register_date':{"$first":"$register_date"},
                       'status':{"$first":"$login.status"},
                       'login_id':{"$first":"$login._id"},
+                      // 'useraprvl_status':{"$first":"$plan.useraprvl_status"},
                       'approvel_status':{"$first":"$approvel_status"},
                       'user_id':{"$first":"$user_id"},
                   }

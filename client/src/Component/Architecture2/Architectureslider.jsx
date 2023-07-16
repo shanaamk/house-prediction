@@ -29,6 +29,7 @@ const Architectureslider = () => {
     const indexOfLastClient = currentPage * clientsPerPage;
     const indexOfFirstClient = indexOfLastClient - clientsPerPage;
     const currentClients = clients.slice(indexOfFirstClient, indexOfLastClient);
+    
   return (
     <>
     <div className="container-fluid p-0">
@@ -96,8 +97,8 @@ const Architectureslider = () => {
             <th scope="col">project name</th>
             <th scope="col"> Location</th>
             <th scope="col"> Date</th>
-            {/* <th scope="col">Status</th> */}
             <th scope="col">Action</th>
+            {/* <th scope="col">Status</th> */}
           </tr>
         </thead>
         <tbody>
@@ -111,9 +112,10 @@ const Architectureslider = () => {
              <td>{client.project_name}</td>
             <td>{client.location}</td>
             <td>{client.register_date}</td>
+            {/* <td>{client.useraprvl_status}</td> */}
            
             
-            <button className='btn btn-primary'><Link to={`/view/${client._id}`}>View</Link></button>
+            <button className='btn btn-primary'><Link to={`/view/${client._id}/${client.user_id}`}>View</Link></button>
           </tr>
   ))}
         </tbody>

@@ -91,7 +91,7 @@ const Mainrouter = () => {
 <Route path="projectmanagerreg" element={<ProjectManager/>}/>
 <Route path="workersreg" element={<Workers/>}/>
 <Route path="userhome" element={<Userhome/>}/>
-<Route path="userreq" element={<Userrequirementpage/>}/>
+<Route path="userreq/:id" element={<Userrequirementpage/>}/>
 <Route path="notfctn" element={<Viewarchnotification/>}/>
 <Route path="box" element={<Chatboxwithadmin/>}/>
 <Route path="userrent" element={<Userrentalpage/>}/>
@@ -132,7 +132,7 @@ const Mainrouter = () => {
 <Route path="pmcontrol" element={<Pmcontrol/>}/>
 <Route path="Work" element={<WorkStatuspage/>}/>
 <Route path="assign" element={<Assignworkers/>}/>
-<Route path="view/:id" element={<Viewreqpage/>}/>
+<Route path="view/:id/:user_id" element={<Viewreqpage/>}/>
 <Route path="viewuse" element={<ViewUserpage/>}/>
 <Route path="Quote" element={<ApproveQuotepage/>}/>
 <Route path="plan/:id" element={<ViewPlanpage/>}/>

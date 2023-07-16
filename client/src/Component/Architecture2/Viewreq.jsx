@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom';
 
 const Viewreq = () => {
-
+  const [demands, setDemands] = useState([]);
   const architecture_id = localStorage.getItem('architecture_id')
   console.log(architecture_id);
   const { id,user_id } = useParams();
@@ -27,7 +27,7 @@ const Viewreq = () => {
 
   const inputChange= (event)=>{
   const{name,value}=event.target 
-  setInput({...input,[name]:value,architecture_id:architecture_id,project_id:id,planupload_date: new Date()})
+  setInput({...input,[name]:value,architecture_id:architecture_id,project_id:id,user_id:user_id,planupload_date: new Date()})
   console.log(input);
   }
   
@@ -53,22 +53,7 @@ const Viewreq = () => {
    
 
   }
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/register/view-plan/${user_id}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-        
-  //       if (data.success) {
-          
-  //         console.log(data.data);
-  //         setPlan(data.data);
-        
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching users:', error);
-  //     });
-  // }, []);
+  
 
   useEffect(() => {
     fetch(`http://localhost:5000/register/view-requirement/${id}`)
@@ -86,6 +71,24 @@ const Viewreq = () => {
         console.error('Error fetching users:', error);
       });
   }, []);
+
+  useEffect(() => {
+      fetch(`http://localhost:5000/register/view-user_reject_msg/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          
+          if (data.success) {
+            
+            console.log(data.data);
+            setDemands(data.data);
+          
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching users:', error);
+        });
+    }, []);
+ 
   return (
     <>
     <div className="container" style={{textAlign:'center'}}>
@@ -198,22 +201,23 @@ const Viewreq = () => {
           <th>S. #</th>
           <th>Demands of user</th>
           <th>Date</th>
-          <th>Actions</th>
+          {/* <th>Actions</th> */}
         </tr>
       </thead>
       <tbody>
-        <tr>
+        
+      {demands.map((demand) => (
+<React.Fragment key={demand._id}>
+  <tr>
           <td>01</td>
           <td style={{ maxWidth: 300 }}>
-            <h6>Dummy Title 01</h6>
+            <h6>Demands</h6>
             <em className="text-muted">
-              This is some long text or discription regarding Dummy Title 01.
-              Even more lenghthy description will be automatically adjusted as
-              per the width specified.
+            {demand.reject_message}
             </em>
           </td>
-          <td>Column data</td>
-          <td>
+          <td>{demand.reject_messagedate}</td>
+          {/* <td>
             <a href="#" className="btn btn-warning">
               <i className="fas fa-edit" />
             </a>{" "}
@@ -221,70 +225,10 @@ const Viewreq = () => {
             <a href="#" className="btn btn-danger">
               <i className="fas fa-trash" />
             </a>
-          </td>
+          </td> */}
         </tr>
-        <tr>
-          <td>02</td>
-          <td style={{ maxWidth: 300 }}>
-            <h6>Dummy Title 02</h6>
-            <em className="text-muted">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Similique facere necessitatibus quo laboriosam consequuntur
-            </em>
-          </td>
-          <td>Some Data</td>
-          <td>
-            <a href="#" className="btn btn-warning">
-              <i className="fas fa-edit" />
-            </a>{" "}
-            |
-            <a href="#" className="btn btn-danger">
-              <i className="fas fa-trash" />
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>03</td>
-          <td style={{ maxWidth: 300 }}>
-            <h6>Another Title</h6>
-            <em className="text-muted">
-              This is some long text or discription about Another Title or else
-              about.
-            </em>
-          </td>
-          <td>This is some data</td>
-          <td>
-            <a href="#" className="btn btn-warning">
-              <i className="fas fa-edit" />
-            </a>{" "}
-            |
-            <a href="#" className="btn btn-danger">
-              <i className="fas fa-trash" />
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>04</td>
-          <td style={{ maxWidth: 300 }}>
-            <h6>Yet Another Title</h6>
-            <em className="text-muted">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Excepturi aliquam placeat odit quasi autem distinctio veritatis ex
-              numquam nihil nulla tempora a dolorem omnis beatae facilis
-              perspiciatis doloribus
-            </em>
-          </td>
-          <td>Data goes here</td>
-          <td>
-            <a href="#" className="btn btn-warning">
-              <i className="fas fa-edit" />
-            </a>{" "}
-            |
-            <a href="#" className="btn btn-danger">
-              <i className="fas fa-trash" />
-            </a>
-          </td>
-        </tr>
+        </React.Fragment>
+      ))}
       </tbody>
     </table>
   </div>

@@ -160,7 +160,7 @@ PlanRouter.get('/view-plan', async (req, res) => {
     try {
         const id = req.params.id;
         console.log(id);
-        const approve = await PlanModel.updateOne({ user_id: id }, { $set: { status: 2 } });
+        const approve = await PlanModel.updateOne({ project_id: id }, { $set: { useraprvl_status: 1 } });
     
         if (approve && approve.modifiedCount === 1) {
           return res.status(200).json({
@@ -248,9 +248,9 @@ PlanRouter.post('/plan', async (req, res) => {
             project_id:req.body.project_id, 
             planimage:req.body.planimage,
             planupload_date:req.body.planupload_date,
-            reject_message:req.body.reject_message,
-            reject_count:req.body.Reject_count,  
-            reject_messagedate:req.body.reject_messagedate,
+            reject_message:null,
+            reject_count:null,  
+            reject_messagedate:null,
             adminaprvl_status:0,
             useraprvl_status:0,
             messageupdte_time:req.body. messageupdte_time,
@@ -280,6 +280,70 @@ PlanRouter.post('/plan', async (req, res) => {
       }
     });
 
+    PlanRouter.get('/view-user_reject_msg/:id', async (req, res) => {
+      try {
+        const project_id= req.params.id
+          const users = await PlanModel.find({project_id})
+          if(users[0]!=undefined){
+              return res.status(200).json({
+                  success:true,
+                  error:false,
+                  data:users
+              })
+          }else{
+              return res.status(400).json({
+                  success:false,
+                  error:true,
+                  message:"No data found"
+              })
+          }
+      } catch (error) {
+          return res.status(400).json({
+              success:false,
+              error:true,
+              message:"Something went wrong",
+              details:error
+          })
+      }
+      })
+    
+
+    PlanRouter.post('/user_reject_msg/:id', async (req, res) => {
+      try {
+        const id = req.params.id;
+        console.log('id', id);
+      
+          const data ={
+             
+              
+              reject_message:req.body.reject_message,
+              reject_messagedate:req.body.reject_messagedate
+              
+             
+          };
+       
+    
+        const approve = await PlanModel.updateOne({ _id: id }, { $set: { useraprvl_status: 2, reject_message: req.body.reject_message,reject_messagedate:req.body.reject_messagedate} });
+    
+        if (approve) {
+          console.log(data);
+          return res.status(200).json({
+            success: true,
+            error: false,
+            message: "Request Added",
+            details: approve
+          });
+        }
+      } catch (error) {
+        console.log(error);
+        return res.status(400).json({
+          success: false,
+          error: true,
+          message: "Something went wrong",
+          details: error
+        });
+      }
+    });
 
     
     PlanRouter.get('/view-arch-plan-req', async (req, res) => {
@@ -314,7 +378,7 @@ PlanRouter.post('/plan', async (req, res) => {
                       '_id':"$_id",
                       'architecturename':{"$first":"$architecture.name"},  
                       'project_name':{"$first":"$project.project_name"},
-                      'project_id':{"$first":"$project.project_id"},
+                      'project_id':{"$first":"$project_id"},
                       'planupload_date':{"$first":"$planupload_date"},
                       'adminaprvl_status':{"$first":"$adminaprvl_status"},               
                       

@@ -17,14 +17,14 @@ const Userviewplanslider = () => {
   const setRegister = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInput({ ...input, [name]: value });
+    setInput({ ...input, [name]: value ,reject_messagedate:new Date()});
   };
 
   const registersubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:5000/register/plan', input).then((response) => {
-      // navigate('')
-    });
+    // axios.post('http://localhost:5000/register/plan', input).then((response) => {
+    //   // navigate('')
+    // });
   };
 
   const handlerejectClick = () => {
@@ -50,13 +50,13 @@ const Userviewplanslider = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/register/view-requirement/${user_id}`)
+    fetch(`http://localhost:5000/register/view-requirement/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
           console.log(data.data);
           setRequirements(data.data);
-          setInput({ ...input, user_id: id });
+          // setInput({ ...input, user_id: id });
         }
       })
       .catch((error) => {
@@ -71,7 +71,7 @@ const Userviewplanslider = () => {
         if (data.success) {
           console.log(data.data);
           setPlan(data.data);
-          setInput({ ...input, user_id: id });
+          setInput({ ...input, user_id: id, });
         }
       })
       .catch((error) => {
@@ -79,9 +79,9 @@ const Userviewplanslider = () => {
       });
   }, []);
 
-  const userreject = (user_id) => {
+  const userreject = (project_id) => {
     axios
-      .get(`http://localhost:5000/register/userreject-plan/${user_id}`)
+      .post(`http://localhost:5000/register/user_reject_msg/${project_id}`,input)
       .then((response) => {
         console.log(response.data);
         window.location.reload();
@@ -94,10 +94,10 @@ const Userviewplanslider = () => {
 
   const useraccept = (user_id) => {
     axios
-      .get(`http://localhost:5000/register/useraccept-plan/${user_id}`)
+      .get(`http://localhost:5000/register/useraccept-plan/${id}`)
       .then((response) => {
         console.log(response.data);
-        window.location.reload();
+        navigate('/userview');
       })
       .catch((error) => {
         console.log(error);
@@ -192,10 +192,10 @@ const Userviewplanslider = () => {
             {/* {plan[0]?.status==1?
       <> */}
             <div className="col-md-3 text-center">
-              {plan[0]?.adminaprvl_status && <button className="btn btn-success" onClick={() => useraccept(plan[0]?.user_id)}>Accept</button>}
+              <button className="btn btn-success" onClick={() => useraccept(plan[0]?._id)}>Accept</button>
             </div>
             <div className="col-md-3 text-center">
-              {plan[0]?.adminaprvl_status && <button className="btn btn-danger" onClick={handlerejectClick}>Reject</button>}
+              <button className="btn btn-danger" onClick={handlerejectClick}>Reject</button>
             </div>
             {/* </>
         //      :
@@ -230,7 +230,7 @@ const Userviewplanslider = () => {
                         style={{ marginBottom: 10 }}
                         defaultValue={''}
                       />
-                      <button className="btn btn-info" type="submit"  onClick={()=>{userreject(plan[0]?.user_id)}}>
+                      <button className="btn btn-info" type="submit"  onClick={()=>{userreject(plan[0]?._id)}}>
                         Reject with this Message
                       </button>
                       {/* plan[0]?.status==2? */}
