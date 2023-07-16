@@ -100,7 +100,7 @@ const Mainrouter = () => {
 <Route path="architecturehome" element={<Architecturehome/>}/>
 <Route path="projectmanagerhome" element={<ProjectManagerhome/>}/>
 <Route path="workershome" element={<Workershome/>}/>
-<Route path="userviewplan" element={<Userviewplan/>}/>
+<Route path="userviewplan/:id" element={<Userviewplan/>}/>
 <Route path="question" element={<QuestionCarousel/>}/>
 <Route path="Status" element={<Projectstatuspage/>}/>
 <Route path="archpredictn" element={<Architecturepredictionpage/>}/>

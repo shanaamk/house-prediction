@@ -113,7 +113,7 @@ const Architectureslider = () => {
             <td>{client.register_date}</td>
            
             
-            <button className='btn btn-primary'><Link to={`/view/${client.user_id}`}>View</Link></button>
+            <button className='btn btn-primary'><Link to={`/view/${client._id}`}>View</Link></button>
           </tr>
   ))}
         </tbody>

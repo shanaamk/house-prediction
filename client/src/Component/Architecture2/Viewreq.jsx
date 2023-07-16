@@ -5,6 +5,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const Viewreq = () => {
 
+  const architecture_id = localStorage.getItem('architecture_id')
+  console.log(architecture_id);
   const { id,user_id } = useParams();
  
 
@@ -25,7 +27,7 @@ const Viewreq = () => {
 
   const inputChange= (event)=>{
   const{name,value}=event.target 
-  setInput({...input,[name]:value})
+  setInput({...input,[name]:value,architecture_id:architecture_id,project_id:id,planupload_date: new Date()})
   console.log(input);
   }
   

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Viewproject = () => {
+
   const user_id = localStorage.getItem('user_id')
   console.log(user_id);
+
   const [viewprojects, setViewprojects] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const viewprojectsPerPage = 10;
@@ -50,7 +53,8 @@ const Viewproject = () => {
          </time>
         
          <div className="info">
-           <h2 className="title"><a href='Userviewplan'>{viewproject.project_name}</a></h2>
+           <Link to={`/userviewplan/${viewproject._id}`}><h2 className="title">{viewproject.project_name}</h2></Link>
+           
            <p className="desc">{viewproject.location}</p>
            <ul>
              <li style={{ width: "50%" }}>

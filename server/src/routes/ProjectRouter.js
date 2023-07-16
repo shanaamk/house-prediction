@@ -89,11 +89,11 @@ ProjectRouter.get('/view-project-request', async (req, res) => {
       {
         "$unwind": "$user"
       },
-      {
-        '$match': {
-          'approvel_status': '1'
-        }
-      },
+      // {
+      //   '$match': {
+      //     'approvel_status': '0'
+      //   }
+      // },
 
      
 
@@ -262,14 +262,14 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
           'as': 'user'
         }
       },
-      {
-        '$lookup': {
-          'from': 'user_registration_tbs',
-          'localField': 'user_id',
-          'foreignField': '_id',
-          'as': 'user'
-        }
-      },
+      // {
+      //   '$lookup': {
+      //     'from': 'user_registration_tbs',
+      //     'localField': 'user_id',
+      //     'foreignField': '_id',
+      //     'as': 'user'
+      //   }
+      // },
      
       
       {
@@ -281,7 +281,7 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
                       '_id':"$_id",
                       'architecture_id':{"$first":"$architecture_id"},
                       'name':{"$first":"$user.name"}, 
-                      'project_name':{"$first":"$project_name"}, 
+                      'project_name':{"$first":"$project_name"},  
                       'location': { "$first": "$location" }, 
                       'register_date':{"$first":"$register_date"},
                       'status':{"$first":"$login.status"},

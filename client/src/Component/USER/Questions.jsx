@@ -8,6 +8,9 @@ import PublicUserFooter from '../Footer/PublicUserFooter';
 const QuestionCarousel = () => {
     const user_id = localStorage.getItem('user_id')
     const navigate = useNavigate()
+
+const [outputs, setOutputs] = useState([]);
+
     const [inputs, setInputs] = useState({
       user_id:user_id
     });
@@ -94,7 +97,8 @@ const QuestionCarousel = () => {
       axios.post('http://localhost:5000/register/add-project', updatedInputs)
         .then((response) => {
           console.log(response);
-          navigate('/userreq');
+          
+          navigate('/userreq/');
         })
         .catch((error) => {
           console.error(error);
@@ -164,7 +168,7 @@ const QuestionCarousel = () => {
             </button>
           ) : (
             <button className="qstnsubmit-button" onClick={handleSubmit}>
-              <a href='userreq'>Submit</a>
+              <a href=''>Submit</a>
             </button>
           )}
         </div>

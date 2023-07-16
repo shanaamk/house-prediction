@@ -34,7 +34,7 @@ const Userviewplanslider = () => {
   useEffect(() => {
     const fetchPlan = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/register/view-plan/${user_id}`);
+        const response = await fetch(`http://localhost:5000/register/userview-plan/${id}`);
         const data = await response.json();
 
         if (data.success) {
@@ -126,7 +126,7 @@ const Userviewplanslider = () => {
             <div className="lib-panel">
               <div className="row box-shadow">
                 <div className="col-md-4">
-                {plan[0]?.status !== undefined && (
+                {plan[0]?.adminaprvl_status !== undefined && (
   <img className="lib-img" src={`/assets/upload/${plan[0]?.planimage}`} />
 )}
                 </div>
@@ -178,7 +178,7 @@ const Userviewplanslider = () => {
                   </table>
                   <div className="col-md-12 text-center">
                     <h6>
-                      {plan[0]?.status === undefined
+                      {plan[0]?.adminaprvl_status === undefined
                         ? 'Architecture is working on your Requirements, wait till then'
                         : 'Rs:' + (plan[0]?.cost + '/-' ?? '')}
                     </h6>
@@ -192,10 +192,10 @@ const Userviewplanslider = () => {
             {/* {plan[0]?.status==1?
       <> */}
             <div className="col-md-3 text-center">
-              {plan[0]?.status && <button className="btn btn-success" onClick={() => useraccept(plan[0]?.user_id)}>Accept</button>}
+              {plan[0]?.adminaprvl_status && <button className="btn btn-success" onClick={() => useraccept(plan[0]?.user_id)}>Accept</button>}
             </div>
             <div className="col-md-3 text-center">
-              {plan[0]?.status && <button className="btn btn-danger" onClick={handlerejectClick}>Reject</button>}
+              {plan[0]?.adminaprvl_status && <button className="btn btn-danger" onClick={handlerejectClick}>Reject</button>}
             </div>
             {/* </>
         //      :

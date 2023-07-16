@@ -1,24 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ViewPlan = () => {
   const { id } = useParams();
   const [plan, setPlan] = useState([]);
-  
+  const navigate = useNavigate();
   console.log(plan[0]?.planimage);
+  
   const approve = (id) => {
     axios
       .get(`http://localhost:5000/register/approve-plan/${id}`)
       .then((response) => {
         console.log(response.data);
-        window.location.reload();
+      
+        navigate('/Quote');
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  const reject = (id) => {
+    axios
+      .get(`http://localhost:5000/register/reject-plan/${id}`)
+      .then((response) => {
+        console.log(response.data);
+      
+        navigate('/Quote');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   useEffect(() => {
     const fetchPlan = async () => {
       try {
@@ -77,7 +91,7 @@ const ViewPlan = () => {
       </div>
       <div className="row">
         <div className="col-md-3"></div>
-      {plan[0]?.status==0?
+      {plan[0]?.adminaprvl_status==0?
       <>
       <div className="col-md-3">
           <button className="btn btn-success" onClick={() => approve(plan[0]?._id)}>
@@ -85,18 +99,12 @@ const ViewPlan = () => {
           </button>
         </div>
         <div className="col-md-3">
-          <button className="btn btn-danger">Disapprove</button>
+          <button className="btn btn-danger" onClick={() => reject(plan[0]?._id)}>Disapprove</button>
         </div>
         </>
-        :
-        plan[0]?.status==0 &&plan[0]?.status==1 &&plan[0]?.status==2 ?
+        :''
 
-        <button className="btn btn-success" onClick={() => approve(plan[0]?._id)}>
-        Approved
-      </button>:
-       <button className="btn btn-success" onClick={() => approve(plan[0]?._id)}>
-       Rejected
-     </button>
+      
     }
         
 
