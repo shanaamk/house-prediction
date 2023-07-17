@@ -116,7 +116,7 @@ const Pmcontrol = () => {
                     <button className='btn btn-success'><a href='projectreportform'>Project Report</a></button> 
                 </div>
                 <div className='col md-4'>
-                <button className='btn btn-success'><a href='assign'>Manage Workers</a></button>
+                <button className='btn btn-success'><Link to={`/assign/${id}`}>manage workers</Link></button>
                 </div>
                 <div className='col md-4'>
                     <button className='btn btn-success'> <Link to={`/Work/${id}`}>update staus</Link> </button> 

@@ -16,13 +16,14 @@ const Assignworkers = () => {
 
   const inputChange= (event)=>{
   const{name,value}=event.target 
-  setInput({...input,[name]:value})
+  setInput({...input,value})
   console.log(input);
   }
   
   const submit = (e)=>{
     e.preventDefault()
-    console.log("data", input);
+    // console.log("data", input);
+    
   }
   useEffect(() => {
     axios.get('http://localhost:5000/register/view-workers')
@@ -36,145 +37,42 @@ const Assignworkers = () => {
   return (
     <>
     <ProjectManagernavbar/>
-    {/* <div className="container" style={{marginTop:100,marginBottom:100}}>
-    <div className="row">
-      <div className="col-lg-12">
-        <center><h2>Work Category Manage</h2></center>
-        <table className="table">
-          <thead className="table-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Work Category ID</th>
-              <th scope="col">Work Category Name</th>
-              
-              <th scope="col">Action</th>
-
-            </tr>
-          </thead>
-          <tbody>
-          <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-             
-              <td>
-    <button class="edit-button">
-      <i class="fas fa-edit"></i> Edit
-    </button>
-    <button class="delete-button">
-      <i class="fas fa-trash"></i> Delete
-    </button>
-  </td>
-            </tr>
-
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-           
-              <td>
-    <button class="edit-button">
-      <i class="fas fa-edit"></i> Edit
-    </button>
-    <button class="delete-button">
-      <i class="fas fa-trash"></i> Delete
-    </button>
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              
-              <td>
-    <button class="edit-button">
-      <i class="fas fa-edit"></i> Edit
-    </button>
-    <button class="delete-button">
-      <i class="fas fa-trash"></i> Delete
-    </button>
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              
-              <td>
-    <button class="edit-button">
-      <i class="fas fa-edit"></i> Edit
-    </button>
-    <button class="delete-button">
-      <i class="fas fa-trash"></i> Delete
-    </button>
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-             
-              <td>
-    <button class="edit-button">
-      <i class="fas fa-edit"></i> Edit
-    </button>
-    <button class="delete-button">
-      <i class="fas fa-trash"></i> Delete
-    </button>
-  </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-             
-              <td>
-    <button class="edit-button">
-      <i class="fas fa-edit"></i> Edit
-    </button>
-    <button class="delete-button">
-      <i class="fas fa-trash"></i> Delete
-    </button>
-  </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div> */}
-  {/* </div> */}
+   
   <div className='container mb-5 mt-5'>
   <div className='row'>
     <div className='col-md-4'>
-        
-  <form className="">
-  <div className="form-wrapper">
-          <label htmlFor="">work_category</label>
-          <div className="form-holder select">
-            <select name="work_category" className="form-control" value={input.work_category || ""} onChange={inputChange}>
-            <option value="Fountation">Fountation</option>
-      <option value="Rcc works">Rcc works</option>
-      <option value="Plastering">Plastering</option>
-      <option value="Wiring">Wiring</option>
-      <option value="plumbing">plumbing</option>     
-      <option value="flooring">flooring</option>
-      <option value="Furnishing">Furnishing</option>
-      <option value="Cabinet\caboard">Cabinet\caboard</option>
-      <option value="painting\polishing">painting\polishing</option>
-      <option value="Designing">Designing</option>
-            </select>
+    <form className="">
+      <div className="form-wrapper">
+        <label htmlFor="">work_category</label>
+        <div className="form-holder select">
+          <select name="worktype" className="form-control"  onChange={inputChange}>
+            <option value="categery">categery</option>
+            <option value="Foundation">Foundation</option>
+            <option value="Rcc works">Rcc works</option>
+            <option value="Plastering">Plastering</option>
+            <option value="Wiring">Wiring</option>
+            <option value="Plumbing">Plumbing</option>
+            <option value="Flooring">Flooring</option>
+            <option value="Furnishing">Furnishing</option>
+            <option value="Cabinet\caboard">Cabinet\caboard</option>
+            <option value="Painting\polishing">Painting\polishing</option>
+            <option value="Designing">Designing</option>
+          </select>
           </div>
         </div>
     
-    
+    </form>
     <br />
     <br />
+    <form>
     <div className="form-wrapper">
           <label htmlFor="">workers</label>
           <div className="form-holder select">
             <select name="workers" className="form-control" value={input.workers || ""} onChange={inputChange}>
             <option value="">Select worker</option>
-                {category.map((data)=>(
+                {category.filter(category => category.worktype === '').map((data)=>(
                   <option value={data._id}>{data.name}</option>
+                  
                 ))}
             </select>
           </div>

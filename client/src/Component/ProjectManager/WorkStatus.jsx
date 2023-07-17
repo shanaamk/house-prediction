@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const WorkStatus = () => {
-  const { id } = useParams();
+  const { id} = useParams();
 
   const user_id = localStorage.getItem('user_id')
   console.log(user_id);
+
+  const [viewworks, setViewworks] = useState([]);
 
   const navigate = useNavigate()
   const[inputs, setinputs]=useState([]);
@@ -43,31 +45,22 @@ const WorkStatus = () => {
   };
   
 
-  // const [viewprojects, setViewprojects] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const viewprojectsPerPage = 10;
+  useEffect(() => {
+    fetch(`http://localhost:5000/workstatus/view_update_workstatus/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+         
+          setViewworks(data.data);
+         console.log(data.data);
+         navigate('');
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
  
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/register/view-project-request')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         setViewprojects(data.data);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching users:', error);
-  //     });
-  // }, []);
-  // const totalPages = Math.ceil(viewprojects.length / viewprojectsPerPage);
-  
-  // const handlePageClick = (pageNumber) => {
-  //   setCurrentPage(pageNumber);
-  // };
-
-  // const indexOfLastViewproject= currentPage * viewprojectsPerPage;
-  // const indexOfFirstViewproject = indexOfLastViewproject - viewprojectsPerPage;
-  // const currentViewprojects = viewprojects.slice(indexOfFirstViewproject, indexOfLastViewproject);
   
 
 
@@ -80,41 +73,17 @@ const WorkStatus = () => {
 
       <div id="content">
         <ul className="timeline-1 text-black">
-          <li className="event" data-date="12:30 - 1:00pm">
-            <h4 className="mb-3">Project Work Started</h4> 
+        {viewworks.map((viewwork) => (
+                        <React.Fragment key={viewwork.project_id}>
+          <li className="event" data-date={viewwork.status_date}>
+            <h4 className="mb-3"> {viewwork.work_status}</h4> 
             <p>
-              Get here on time, it's first come first serve. Be late, get turned
-              away.
+            {viewwork.status_description}
             </p>
           </li>
-          <li className="event" data-date="12-05-2023">
-            <h4 className="mb-3 pt-3">Foundation work started</h4>
-            <p>
-              Get ready for an exciting event, this will kick off in amazing
-              fashion with MOP &amp; Busta Rhymes as an opening show.
-            </p>
-          </li>
-          <li className="event" data-date="22-05-2023">
-            <h4 className="mb-3 pt-3">Rcc Work started</h4>
-            <p>
-              This is where it all goes down. You will compete head to head with
-              your friends and rivals. Get ready!
-            </p>
-          </li>
-          <li className="event" data-date="22-06-2023">
-            <h4 className="mb-3 pt-3">Plastering Started</h4>
-            <p className="mb-0">
-              See how is the victor and who are the losers. The big stage is
-              where the winners bask in their own glory.
-            </p>
-          </li>
-          <li className="event" data-date="2-07-2023">
-            <h4 className="mb-3 pt-3">Flooring Started</h4>
-            <p className="mb-0">
-              See how is the victor and who are the losers. The big stage is
-              where the winners bask in their own glory.
-            </p>
-          </li>
+         
+          </React.Fragment>
+           ))}
         </ul>
       </div>
     </div>
@@ -139,15 +108,16 @@ const WorkStatus = () => {
                <select name="work_category" value={inputs.work_category || ""}
               onChange={setRegister} className="custom-select mb-3">
             <option selected="">Select work category</option>
-            <option value="Painter">painting</option>
-            <option value="Plumber">plumbing</option>
-            <option value="Flooring">flooring</option>
-            <option value="Painter">painting</option>
-            <option value="Plumber">plumbing</option>
-            <option value="Flooring">flooring</option>
-            <option value="Painter">painting</option>
-            <option value="Plumber">plumbing</option>
-            <option value="Flooring">flooring</option>
+            <option value="Fountation">Fountation</option>
+      <option value="Rcc works">Rcc works</option>
+      <option value="Plastering">Plastering</option>
+      <option value="Wiring">Wiring</option>
+      <option value="plumbing">plumbing</option>     
+      <option value="flooring">flooring</option>
+      <option value="Furnishing">Furnishing</option>
+      <option value="Cabinet\caboard">Cabinet\caboard</option>
+      <option value="painting\polishing">painting\polishing</option>
+      <option value="Designing">Designing</option>
           </select>
 
           <select name="work_status"  value={inputs.work_status || ""}

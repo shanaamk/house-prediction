@@ -38,6 +38,38 @@ workstatusRouter.post('/update_workstatus/:id', async (req, res) => {
         });
       }
     });
+
+
+    workstatusRouter.get('/view_update_workstatus/:id', async (req, res) => {
+        try {
+          const id = req.params.id
+          const workstatus = await workstatusModel.find({ project_id: id});
+            
+            
+            if(workstatus!=undefined){
+              console.log('ok');
+                return res.status(200).json({
+                    success:true,
+                    error:false,
+                    data:workstatus
+                })
+            }else{
+             console.log('no');
+                return res.status(400).json({
+                    success:false,
+                    error:true,
+                    message:"No data found"
+                })
+            }
+        } catch (error) {
+            return res.status(400).json({
+                success:false,
+                error:true,
+                message:"Something went wrong",
+                details:error
+            })
+        }
+        })
     module.exports = workstatusRouter;
 
 

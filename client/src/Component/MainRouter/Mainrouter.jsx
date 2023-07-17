@@ -65,7 +65,7 @@ import Control from '../Admin/Control'
 import Arccontrol from '../Architecture2/Arccontrol'
 import Testers from '../Architecture2/Testers'
 import Adminnot from '../Admin/Adminnot'
-import Chatboxwithuser from '../Admin/Chatboxwithuser'
+
 import Projects from '../ProjectManager/Projects'
 import Pmcontrol from '../ProjectManager/Pmcontrol'
 import Assignworkers from '../ProjectManager/Assignworkers'
@@ -74,6 +74,7 @@ import Editrent from '../Admin/Editrent'
 import QuestionCarousel from '../USER/Questions'
 import Projectrequest from '../Admin/Projectrequest'
 import PrjctRequestcontrol from '../Admin/PrjctRequestcontrol'
+import Chat from '../ProjectManager/Chat'
 
 
 
@@ -127,11 +128,11 @@ const Mainrouter = () => {
 <Route path="arccontrol" element={<Arccontrol/>}/>
 <Route path="not" element={<Adminnot/>}/>
 <Route path="testpage" element={<Testers/>}/>
-<Route path="userchat" element={<Chatboxwithuser/>}/>
+<Route path="chat" element={<Chat/>}/>
 <Route path="pmpro" element={<Projects/>}/>
 <Route path="pmcontrol/:id/:user_id" element={<Pmcontrol/>}/>
 <Route path="Work/:id" element={<WorkStatuspage/>}/>
-<Route path="assign" element={<Assignworkers/>}/>
+<Route path="assign/:id" element={<Assignworkers/>}/>
 <Route path="view/:id/:user_id" element={<Viewreqpage/>}/>
 <Route path="viewuse" element={<ViewUserpage/>}/>
 <Route path="Quote" element={<ApproveQuotepage/>}/>

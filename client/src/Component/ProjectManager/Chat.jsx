@@ -1,11 +1,11 @@
 import React from 'react'
-import Adminnavbar from './Adminnavbar'
 import PublicUserFooter from '../Footer/PublicUserFooter'
+import ProjectManagernavbar from './ProjectManagernavbar'
 
-const Chatboxwithuser = () => {
+const Chat = () => {
   return (
     <>
-    <Adminnavbar/>
+    <ProjectManagernavbar/>
     <div className="chatboxcontainer">
     <h3 className=" text-center">Messaging</h3>
     <div className="messaging">
@@ -97,4 +97,4 @@ const Chatboxwithuser = () => {
   )
 }
 
-export default Chatboxwithuser
+export default Chat

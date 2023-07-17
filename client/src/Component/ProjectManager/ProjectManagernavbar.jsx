@@ -72,6 +72,7 @@ const ProjectManagernavbar = () => {
             </div>
             
           </div>
+          <a   href="chat"className="nav-item nav-link"><i className='far fa-comments' style={{fontSize:36}}></i></a>
           <a href="pmnotification" className="nav-item nav-link">
            Notifications
           </a>

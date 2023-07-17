@@ -48,8 +48,7 @@ ProjectRouter.post('/add-project', async (req, res) => {
       starting_date: null,
       finishing_date: null,
       project_status: req.body.project_status,
-      work_status: null,
-     
+      work_status: null,    
       status_date: null,
       status_description: null,
       approvel_status: 0
