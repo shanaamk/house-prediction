@@ -126,9 +126,10 @@ const Userviewplanslider = () => {
             <div className="lib-panel">
               <div className="row box-shadow">
                 <div className="col-md-4">
-                {plan[0]?.adminaprvl_status !== undefined && (
+                {plan[0]?.adminaprvl_status !== undefined && plan[0]?.useraprvl_status !== '2' && (
   <img className="lib-img" src={`/assets/upload/${plan[0]?.planimage}`} />
 )}
+
                 </div>
                 {/* <div className="col-md-4">
               <img
@@ -178,7 +179,7 @@ const Userviewplanslider = () => {
                   </table>
                   <div className="col-md-12 text-center">
                     <h6>
-                      {plan[0]?.adminaprvl_status === undefined
+                      {plan[0]?.adminaprvl_status === undefined && plan[0]?.useraprvl_status === '0'
                         ? 'Architecture is working on your Requirements, wait till then'
                         : 'Rs:' + (plan[0]?.cost + '/-' ?? '')}
 
@@ -190,7 +191,7 @@ const Userviewplanslider = () => {
           </div>
           <div className="row">
             <div className="col-md-3"></div>
-            {plan[0]?.adminaprvl_status !== undefined && (
+            {plan[0]?.adminaprvl_status !== undefined && plan[0]?.useraprvl_status === '0' && (
   <div className="col-md-3">
     <div className="col-md-3 text-center">
       <button className="btn btn-success" onClick={() => useraccept(plan[0]?._id)}>Accept</button>

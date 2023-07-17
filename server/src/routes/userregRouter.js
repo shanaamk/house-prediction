@@ -464,6 +464,40 @@ userregRouter.get('/view-workers', async (req, res) => {
     }
     })
 
+    userregRouter.post('/update_project_workers/:id/:workers_id', async (req, res) => {
+        try{
+        const id = req.params.id
+        const workers_id = req.params.workers_id
+        console.log('id', id);
+            const data ={
+               
+                
+                project_id:id
+              
+               
+            };
+           
+            
+            const savedData = await loginModel.updateOne({ _id: workers_id }, { $set: data });
+    
+            if (savedData) {
+              return res.status(200).json({
+                success: true,
+                error: false,
+                message: "worker assigned",
+                details: savedData
+              });
+            }
+        } catch (error) {
+            return res.status(400).json({
+              success: false,
+              error: true,
+              message: "Something went wrong",
+              details: error
+            });
+          }
+        });
+
 
 userregRouter.post('/workerreg', async (req, res) => {
     try{

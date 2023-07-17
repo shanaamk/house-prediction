@@ -12,17 +12,14 @@ const Assignworkers = () => {
   const [category, setCategory] = useState([]);
   const[input,setInput]=useState({})
 
-
-
   const inputChange= (event)=>{
   const{name,value}=event.target 
   setInput({...input,value})
-  console.log(input);
   }
-  
+ 
   const submit = (e)=>{
     e.preventDefault()
-    // console.log("data", input);
+    console.log("data", input);
     
   }
   useEffect(() => {
@@ -48,8 +45,8 @@ const Assignworkers = () => {
           <select name="worktype" className="form-control"  onChange={inputChange}>
             <option value="categery">categery</option>
             <option value="Foundation">Foundation</option>
-            <option value="Rcc works">Rcc works</option>
-            <option value="Plastering">Plastering</option>
+            <option value="Rcc worker">Rcc works</option>
+            <option value="plastering">Plastering</option>
             <option value="Wiring">Wiring</option>
             <option value="Plumbing">Plumbing</option>
             <option value="Flooring">Flooring</option>
@@ -70,7 +67,7 @@ const Assignworkers = () => {
           <div className="form-holder select">
             <select name="workers" className="form-control" value={input.workers || ""} onChange={inputChange}>
             <option value="">Select worker</option>
-                {category.filter(category => category.worktype === '').map((data)=>(
+                {category.filter(category => category.worktype === input.value ).map((data)=>(
                   <option value={data._id}>{data.name}</option>
                   
                 ))}
