@@ -95,11 +95,11 @@ const Contract = () => {
         <div className="value">
         <label htmlFor="full-name">Appload C.V</label>   
   <div className="input-group js-input-file">
-    <input className="input-file" type="file" name="image" 
+    <input className="input-file" type="file" name="uploadcv" 
     onChange={(e) => {
       setFile(e.target.files[0]);
       console.log(e.target.files[0].name);
-      setInput({ ...input, image: e.target.files[0].name });
+      setInput({ ...input, uploadcv: e.target.files[0].name });
     }}/>
     <label className="label--file" htmlFor="file">
       Choose file

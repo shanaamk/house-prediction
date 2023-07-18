@@ -7,11 +7,16 @@ import PublicUserFooter from '../Footer/PublicUserFooter';
 const Control = () => {
   const { id,user_id } = useParams();
 console.log(user_id);
+
   const navigate = useNavigate();
   const [requirements, setRequirements] = useState([]);
   console.log(requirements);
+
+
   const [category, setCategory] = useState([]);
   const [manager, setManager] = useState([]);
+
+
   useEffect(() => {
     fetch(`http://localhost:5000/register/view-requirement/${id}`)
       .then((response) => response.json())

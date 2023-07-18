@@ -1,56 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 
 
 
 const ViewProjectstatus = () => {
+  const { id} = useParams();
+  const user_id = localStorage.getItem('user_id')
+  console.log(user_id);
+
+  const [viewworks, setViewworks] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/workstatus/view_update_workstatus/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+         
+          setViewworks(data.data);
+         console.log(data.data);
+        //  navigate('');
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
+
   return (
     <>
     
     <div className="container py-5">
-  <div className="row">
+  <div className="row" style={{color:'black'}}>
+  <h3><center>Work Updations</center></h3>
     <div className="col-md-12">
+
       <div id="content">
         <ul className="timeline-1 text-black">
-          <li className="event" data-date="12:30 - 1:00pm">
-            <h4 className="mb-3">Registration</h4>
+        {viewworks.map((viewwork) => (
+                        <React.Fragment key={viewwork.project_id}>
+          <li className="event" data-date={viewwork.status_date}>
+            <h4 className="mb-3"> {viewwork.work_status}</h4> 
             <p>
-              Get here on time, it's first come first serve. Be late, get turned
-              away.
+            {viewwork.status_description}
             </p>
           </li>
-          <li className="event" data-date="2:30 - 4:00pm">
-            <h4 className="mb-3 pt-3">Opening Ceremony</h4>
-            <p>
-              Get ready for an exciting event, this will kick off in amazing
-              fashion with MOP &amp; Busta Rhymes as an opening show.
-            </p>
-          </li>
-          <li className="event" data-date="5:00 - 8:00pm">
-            <h4 className="mb-3 pt-3">Main Event</h4>
-            <p>
-              This is where it all goes down. You will compete head to head with
-              your friends and rivals. Get ready!
-            </p>
-          </li>
-          <li className="event" data-date="8:30 - 9:30pm">
-            <h4 className="mb-3 pt-3">Closing Ceremony</h4>
-            <p className="mb-0">
-              See how is the victor and who are the losers. The big stage is
-              where the winners bask in their own glory.
-            </p>
-          </li>
+         
+          </React.Fragment>
+           ))}
         </ul>
-        
       </div>
-      <button type="button" className="btn btn-primary mr-5">
-            Reset
-          </button>
-          <button type="button" className="btn btn-primary"  style={{marginLeft:20}}>
-            Continue
-          </button>
     </div>
   </div>
-  
 </div>
 
     </>

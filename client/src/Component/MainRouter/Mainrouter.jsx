@@ -103,7 +103,7 @@ const Mainrouter = () => {
 <Route path="workershome" element={<Workershome/>}/>
 <Route path="userviewplan/:id" element={<Userviewplan/>}/>
 <Route path="question" element={<QuestionCarousel/>}/>
-<Route path="Status" element={<Projectstatuspage/>}/>
+<Route path="Status/:id" element={<Projectstatuspage/>}/>
 <Route path="archpredictn" element={<Architecturepredictionpage/>}/>
 
 <Route path="rentpage" element={<Adminrentpage/>}/>
@@ -137,7 +137,7 @@ const Mainrouter = () => {
 <Route path="viewuse" element={<ViewUserpage/>}/>
 <Route path="Quote" element={<ApproveQuotepage/>}/>
 <Route path="plan/:id" element={<ViewPlanpage/>}/>
-<Route path="adminstatus" element={<Viewprojectstatuspage/>}/>
+<Route path="adminstatus/:id" element={<Viewprojectstatuspage/>}/>
 <Route path="ongoing" element={<Ongoingworkpage/>}/>
 <Route path="manage" element={<Mnageprojectmanagerpage/>}/>
 <Route path="pages" element={<Managecontractpage/>}/>

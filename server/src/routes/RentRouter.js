@@ -51,7 +51,8 @@ RentRouter.post('/upload', upload.single("file"), (req, res) => {
 
 // RentRouter.put('/edit-rent/:id', async (req, res) => {
 //   try {
-//     const rentId = req.params.id;
+//     const id=req.params.id
+//       console.log('id',id);
 //     const updatedData = {
 //             user_id:req.body.user_id,          
 //             propertyname:req.body.Property_name,    
@@ -65,20 +66,20 @@ RentRouter.post('/upload', upload.single("file"), (req, res) => {
 //             area:req.body.Area
 //     };
 
-//     const updatedRent = await RentModel.findByIdAndUpdate(rentId, updatedData, { new: true });
+//     const updatedRent = await RentModel.findByIdAndUpdate(id, updatedData, { new: true });
 
-//     if (updatedMedicine) {
+//     if (updatedRent) {
 //       return res.status(200).json({
 //         success: true,
 //         error: false,
-//         message: 'Rent category updated successfully',
+//         message: 'Rent  updated successfully',
 //         data: updatedRent,
 //       });
 //     } else {
 //       return res.status(404).json({
 //         success: false,
 //         error: true,
-//         message: 'Rent category not found',
+//         message: 'Rent  not found',
 //       });
 //     }
 //   } catch (error) {

@@ -178,7 +178,7 @@ delete
                 <td className="text-center">
                   <div className="btn-group">
                     <button className="btn btn-success btn-sm">
-                      <i className="bi bi-check-circle-fill" /> Edit
+                      <a href='editrent'><i className="bi bi-check-circle-fill" /> Edit</a>
                     </button>
                     <button className="btn btn-danger btn-sm" >
                       <i className="bi bi-x-circle-fill" /> Delete

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState({});
@@ -47,6 +48,16 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error);
+        toast.error(error.response.data.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
       });
   };
 
@@ -61,6 +72,7 @@ const Login = () => {
   return (
     <>
       <div className="page-content">
+      <ToastContainer/>
         <div className="regcontform-v5-content">
           <form className="regcontform-detail" action="#" method="post">
             <h2 style={{ marginTop: '20px' }}>Login</h2>

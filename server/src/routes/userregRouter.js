@@ -6,7 +6,9 @@ const projectmngerRegistrationModel = require('../models/projectmngerRegistratio
 const workersRegistrationModel = require('../models/workersRegistrationModel')
 const contractRegistrationModel = require('../models/contractRegistrationModel')
 const multer = require('multer');
+
 const userregRouter = express.Router()
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "../client/public/assets/upload")
@@ -389,7 +391,8 @@ userregRouter.post('/projectreg1',async(req,res)=>{
                 name: req.body.Name,
                 email: req.body.Email,
                 phoneno: req.body.PhoneNo,
-                currentproject:null
+                currentproject:null,
+               
             }
             const save_register=await projectmngerRegistrationModel(register_data).save()
             if(save_register){
@@ -469,6 +472,8 @@ userregRouter.get('/view-workers', async (req, res) => {
         const id = req.params.id
         const workers_id = req.params.workers_id
         console.log('id', id);
+        console.log(workers_id);
+
             const data ={
                
                 
@@ -478,10 +483,12 @@ userregRouter.get('/view-workers', async (req, res) => {
             };
            
             
-            const savedData = await loginModel.updateOne({ _id: workers_id }, { $set: data });
+            const savedData = await workersRegistrationModel.updateOne({ _id: workers_id }, { $set: data });
     
             if (savedData) {
+                console.log('ok');
               return res.status(200).json({
+        
                 success: true,
                 error: false,
                 message: "worker assigned",
@@ -539,7 +546,7 @@ userregRouter.post('/workerreg', async (req, res) => {
                 worktype: req.body.WorkType,
                 workexperience: req.body.WorkExperience,
                 currentproject:null,
-                project_id:req.body.project_id
+                project_id: req.body.project_id,
                 
             }
             const save_register= await workersRegistrationModel (register_data).save()
@@ -617,7 +624,34 @@ userregRouter.get('/view-contract', async (req, res) => {
     }
     })
 
-
+    userregRouter.get('/userview-cv', async (req, res) => {
+        try {
+         
+            const users = await contractRegistrationModel.find({})
+          
+            if(users[0]!=undefined){
+                return res.status(200).json({
+                    success:true,
+                    error:false,
+                    data:users
+                })
+            }else{
+                return res.status(400).json({
+                    success:false,
+                    error:true,
+                    message:"No data found"
+                })
+            }
+        } catch (error) {
+            return res.status(400).json({
+                success:false,
+                error:true,
+                message:"Something went wrong",
+                details:error
+            })
+        }
+        })
+  
 
 
 userregRouter.post('/contractreg1', async (req, res) => {
@@ -658,7 +692,7 @@ userregRouter.post('/contractreg1', async (req, res) => {
                 email: req.body.Email,
                 phoneno: req.body.PhoneNo,
                 worktype: req.body.WorkType,
-                uploadcv: req.body.image
+                uploadcv: req.body.uploadcv
 
             }
             const save_register= await contractRegistrationModel (register_data).save()

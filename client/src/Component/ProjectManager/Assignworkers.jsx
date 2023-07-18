@@ -49,7 +49,7 @@ const Assignworkers = () => {
             <option value="plastering">Plastering</option>
             <option value="Wiring">Wiring</option>
             <option value="Plumbing">Plumbing</option>
-            <option value="Flooring">Flooring</option>
+            <option value="flooring">Flooring</option>
             <option value="Furnishing">Furnishing</option>
             <option value="Cabinet\caboard">Cabinet\caboard</option>
             <option value="Painting\polishing">Painting\polishing</option>
@@ -86,7 +86,7 @@ const Assignworkers = () => {
     </div>
     <div className='col-md-4'>
         
-  <form className="">
+  {/* <form className="">
     <select name="cars" className="custom-select">
       <option selected="">Select work category</option>
       <option value="Painter">painter</option>
@@ -98,14 +98,14 @@ const Assignworkers = () => {
     <button type="button" className="btn btn-light">
      View Team
     </button>
-  </form>
+  </form> */}
 
 
     </div>
 
 
 
-        <div className='col-md-4 justify-content-center'>
+        {/* <div className='col-md-4 justify-content-center'>
         <table classssName="table text-center" style={{color:'black',fontSize:21}}>
         <thead className="table-dark"> 
      
@@ -145,7 +145,7 @@ const Assignworkers = () => {
     </tr>
     </tbody>
 </table>
-</div>
+</div> */}
         </div>
         </div>
 

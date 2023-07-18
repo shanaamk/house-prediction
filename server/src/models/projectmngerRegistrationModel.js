@@ -8,6 +8,7 @@ const projectmngerRegistrationSchema = new schema({
     email:{type:String},
     phoneno:{type:String},
     currentproject:{type:String},
+    status:{type:String},
     project_id:{type:mongoose.Types.ObjectId,ref:"project_tb"}
     
 

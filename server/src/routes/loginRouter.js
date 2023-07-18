@@ -33,17 +33,27 @@ loginRouter.post('/login', async (req, res) => {
         if(oldUser.role==1){
             const user = await userRegistrationModel.findOne({login_id:oldUser._id})
             if(user){
-                return res.status(200).json({
-                    success:true,
-                    error:false,
-                    role:oldUser.role,
-                    login_id:oldUser._id,
-                    name:user.name,
-                    user_id:user._id,
-                    status:oldUser.status,
-                    detailes:oldUser
-
-                })
+                if(oldUser.status==1){
+                    return res.status(200).json({
+                        success:true,
+                        error:false,
+                        role:oldUser.role,
+                        login_id:oldUser._id,
+                        name:user.name,
+                        user_id:user._id,
+                        status:oldUser.status,
+                        detailes:oldUser
+    
+                    })
+                }else{
+                    return res.status(406).json({
+                        success:false,
+                        error:true,
+                        message:"waiting for admin approval!"
+        
+                    })
+                }
+               
             }
         }
         if(oldUser.role==2){

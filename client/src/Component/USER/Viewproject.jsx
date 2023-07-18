@@ -33,6 +33,7 @@ const Viewproject = () => {
   const indexOfFirstViewproject = indexOfLastViewproject - viewprojectsPerPage;
   const currentViewprojects = viewprojects.slice(indexOfFirstViewproject, indexOfLastViewproject);
   
+  
 
   return (
     <>
@@ -66,7 +67,7 @@ const Viewproject = () => {
                <span className="fa fa-money" />Rs.1476000/-
              </li>
            </ul>
-           <h2 className="desc"style={{marginLeft:270}}><a href='status'>View status</a> </h2>
+           <h2 className="desc"style={{marginLeft:270}}>  <Link to={`/Status/${viewproject._id}`}><h2 className="title">View status</h2></Link> </h2>
          </div>
          
        </li>

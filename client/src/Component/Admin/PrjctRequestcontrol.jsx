@@ -6,6 +6,7 @@ const PrjctRequestcontrol = () => {
 
   const { id ,user_id} = useParams();
   const [requirements, setRequirements] = useState([]);
+  
   useEffect(() => {
     fetch(`http://localhost:5000/register/view-requirement/${id}`)
       .then((response) => response.json())
@@ -68,7 +69,8 @@ const PrjctRequestcontrol = () => {
 ))}
         </tbody>
       </table>
-      <a href='adminstatus'>Approve Status</a>
+      {/* <a href='adminstatus'>Approve Status</a> */}
+      <Link to={`/adminstatus/${id}`}><h2 className="title">Approve Status</h2></Link>
         </div>
        
         <div className='col-md-4'>

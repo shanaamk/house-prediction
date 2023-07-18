@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 const Managecontract = () => {
+  const [cv, setCv] = useState([]);
   const [contracters, setContracters] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const contractersPerPage = 10;
@@ -52,6 +53,26 @@ const Managecontract = () => {
       });
   };
 
+  useEffect(() => {
+    const fetchcv = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/register/userview-cv');
+        const data = await response.json();
+
+        if (data.success) {
+          console.log(data.data);
+          setCv(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching cv:', error);
+      }
+    };
+
+    fetchcv();
+  }, []);
+
+   
+
   return (
     <div className="container" style={{marginLeft:350}}>
     <h3>Manage Contract</h3>
@@ -78,8 +99,11 @@ const Managecontract = () => {
                 <td>{contracter.email}</td>
                 <td>{contracter.phoneno}</td>
                 <td>{contracter.worktype}</td>
-                <td>{contracter.cv}</td>
-                {/* cv */}
+                <td>
+                <a href={`/assets/upload/${contracter.uploadcv}`} download target="_blank" rel="noopener noreferrer">
+              View CV
+            </a>
+          </td>
                 
          <td className="text-center">
          {contracter.status === '0' ? (
