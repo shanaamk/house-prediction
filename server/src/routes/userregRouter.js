@@ -465,12 +465,12 @@ userregRouter.get('/view-workers', async (req, res) => {
             details:error
         })
     }
-    })
+    });
 
-    userregRouter.post('/update_project_workers/:id/:workers_id', async (req, res) => {
+    userregRouter.get('/update_project_workers/:id/:val', async (req, res) => {
         try{
         const id = req.params.id
-        const workers_id = req.params.workers_id
+        const workers_id = req.params.val
         console.log('id', id);
         console.log(workers_id);
 
@@ -592,7 +592,7 @@ userregRouter.get('/view-contract', async (req, res) => {
                     'email':{"$first":"$email"},
                     'phoneno':{"$first":"$phoneno"},
                     'worktype':{"$first":"$worktype"},
-                    'uploadcv':{"$first":"$image"},
+                    'uploadcv':{"$first":"$uploadcv"},
                     'status':{"$first":"$login.status"},
                     'login_id':{"$first":"$login._id"},
                 }
@@ -718,33 +718,5 @@ userregRouter.post('/contractreg1', async (req, res) => {
 })
 
 
-// userregRouter.post('/workerreg', function (req, res) {
-//     const data = {
 
-//         name: req.body.Name,
-//         email: req.body.Email,
-//         phoneno: req.body.PhoneNo,
-//         worktype: req.body.WorkType,
-//         workexperience: req.body.WorkExperience,
-//         username: req.body.Username,
-//         password: req.body.Password,
-//         cpassword: req.body.ConformPassword
-//     }
-//     console.log(data);
-// })
-
-// userregRouter.post('/contractreg1', function (req, res) {
-//     const data = {
-
-//         name: req.body.Name,
-//         email: req.body.Email,
-//         phoneno: req.body.PhoneNo,
-//         worktype: req.body.WorkType,
-//         uploadcv: req.body.CV,
-//         username: req.body.Username,
-//         password: req.body.Password,
-//         cpassword: req.body.ConformPassword
-//     }
-//     console.log(data);
-// })
  module.exports = userregRouter

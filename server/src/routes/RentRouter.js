@@ -21,76 +21,76 @@ RentRouter.post('/upload', upload.single("file"), (req, res) => {
 })
 
 
-// RentRouter.delete('/delete-rent/:id', async (req, res) => {
-//   try {
-//     const rentId = req.params.id;
-//     const deletedrentItem = await addcartModel.findByIdAndDelete(rentId);
+RentRouter.delete('/delete-rent/:id', async (req, res) => {
+  try {
+    const rentId = req.params.id;
+    const deletedrentItem = await RentModel.findByIdAndDelete(rentId);
     
-//     if (deletedrentItem) {
-//       return res.status(200).json({
-//         success: true,
-//         error: false,
-//         message: 'rent item deleted successfully',
-//       });
-//     } else {
-//       return res.status(404).json({
-//         success: false,
-//         error: true,
-//         message: 'rent item not found',
-//       });
-//     }
-//   } catch (error) {
-//     return res.status(400).json({
-//       success: false,
-//       error: true,
-//       message: 'Something went wrong',
-//       details: error,
-//     });
-//   }
-// });
+    if (deletedrentItem) {
+      return res.status(200).json({
+        success: true,
+        error: false,
+        message: 'rent item deleted successfully',
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        error: true,
+        message: 'rent item not found',
+      });
+    }
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: true,
+      message: 'Something went wrong',
+      details: error,
+    });
+  }
+});
 
-// RentRouter.put('/edit-rent/:id', async (req, res) => {
-//   try {
-//     const id=req.params.id
-//       console.log('id',id);
-//     const updatedData = {
-//             user_id:req.body.user_id,          
-//             propertyname:req.body.Property_name,    
-//             address:req.body. Address,
-//             price:req.body. Price,
-//             location:req.body.Location,
-//             landmark:req.body.Landmark,
-//             rentimage:req.body.rentimage,
-//             bedrooms:req.body.Bedrooms,
-//             bathrooms:req.body.Bathrooms,
-//             area:req.body.Area
-//     };
+RentRouter.put('/edit-rent/:id', async (req, res) => {
+  try {
+    const id=req.params.id
+      console.log('id',id);
+    const updatedData = {
+            user_id:req.body.user_id,          
+            propertyname:req.body.Property_name,    
+            address:req.body. Address,
+            price:req.body. Price,
+            location:req.body.Location,
+            landmark:req.body.Landmark,
+            rentimage:req.body.rentimage,
+            bedrooms:req.body.Bedrooms,
+            bathrooms:req.body.Bathrooms,
+            area:req.body.Area
+    };
 
-//     const updatedRent = await RentModel.findByIdAndUpdate(id, updatedData, { new: true });
+    const updatedRent = await RentModel.findByIdAndUpdate(id, updatedData, { new: true });
 
-//     if (updatedRent) {
-//       return res.status(200).json({
-//         success: true,
-//         error: false,
-//         message: 'Rent  updated successfully',
-//         data: updatedRent,
-//       });
-//     } else {
-//       return res.status(404).json({
-//         success: false,
-//         error: true,
-//         message: 'Rent  not found',
-//       });
-//     }
-//   } catch (error) {
-//     return res.status(500).json({
-//       success: false,
-//       error: true,
-//       message: 'Something went wrong',
-//       details: error,
-//     });
-//   }
-// });
+    if (updatedRent) {
+      return res.status(200).json({
+        success: true,
+        error: false,
+        message: 'Rent  updated successfully',
+        data: updatedRent,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        error: true,
+        message: 'Rent  not found',
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: true,
+      message: 'Something went wrong',
+      details: error,
+    });
+  }
+});
 
 RentRouter.get('/view-rent', async (req, res) => {
   try {

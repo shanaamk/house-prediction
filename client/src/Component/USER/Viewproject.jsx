@@ -47,17 +47,17 @@ const Viewproject = () => {
      {currentViewprojects.filter(viewproject => viewproject.user_id.toString() === user_id).map((viewproject, index) => (
        <li   key={index}>
          <time dateTime="2014-07-20">
-           <span className="day">4</span>
+           <span className="day">21</span>
            <span className="month">Jul</span>
-           <span className="year">2014</span>
+           <span className="year">2023</span>
            <span className="time">ALL DAY</span>
          </time>
         
          <div className="info">
-           <Link to={`/userviewplan/${viewproject._id}`}><h2 className="title">{viewproject.project_name}</h2></Link>
+           <Link to={`/userviewplan/${viewproject._id}`}><h3 className="title">{viewproject.project_name}</h3></Link>
            
            <p className="desc">{viewproject.location}</p>
-           <ul>
+           {/* <ul>
              <li style={{ width: "50%" }}>
                <a href="#website">
                  <span /> Estimate Cost
@@ -66,8 +66,8 @@ const Viewproject = () => {
              <li style={{ width: "50%" }}>
                <span className="fa fa-money" />Rs.1476000/-
              </li>
-           </ul>
-           <h2 className="desc"style={{marginLeft:270}}>  <Link to={`/Status/${viewproject._id}`}><h2 className="title">View status</h2></Link> </h2>
+           </ul> */}
+           <h5 className="desc"style={{marginLeft:270}}>  <Link to={`/Status/${viewproject._id}`}>View status</Link> </h5>
          </div>
          
        </li>

@@ -3,6 +3,7 @@ import axios from 'axios';
 const Managecontract = () => {
   const [cv, setCv] = useState([]);
   const [contracters, setContracters] = useState([]);
+  console.log(contracters);
   const [currentPage, setCurrentPage] = useState(1);
   const contractersPerPage = 10;
 
@@ -99,6 +100,7 @@ const Managecontract = () => {
                 <td>{contracter.email}</td>
                 <td>{contracter.phoneno}</td>
                 <td>{contracter.worktype}</td>
+               
                 <td>
                 <a href={`/assets/upload/${contracter.uploadcv}`} download target="_blank" rel="noopener noreferrer">
               View CV

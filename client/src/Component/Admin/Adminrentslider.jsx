@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const Adminrentslider = () => {
   
@@ -66,7 +67,16 @@ const Adminrentslider = () => {
   const indexOfLastRent = currentPage * rentsPerPage;
   const indexOfFirstRent = indexOfLastRent - rentsPerPage;
   const currentRents = rents.slice(indexOfFirstRent, indexOfLastRent);
-  
+  const removerent = (id) => {
+    axios
+      .delete(`http://localhost:5000/register/delete-rent/${id}`)
+      .then(() => {
+        setRents((prevUsers) => prevUsers.filter((user) => user._id !== id));
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
+  };
 
   return (
 <>
@@ -178,9 +188,10 @@ delete
                 <td className="text-center">
                   <div className="btn-group">
                     <button className="btn btn-success btn-sm">
-                      <a href='editrent'><i className="bi bi-check-circle-fill" /> Edit</a>
+                    <Link className="bi bi-check-circle-fill" to={`/editrent/${rent._id}`}>Edit</Link>
                     </button>
-                    <button className="btn btn-danger btn-sm" >
+                    {/* <Link className="btn btn-success edit-button mr-2 flex-fill" to={`/editcategory/${user._id}`}>Edit</Link> */}
+                    <button className="btn btn-danger btn-sm"onClick={() => removerent(rent._id)} >
                       <i className="bi bi-x-circle-fill" /> Delete
                     </button>
                   </div>

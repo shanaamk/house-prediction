@@ -59,6 +59,7 @@ loginRouter.post('/login', async (req, res) => {
         if(oldUser.role==2){
             const architecture = await archRegistrationModel.findOne({login_id:oldUser._id})
             if(architecture){
+                if(oldUser.status==1){
                 return res.status(200).json({
                     success:true,
                     error:false,
@@ -69,11 +70,21 @@ loginRouter.post('/login', async (req, res) => {
                     detailes:oldUser
 
                 })
+            }else{
+                 return res.status(406).json({
+                success:false,
+                error:true,
+                message:"waiting for admin approval!"
+
+            })
+          }
+
             }
         }
         if(oldUser.role==3){
             const projectmanager = await projectmngerRegistrationModel.findOne({login_id:oldUser._id})
             if(projectmanager){
+                if(oldUser.status==1){
                 return res.status(200).json({
                     success:true,
                     error:false,
@@ -84,11 +95,20 @@ loginRouter.post('/login', async (req, res) => {
                     detailes:oldUser
 
                 })
+            }else{ return res.status(406).json({
+                success:false,
+                error:true,
+                message:"waiting for admin approval!"
+
+            })
+
             }
         }
+    }
         if(oldUser.role==4){
             const workers = await workersRegistrationModel.findOne({login_id:oldUser._id})
             if(workers){
+                if(oldUser.status==1){
                 return res.status(200).json({
                     success:true,
                     error:false,
@@ -99,8 +119,15 @@ loginRouter.post('/login', async (req, res) => {
                     detailes:oldUser
 
                 })
-            }
+            }else{ return res.status(406).json({
+                success:false,
+                error:true,
+                message:"waiting for admin approval!"
+
+            })
         }
+    }
+}
         if(oldUser.role==5){
             const contract = await contractRegistrationModel.findOne({login_id:oldUser._id})
             if(contract){

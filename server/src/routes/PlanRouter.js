@@ -364,8 +364,8 @@ PlanRouter.post('/plan', async (req, res) => {
       {
         '$lookup': {
           'from': 'project_tbs',
-          'localField': 'architecture_id',
-          'foreignField': 'architecture_id',
+          'localField': 'project_id',
+          'foreignField': '_id',
           'as': 'project'
         }
       },
@@ -378,11 +378,11 @@ PlanRouter.post('/plan', async (req, res) => {
       {
                   "$group":{
                       '_id':"$_id",
-                      'architecturename':{"$first":"$architecture.name"},  
-                      'project_name':{"$first":"$project.project_name"},
+                      'architecturename':{"$first":"$architecture.name"},                       
                       'project_id':{"$first":"$project_id"},
                       'planupload_date':{"$first":"$planupload_date"},
-                      'adminaprvl_status':{"$first":"$adminaprvl_status"},               
+                      'adminaprvl_status':{"$first":"$adminaprvl_status"}, 
+                      'project_name':{"$first":"$project.project_name"},              
                       
                   }
               }

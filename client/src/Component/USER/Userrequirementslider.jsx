@@ -9,19 +9,19 @@ import { useNavigate, useParams } from 'react-router-dom';
 const Userrequirementslider = () => {
 
   const { id } = useParams();
-  console.log(id);
-  const [showUploadForm, setShowUploadForm] = useState(false);
+  // console.log(id);
+  // const [showUploadForm, setShowUploadForm] = useState(false);
 
-  const handleYesButtonClick = () => {
-    setShowUploadForm(true);
-    setshowRequirementForm(false);
-  };
-  const [showRequirementForm, setshowRequirementForm] = useState(false);
+  // const handleYesButtonClick = () => {
+  //   setShowUploadForm(true);
+  //   setshowRequirementForm(false);
+  // };
+  // const [showRequirementForm, setshowRequirementForm] = useState(false);
 
-  const handleNoButtonClick = () => {
-    setshowRequirementForm(true);
-    setShowUploadForm(false);
-  };
+  // const handleNoButtonClick = () => {
+  //   setshowRequirementForm(true);
+  //   setShowUploadForm(false);
+  // };
 
   
 
@@ -104,7 +104,7 @@ const Userrequirementslider = () => {
         
       
 
-      <div className="container">
+      {/* <div className="container">
         <div className="row" style={{ marginTop: 20 }}>
           <div className="col-md-12 text-center">
             <h2>if you have a plan?</h2>
@@ -116,9 +116,9 @@ const Userrequirementslider = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      {showUploadForm ? (
+      {/* {showUploadForm ? (
         <div className='row'>
              <div className='col-md-12 d-flex justify-content-center align-items-center'>
              <div className="regcontform-v5-content" style={{backgroundColor: 'whitesmoke'}}>
@@ -137,10 +137,10 @@ const Userrequirementslider = () => {
            {/* <div className="label--desc">
         //     Upload your CV/Resume or any other relevant file. Max file size 50 MB
         //   </div> */}
-         </div>
+         {/* </div> */} 
         
         
-               <div className="regcontform-row-last">
+               {/* <div className="regcontform-row-last">
                 <input
                   type="submit"
                   name="register"
@@ -153,10 +153,10 @@ const Userrequirementslider = () => {
           </div>
             </div>
           </div>
-      ) : null}
+      ) : null} */}
 
       {/* Requirement collection form */}
-      {showRequirementForm ? (
+      {/* {showRequirementForm ? ( */}
        <div className="container" >
            <div style={{ display: "flex", width: "100%",color:'black',marginTop:20,marginBottom:20}}>
               
@@ -202,7 +202,7 @@ const Userrequirementslider = () => {
              </form>
            </div>
            </div>
-      ) : null}
+      {/* ) : null} */}
   </>
   );
 };

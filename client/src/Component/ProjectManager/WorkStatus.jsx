@@ -3,8 +3,9 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const WorkStatus = () => {
+  
   const { id} = useParams();
-
+  const [file, setFile] = useState('');
   const user_id = localStorage.getItem('user_id')
   console.log(user_id);
 
@@ -23,7 +24,19 @@ const WorkStatus = () => {
   
   const registersubmit = (event) => {
     event.preventDefault();
-  
+    if (file) {
+      const data = new FormData();
+      const filename = file.name
+      data.append('file', file);
+      data.append('name', filename);
+      axios.post('http://localhost:5000/register/upload', data)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      }
     // Concatenate work_category and work_status
     const project_status = inputs.work_category + ' ' + inputs.work_status;
   
@@ -105,6 +118,7 @@ const WorkStatus = () => {
         <textarea name="status_description" value={inputs.status_description || ""}
               onChange={setRegister} className="custom-select" placeholder="Status description" />
       </div>
+         
                <select name="work_category" value={inputs.work_category || ""}
               onChange={setRegister} className="custom-select mb-3">
             <option selected="">Select work category</option>
@@ -130,6 +144,16 @@ const WorkStatus = () => {
           </select>
           <br />
           <br />
+          <div className="regcontform1-row" >
+        <label htmlFor="full-name"  className='costlabel'>home image</label>   
+  <div className="input-group js-input-file" style={{color:'black'}}>
+    <input className="input-file" type="file" name="home_img" id="file"  onChange={(e) => {
+      setFile(e.target.files[0]);
+      console.log(e.target.files[0].name);
+      setinputs({ ...inputs, home_img: e.target.files[0].name });
+    }} />
+    </div>
+  </div>
           <button type='submit' className="btn btn-light mr-5">
             Reset
           </button>

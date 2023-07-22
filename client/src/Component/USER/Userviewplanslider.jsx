@@ -179,7 +179,7 @@ const Userviewplanslider = () => {
                   </table>
                   <div className="col-md-12 text-center">
                     <h6>
-                      {plan[0]?.adminaprvl_status === undefined && plan[0]?.useraprvl_status === '0'
+                      {plan[0]?.adminaprvl_status === undefined 
                         ? 'Architecture is working on your Requirements, wait till then'
                         : 'Rs:' + (plan[0]?.cost + '/-' ?? '')}
 

@@ -65,8 +65,8 @@ const Projects = () => {
                     <td>{manager.name}</td>
                     <td>{manager.address}</td>
                     <td>{manager.phoneno}</td>
-                    <td>{manager.project_name}</td>
                     <td>{manager.location}</td>
+                    <td>{manager.project_name}</td>
                     <td>{manager.register_date}</td>
                     <td>{manager.time_Period}</td>
                     <td>{manager.cost}</td>

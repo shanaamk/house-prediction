@@ -113,7 +113,7 @@ const Mainrouter = () => {
 <Route path="reqst" element={<Projectrequest/>}/>
 <Route path="allprjctcontrol/:id/:user_id" element={<PrjctRequestcontrol/>}/>
 <Route path="reports" element={<Projectreportviewpage/>}/>
-<Route path="viewteam" element={<Workresviewteampage/>}/>
+<Route path="viewteam/:id" element={<Workresviewteampage/>}/>
 <Route path="table" element={<Workerstable/>}/>
 <Route path="reportss" element={<Projectreports/>}/>
 <Route path="worknotfctn" element={<Notifications/>}/>
@@ -152,7 +152,7 @@ const Mainrouter = () => {
 <Route path="manageworkercategory" element={<ManageWorkcategory/>}/>
 <Route path="carchitecture" element={<ChooseArchitecture/>}/>
 <Route path="cprojectmanager" element={<ChooseProjectmanager/>}/>
-<Route path="editrent" element={<Editrent/>}/>
+<Route path="editrent/:id" element={<Editrent/>}/>
 
 
 

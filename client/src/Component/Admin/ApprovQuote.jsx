@@ -44,9 +44,9 @@ const ApprovQuote = () => {
           </p>
           {archreq
   .filter(archreq => archreq.adminaprvl_status === '0')
-  .map((archreq, index) => (
+  .map((archreq) => (
     <>
-          <div className="d-flex flex-row justify-content-between align-items-center"  key={index}>
+          <div className="d-flex flex-row justify-content-between align-items-center"  >
        
             <div className="d-flex flex-row align-items-center">
               <img

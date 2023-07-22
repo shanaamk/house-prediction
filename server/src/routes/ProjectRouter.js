@@ -265,8 +265,8 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
       {
         '$lookup': {
           'from': 'plan_tbs',
-          'localField': 'user_id',
-          'foreignField': 'user_id',
+          'localField': 'project_id',
+          'foreignField': '_id',
           'as': 'plan'
         }
       },
@@ -398,6 +398,67 @@ ProjectRouter.get('/view-allprjcts-toprjmnger', async (req, res) => {
 })
 
 
+ProjectRouter.get('/view-projects-toworkers', async (req, res) => {
+  try {
+    const users = await ProjectModel.aggregate([
+
+      {
+        '$lookup': {
+          'from': 'workers_registration_tbs',
+          'localField': '_id',
+          'foreignField': 'project_id',
+          'as': 'workers'
+        }
+      },
+     
+      
+
+      {
+        "$unwind": "$workers"
+      },
+      
+     
+      {
+                  "$group":{
+                      '_id':"$_id",
+                     
+                      'workers_id':{"$first":"$workers._id"},
+                      'name':{"$first":"$workers.name"},
+                      'worktype':{"$first":"$workers.worktype"},
+                      'project_name':{"$first":"$project_name"},
+                      // 'projectmanager_id':{"$first":"$projectmanager_id"}, 
+                      'location': { "$first": "$location" }, 
+                      'approvel_status':{"$first":"$approvel_status"},
+                      'login_id':{"$first":"$login._id"},
+                      
+                  }
+              }
+    ])
+
+
+    if (users[0] != undefined) {
+      return res.status(200).json({
+        success: true,
+        error: false,
+        data: users
+      })
+    } else {
+      return res.status(400).json({
+        success: false,
+        error: true,
+        message: "No data found"
+      })
+    }
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: true,
+      message: "Something went wrong",
+      details: error
+    })
+  }
+})
+
 
 ProjectRouter.post('/work_status/:id', async (req, res) => {
   try {
@@ -407,7 +468,7 @@ ProjectRouter.post('/work_status/:id', async (req, res) => {
      
       status_date: req.body.status_date,
       status_description: req.body.status_description,
-    
+      home_img: req.body.home_img,
       project_status: req.body.project_status,
       
     };
@@ -415,7 +476,8 @@ ProjectRouter.post('/work_status/:id', async (req, res) => {
       
       project_id : id,
       status_date: req.body.status_date,
-      status_description: req.body.status_description,    
+      status_description: req.body.status_description,
+      home_img: req.body.home_img,    
       work_status: req.body.project_status,
       
     };
@@ -443,6 +505,8 @@ ProjectRouter.post('/work_status/:id', async (req, res) => {
     });
   }
 });
+
+
 // ProjectRouter.get('/view_work_status/:id', async (req, res) => {
 //   try {
 //     const user_id = req.params.id;

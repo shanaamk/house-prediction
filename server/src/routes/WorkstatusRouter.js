@@ -1,10 +1,23 @@
 const express = require('express');
-
+const multer = require('multer');
 const workstatusModel = require('../models/WorkstatusModel');
 
 const workstatusRouter = express.Router();
 
 workstatusRouter.post('/update_workstatus/:id', async (req, res) => {
+  var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "../client/public/assets/upload")
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+  })
+  
+  var upload = multer({ storage: storage })
+  RentRouter.post('/upload', upload.single("file"), (req, res) => {
+    return res.json("file uploaded")
+  })
     try{
     const id = req.params.id
     console.log('id', id);
@@ -12,7 +25,7 @@ workstatusRouter.post('/update_workstatus/:id', async (req, res) => {
            
             status_date: req.body.status_date,
            status_description: req.body.status_description,
-    
+           home_img: req.body.home_img,
            work_status: req.body.project_status
           
            
