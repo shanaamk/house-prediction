@@ -11,7 +11,7 @@ const Userviewplanslider = () => {
   const [input, setInput] = useState({});
   const [requirements, setRequirements] = useState([]);
   const [showUploadForm, setShowUploadForm] = useState(false);
-
+console.log(requirements);
   const navigate = useNavigate();
 
   const setRegister = (event) => {
@@ -34,7 +34,7 @@ const Userviewplanslider = () => {
   useEffect(() => {
     const fetchPlan = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/register/userview-plan/${id}`);
+        const response = await fetch(`http://localhost:5000/register/userview-approved-plan/${user_id}`);
         const data = await response.json();
 
         if (data.success) {

@@ -50,7 +50,7 @@ const Workersslider = () => {
                <span className="fa fa-money" />Current Work
              </li>
            </ul>
-           <Link to={`/viewteam/${current._id}`}> <h6 className="desc"style={{marginLeft:200}}>View Team </h6></Link>
+           <Link to={`/viewteam/${current._id}/${current.project_id}`}> <h6 className="desc"style={{marginLeft:200}}>View Team </h6></Link>
          </div>
          
        </li>

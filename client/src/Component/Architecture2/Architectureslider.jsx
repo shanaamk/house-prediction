@@ -9,7 +9,7 @@ const Architectureslider = () => {
   const clientsPerPage = 10;
 
   useEffect(() => {
-    fetch('http://localhost:5000/register/view-client-list')
+    fetch('http://localhost:5000/register/view-client-list-architecture')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -103,7 +103,7 @@ const Architectureslider = () => {
         </thead>
         <tbody>
         {currentClients
-  .filter(client => client.useraprvl_status !== '1' && client.architecture_id === architecture_id)
+  .filter(client => client.useraprvl_status !== '1' &&  client.architecture_id === architecture_id)
   .map((client, index) => (
     
     <tr key={index}>

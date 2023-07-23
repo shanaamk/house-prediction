@@ -7,6 +7,7 @@ const workstatusSchema = new schema({
     work_status:{type:String},    
     status_date:{type:String},
     status_description:{type:String},
+    home_img:{type:String},
     project_id:{type:mongoose.Types.ObjectId,ref:"project_tb"}
     
     

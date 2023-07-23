@@ -1,6 +1,8 @@
 const express = require('express');
 const ProjectModel = require('../models/ProjectModel');
 const workstatusModel = require('../models/WorkstatusModel');
+const workersRegistrationModel = require('../models/workersRegistrationModel');
+
 
 const ProjectRouter = express.Router();
 
@@ -51,6 +53,7 @@ ProjectRouter.post('/add-project', async (req, res) => {
       work_status: null,    
       status_date: null,
       status_description: null,
+      home_img: null,
       approvel_status: 0
     };
     const savedData = await ProjectModel(data).save();
@@ -265,8 +268,8 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
       {
         '$lookup': {
           'from': 'plan_tbs',
-          'localField': 'project_id',
-          'foreignField': '_id',
+          'localField': '_id',
+          'foreignField': 'project_id',
           'as': 'plan'
         }
       },
@@ -275,9 +278,9 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
       {
         "$unwind": "$user"
       },
-      // {
-      //   "$unwind": "$plan"
-      // },
+      {
+        "$unwind": "$plan"
+      },
       
       
       {
@@ -321,7 +324,67 @@ ProjectRouter.get('/view-client-list', async (req, res) => {
   }
 })
 
+ProjectRouter.get('/view-client-list-architecture', async (req, res) => {
+  try {
+    const users = await ProjectModel.aggregate([
 
+      {
+        '$lookup': {
+          'from': 'user_registration_tbs',
+          'localField': 'user_id',
+          'foreignField': '_id',
+          'as': 'user'
+        }
+      },
+      
+      
+
+      {
+        "$unwind": "$user"
+      },
+      
+      
+      
+      {
+                  "$group":{
+                      '_id':"$_id",
+                      'architecture_id':{"$first":"$architecture_id"},
+                      'name':{"$first":"$user.name"}, 
+                      'project_name':{"$first":"$project_name"},  
+                      'location': { "$first": "$location" }, 
+                      'register_date':{"$first":"$register_date"},
+                      'status':{"$first":"$login.status"},
+                      'login_id':{"$first":"$login._id"},
+                     
+                      'approvel_status':{"$first":"$approvel_status"},
+                      'user_id':{"$first":"$user_id"},
+                  }
+              }
+    ])
+
+
+    if (users[0] != undefined) {
+      return res.status(200).json({
+        success: true,
+        error: false,
+        data: users
+      })
+    } else {
+      return res.status(400).json({
+        success: false,
+        error: true,
+        message: "No data found"
+      })
+    }
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: true,
+      message: "Something went wrong",
+      details: error
+    })
+  }
+})
 
 ProjectRouter.get('/view-allprjcts-toprjmnger', async (req, res) => {
   try {
@@ -400,36 +463,41 @@ ProjectRouter.get('/view-allprjcts-toprjmnger', async (req, res) => {
 
 ProjectRouter.get('/view-projects-toworkers', async (req, res) => {
   try {
-    const users = await ProjectModel.aggregate([
+    const users = await workersRegistrationModel.aggregate([
 
       {
         '$lookup': {
-          'from': 'workers_registration_tbs',
-          'localField': '_id',
-          'foreignField': 'project_id',
-          'as': 'workers'
+          'from': 'project_tbs',
+          'localField': 'project_id',
+          'foreignField': '_id',
+          'as': 'project'
         }
       },
+      // {
+      //   '$lookup': {
+      //     'from': 'workers_registration_tbs',
+      //     'localField': '_id',
+      //     'foreignField': 'project_id',
+      //     'as': 'workers'
+      //   }
+      // },
      
       
 
       {
-        "$unwind": "$workers"
+        "$unwind": "$project"
       },
       
      
       {
                   "$group":{
-                      '_id':"$_id",
-                     
-                      'workers_id':{"$first":"$workers._id"},
-                      'name':{"$first":"$workers.name"},
-                      'worktype':{"$first":"$workers.worktype"},
-                      'project_name':{"$first":"$project_name"},
-                      // 'projectmanager_id':{"$first":"$projectmanager_id"}, 
-                      'location': { "$first": "$location" }, 
-                      'approvel_status':{"$first":"$approvel_status"},
-                      'login_id':{"$first":"$login._id"},
+                      '_id':"$_id",                     
+                      'workers_id':{"$first":"$_id"},
+                      'project_id':{"$first":"$project._id"},
+                      'name':{"$first":"$name"},
+                      'worktype':{"$first":"$worktype"},
+                      'project_name':{"$first":"$project.project_name"},
+                      'location': { "$first": "$project.location" }, 
                       
                   }
               }

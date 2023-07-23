@@ -7,7 +7,7 @@ const Projectstatus = () => {
 
   const user_id = localStorage.getItem('user_id')
   console.log(user_id);
-
+  const [img, setImg] = useState([]);
   const [viewworks, setViewworks] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,23 @@ const Projectstatus = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const fetchimg = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/workstatus/view_home_img/${id}`);
+        const data = await response.json();
 
+        if (data.success) {
+          console.log(data.data);
+          setImg(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching image:', error);
+      }
+    };
+
+    fetchimg();
+  }, []);
 
   return (
     <div className="container py-5">
@@ -43,7 +59,11 @@ const Projectstatus = () => {
             <p>
             {viewwork.status_description}
             </p>
-          </li>
+            </li>
+            <a href={`/assets/upload/${viewwork.home_img}`} download target="_blank" rel="noopener noreferrer">
+            View img
+            </a>
+        
          
           </React.Fragment>
            ))}

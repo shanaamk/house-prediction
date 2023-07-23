@@ -6,7 +6,22 @@ import { useNavigate } from 'react-router-dom';
 
 const UserReg = () => {
   const navigate = useNavigate()
-const[input,setInput]=useState({})
+const[input,setInput]=useState({
+  // Name: '',
+  // Gender:'',
+  // Address:'',
+  // PhoneNo:'',
+  // Email:'',
+  // Username:'',
+  // Password:'',
+  // ConformPassword:''
+
+})
+
+// const [formErrors, setFormErrors] = useState({});
+// const [isSubmit, setIsSubmit] = useState(false);
+
+
 console.log("value==>",input);
 
 

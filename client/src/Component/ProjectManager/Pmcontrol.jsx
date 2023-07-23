@@ -112,9 +112,9 @@ const Pmcontrol = () => {
             </div>
             <div className='container '>
             <div className='row justify-content-center'>
-                <div className='col md-4'>
+                {/* <div className='col md-4'>
                     <button className='btn btn-success'><a href='projectreportform'>Project Report</a></button> 
-                </div>
+                </div> */}
                 <div className='col md-4'>
                 <button className='btn btn-success'><Link to={`/assign/${id}`}>manage workers</Link></button>
                 </div>

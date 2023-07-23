@@ -14,7 +14,7 @@ const ViewPlan = () => {
       .then((response) => {
         console.log(response.data);
       
-        navigate('/Quote');
+        navigate('/Quote'); 
       })
       .catch((error) => {
         console.log(error);

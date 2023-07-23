@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const workstatusModel = require('../models/WorkstatusModel');
+const workersRegistrationModel = require('../models/workersRegistrationModel');
 
 const workstatusRouter = express.Router();
 
@@ -15,6 +16,7 @@ workstatusRouter.post('/update_workstatus/:id', async (req, res) => {
   })
   
   var upload = multer({ storage: storage })
+
   RentRouter.post('/upload', upload.single("file"), (req, res) => {
     return res.json("file uploaded")
   })
@@ -83,6 +85,35 @@ workstatusRouter.post('/update_workstatus/:id', async (req, res) => {
             })
         }
         })
+
+        workstatusRouter.get('/view_home_img/:id', async (req, res) => {
+          try {
+            const id = req.params.id
+            const users = await workstatusModel.find({project_id: id})
+          
+            if(users[0]!=undefined){
+                return res.status(200).json({
+                    success:true,
+                    error:false,
+                    data:users
+                })
+            }else{
+                return res.status(400).json({
+                    success:false,
+                    error:true,
+                    message:"No image found"
+                })
+            }
+        } catch (error) {
+            return res.status(400).json({
+                success:false,
+                error:true,
+                message:"Something went wrong",
+                details:error
+            })
+        }
+        })
+  
     module.exports = workstatusRouter;
 
 

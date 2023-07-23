@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 const Workersviewteam = () => {
 
-  const { id} = useParams();
+  const { id,pro} = useParams();
   const user_id = localStorage.getItem('user_id')
   console.log(user_id);
 
@@ -101,7 +101,7 @@ const Workersviewteam = () => {
 
 
 
-        {viewteams.filter(current => current._id === id).map((view, index) => (
+        {viewteams.filter(current => current.project_id === pro).map((view, index) => (
 
 
        

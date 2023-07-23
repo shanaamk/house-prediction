@@ -1,6 +1,7 @@
 const express = require('express');
 const PlanModel = require('../models/PlanModel');
 const multer = require('multer');
+const { default: mongoose } = require('mongoose');
 
 const PlanRouter = express.Router();
 
@@ -20,10 +21,11 @@ PlanRouter.post('/upload', upload.single("file"), (req, res) => {
 })
 PlanRouter.get('/approve-plan/:id', async (req, res) => {
   try {
-      const id = req.params.id;
-      console.log(id);
-      const approve = await PlanModel.updateOne({ project_id: id }, { $set: { adminaprvl_status: 1 } });
-  
+      const id = new mongoose.Types.ObjectId(req.params.id);
+      console.log("id",id);
+      const data={ adminaprvl_status: '1' }
+      const approve = await PlanModel.updateMany({ project_id: id }, { $set: data });
+      console.log(approve);
       if (approve && approve.modifiedCount === 1) {
         return res.status(200).json({
           success: true,
@@ -213,10 +215,38 @@ PlanRouter.get('/view-plan', async (req, res) => {
       }
     });
     
+    PlanRouter.get('/userview-approved-plan/:id', async (req, res) => {
+      try {
+        const user_id= req.params.id
+          const users = await PlanModel.find({user_id:user_id,adminaprvl_status:'1'})
+        
+          if(users[0]!=undefined){
+              return res.status(200).json({
+                  success:true,
+                  error:false,
+                  data:users
+              })
+          }else{
+              return res.status(400).json({
+                  success:false,
+                  error:true,
+                  message:"No data found"
+              })
+          }
+      } catch (error) {
+          return res.status(400).json({
+              success:false,
+              error:true,
+              message:"Something went wrong",
+              details:error
+          })
+      }
+      })
+
     PlanRouter.get('/userview-plan/:id', async (req, res) => {
       try {
         const project_id= req.params.id
-          const users = await PlanModel.find({project_id:project_id,adminaprvl_status:1})
+          const users = await PlanModel.find({project_id:project_id,adminaprvl_status:'1'})
         
           if(users[0]!=undefined){
               return res.status(200).json({
