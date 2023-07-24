@@ -173,6 +173,10 @@ console.log(requirements);
                             <td>kitchen</td>
                             <td>{requirement.kitchen}</td>
                           </tr>
+                          <tr>
+                            <td>message</td>
+                            <td>{requirement.message}</td>
+                          </tr>
                         </React.Fragment>
                       ))}
                     </tbody>

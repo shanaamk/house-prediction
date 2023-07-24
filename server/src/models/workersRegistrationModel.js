@@ -10,6 +10,7 @@ const workersRegistrationSchema = new schema({
     worktype:{type:String},
     workexperience:{type:String},
     currentproject:{type:String},
+    availability_status:{type:String},
     project_id:{type:mongoose.Types.ObjectId,ref:"project_tb"}
     
     

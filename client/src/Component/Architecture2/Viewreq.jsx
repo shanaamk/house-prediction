@@ -130,6 +130,11 @@ const Viewreq = () => {
   <td>kitchen</td>
   <td>{requirement.kitchen}</td>
 </tr>
+<tr>
+ <td>message</td>
+ <td>{requirement.message}</td>
+</tr>
+
 </React.Fragment>
 ))}
         </tbody>
@@ -210,9 +215,9 @@ const Viewreq = () => {
       {demands.map((demand) => (
 <React.Fragment key={demand._id}>
   <tr>
-          <td>01</td>
+          <td>1</td>
           <td style={{ maxWidth: 300 }}>
-            <h6>Demands</h6>
+            {/* <h6>Demands</h6> */}
             <em className="text-muted">
             {demand.reject_message}
             </em>

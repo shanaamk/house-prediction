@@ -37,7 +37,7 @@ const Assignworkers = () => {
   console.log(val);
  
   useEffect(() => {
-    axios.get('http://localhost:5000/register/view-workers')
+    axios.get('http://localhost:5000/register/projectmanager-view-workers')
       .then((response) => {
         setCategory(response.data.data);
         setWorkers_id(response.data.data);
@@ -80,16 +80,16 @@ const Assignworkers = () => {
         <div className="form-holder select">
           <select name="worktype" className="form-control"  onChange={inputChange}>
             <option value="categery">categery</option>
-            <option value="Foundation">Foundation</option>
+            <option value="foundation">Foundation</option>
             <option value="Rcc worker">Rcc works</option>
             <option value="plastering">Plastering</option>
-            <option value="Wiring">Wiring</option>
+            <option value="wiring">Wiring</option>
             <option value="plumbing">Plumbing</option>
             <option value="flooring">Flooring</option>
             <option value="Furnishing">Furnishing</option>
-            <option value="Cabinet\caboard">Cabinet\caboard</option>
+            <option value="cabinet\caboard">Cabinet\caboard</option>
             <option value="painting">Painting\polishing</option>
-            <option value="Designing">Designing</option>
+            <option value="designing">Designing</option>
           </select>
           </div>
         </div>

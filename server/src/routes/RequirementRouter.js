@@ -48,7 +48,7 @@ RequirementRouter.post('/requirement', async (req, res) => {
            bathrooms:req.body.Bathrooms,
            kitchen:req.body.kitchen,
            balcony:req.body.Balcony,
-           message:req.body.Message,
+           message:req.body.message,
            
         };
        console.log(data);

@@ -467,6 +467,61 @@ userregRouter.get('/view-workers', async (req, res) => {
     }
     });
 
+    userregRouter.get('/projectmanager-view-workers', async (req, res) => {
+        try {
+            const users = await workersRegistrationModel.aggregate([
+                
+                    {
+                      '$lookup': {
+                        'from': 'login_tbs', 
+                        'localField': 'login_id', 
+                        'foreignField': '_id', 
+                        'as': 'login'
+                      }
+                    },
+                    {"$unwind":"$login"
+                },
+                {'$match':{
+                    "availability_status":'0'
+                }},
+                {
+                    "$group":{
+                        '_id':"$_id",
+                        'name':{"$first":"$name"},                  
+                        'email':{"$first":"$email"},
+                        'phoneno':{"$first":"$phoneno"},
+                        'worktype':{"$first":"$worktype"},
+                        'workexperience':{"$first":"$workexperience"},
+                        'status':{"$first":"$login.status"},
+                        'login_id':{"$first":"$login._id"},
+                    }
+                }
+          ])
+                  
+            
+            if(users[0]!=undefined){
+                return res.status(200).json({
+                    success:true,
+                    error:false,
+                    data:users
+                })
+            }else{
+                return res.status(400).json({
+                    success:false,
+                    error:true,
+                    message:"No data found"
+                })
+            }
+        } catch (error) {
+           
+            return res.status(400).json({
+                success:false,
+                error:true,
+                message:"Something went wrong",
+                details:error
+            })
+        }
+        });
     userregRouter.get('/update_project_workers/:id/:val', async (req, res) => {
         try{
         const id = req.params.id
@@ -477,13 +532,14 @@ userregRouter.get('/view-workers', async (req, res) => {
             const data ={
                
                 
-                project_id:id
+                project_id:id,
+                availability_status:'1'
               
                
             };
            
             
-            const savedData = await workersRegistrationModel.updateOne({ _id: workers_id }, { $set: data });
+            const savedData = await workersRegistrationModel.updateOne({ _id: workers_id }, { $set: {project_id:id,availability_status:'1'    } });
     
             if (savedData) {
                 console.log('ok');
@@ -546,6 +602,7 @@ userregRouter.post('/workerreg', async (req, res) => {
                 worktype: req.body.WorkType,
                 workexperience: req.body.WorkExperience,
                 currentproject:null,
+                availability_status:'0',
                 project_id: req.body.project_id,
                 
             }

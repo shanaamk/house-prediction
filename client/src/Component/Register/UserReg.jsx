@@ -18,8 +18,8 @@ const[input,setInput]=useState({
 
 })
 
-// const [formErrors, setFormErrors] = useState({});
-// const [isSubmit, setIsSubmit] = useState(false);
+const [formErrors, setFormErrors] = useState({});
+const [isSubmit, setIsSubmit] = useState(false);
 
 
 console.log("value==>",input);
@@ -33,24 +33,56 @@ setInput({...input,[name]:value});
 console.log(input);
 }
 
+const validatePhoneNumber = (phoneNumber) => {
+  const phoneRegex = /^\d{10}$/; // Assuming phone number should be 10 digits.
+  return phoneRegex.test(phoneNumber);
+};
+
+const validateEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email validation.
+  return emailRegex.test(email);
+};
+
+const validateForm = () => {
+  let errors = {};
+  let isValid = true;
+
+  if (!input.PhoneNo || !validatePhoneNumber(input.PhoneNo)) {
+    errors.PhoneNo = 'Please enter a valid phone number.';
+    isValid = false;
+  }
+
+  if (!input.Email || !validateEmail(input.Email)) {
+    errors.Email = 'Please enter a valid email address.';
+    isValid = false;
+  }
+
+  setFormErrors(errors);
+  return isValid;
+};
+
 const submit = (e)=>{
   e.preventDefault()
-  axios.post('http://localhost:5000/register/userreg',input).then((response)=>{
-    navigate('/Login')
-  }).catch((error)=>{
-    toast.error(error.response.data.message, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
+  if (validateForm()) {
+    axios
+      .post('http://localhost:5000/register/userreg', input)
+      .then((response) => {
+        navigate('/Login');
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message, {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        });
       });
-    
-  })
-}
+  }
+};
   
 
 
@@ -84,12 +116,14 @@ const submit = (e)=>{
         <div className="form-wrapper">
   <label htmlFor="phone"> PhoneNo</label>
   <input type="tel" name="PhoneNo" value={input.PhoneNo || ""} onChange={inputChange}  className="form-control" />
+  {formErrors.PhoneNo && <span className="error">{formErrors.PhoneNo}</span>}
 </div>
         
         
         <div className="form-wrapper">
           <label htmlFor="">Email</label>
           <input type="text" name="Email" value={input.Email || ""} onChange={inputChange} className="form-control" />
+          {formErrors.Email && <span className="error">{formErrors.Email}</span>}
         </div>      
         <div className="form-wrapper">
         <label htmlFor="">Username</label>
