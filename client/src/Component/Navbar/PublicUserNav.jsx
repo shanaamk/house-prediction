@@ -26,9 +26,9 @@ const PublicUserNav = () => {
           <a href="Publicuserabout" className="nav-item nav-link">
             About
           </a>
-          <a href="" className="nav-item nav-link">
+          {/* <a href="" className="nav-item nav-link">
             Contact
-          </a>
+          </a> */}
           <div className="nav-item dropdown">
             <a
               href="#"

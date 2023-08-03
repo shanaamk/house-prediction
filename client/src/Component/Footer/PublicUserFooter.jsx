@@ -15,7 +15,7 @@ const PublicUserFooter = () => {
           <p>We construct your dream home</p>
           <p>
             <i className="fa fa-map-marker-alt me-2" />
-            123 Street, New York, USA
+            123 Street, Kochi, INDIA
           </p>
           <p>
             <i className="fa fa-phone-alt me-2" />
@@ -61,7 +61,7 @@ const PublicUserFooter = () => {
                   <i className="fa fa-angle-right me-2" />
                   Home
                 </a>
-                <a className="text-black-50 mb-2" href="#">
+                <a className="text-black-50 mb-2" href="Publicuserabout">
                   <i className="fa fa-angle-right me-2" />
                   About Us
                 </a>
@@ -69,14 +69,14 @@ const PublicUserFooter = () => {
                   <i className="fa fa-angle-right me-2" />
                   Our Services
                 </a>
-                <a className="text-black-50 mb-2" href="#">
+                {/* <a className="text-black-50 mb-2" href="#">
                   <i className="fa fa-angle-right me-2" />
                   Meet The Team
-                </a>
-                <a className="text-black-50" href="#">
+                </a> */}
+                {/* <a className="text-black-50" href="#">
                   <i className="fa fa-angle-right me-2" />
                   Contact Us
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="col-sm-6">
@@ -94,14 +94,14 @@ const PublicUserFooter = () => {
                   <i className="fa fa-angle-right me-2" />
                   Our Services
                 </a>
-                <a className="text-black-50 mb-2" href="#">
+                {/* <a className="text-black-50 mb-2" href="#">
                   <i className="fa fa-angle-right me-2" />
                   Meet The Team
-                </a>
-                <a className="text-black-50" href="#">
+                </a> */}
+                {/* <a className="text-black-50" href="#">
                   <i className="fa fa-angle-right me-2" />
                   Contact Us
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

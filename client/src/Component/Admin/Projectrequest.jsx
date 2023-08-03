@@ -51,6 +51,7 @@ const Projectrequest = () => {
               <th scope="col">Location</th>
               <th scope="col">prjctstrt_drtn</th>
               <th scope="col">expctd_budget</th>
+              <th scope="col">status</th>
               
               <th scope="col">Action</th>
 
@@ -58,7 +59,7 @@ const Projectrequest = () => {
           </thead>
           <tbody>  
           {currentRequests
-  .filter(request => request.approvel_status === '0')
+  .filter(request => request.approvel_status != '2')
   .map((request, index) => (
     
     <tr key={index}>
@@ -68,7 +69,7 @@ const Projectrequest = () => {
       <td>{request.location}</td>
       <td>{request.prjctstrt_drtn}</td>
       <td>{request.expctd_budget}</td>
-      
+      <td>{request.approvel_status==='0' ?'architecture not defined':'project manager not defined' }</td>
       <td className="text-center">
         <div className="btn-group">
           <button className="btn btn-success btn-sm">

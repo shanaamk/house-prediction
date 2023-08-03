@@ -42,7 +42,7 @@ const Architecturenavbar = () => {
           <a href="" className="nav-item nav-link active">
             Home
           </a>
-          <a href="http://127.0.0.1:5000/" className="nav-item nav-link">
+          <a href=" http://127.0.0.1:5000" className="nav-item nav-link">
             price prediction
           </a>
          

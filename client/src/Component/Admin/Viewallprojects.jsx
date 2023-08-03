@@ -59,7 +59,7 @@ const Viewallprojects = () => {
           </thead>
           <tbody>
          
-                {currentProjects.map((project, index) => (
+                {currentProjects.filter(request => request.approvel_status === '2').map((project, index) => (
                   <tr key={index}>
                     <th scope="row">{indexOfFirstProject + index + 1}</th>
                     <td>{project.name}</td>

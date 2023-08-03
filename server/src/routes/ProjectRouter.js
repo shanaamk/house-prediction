@@ -227,7 +227,7 @@ ProjectRouter.post('/choose-archtctr/:id', async (req, res) => {
     const data = {
       requirment_id:req.body.project_id,
       architecture_id: req.body.architecture_id,
-      projectmanager_id: req.body.projectmanager_id,
+      
       approvel_status:1
     };
 
@@ -253,6 +253,37 @@ ProjectRouter.post('/choose-archtctr/:id', async (req, res) => {
 });
 
 
+ProjectRouter.post('/choose-projctmnger/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    console.log('id', id);
+    const data = {
+      requirment_id:req.body.project_id,
+     
+      projectmanager_id: req.body.projectmanager_id,
+      approvel_status:2
+    };
+
+    const approve = await ProjectModel.updateOne({ _id: id }, { $set: data });
+
+    if (approve) {
+      return res.status(200).json({
+        success: true,
+        error: false,
+        message: "Request Added",
+        details: approve
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      success: false,
+      error: true,
+      message: "Something went wrong",
+      details: error
+    });
+  }
+});
 ProjectRouter.get('/view-client-list', async (req, res) => {
   try {
     const users = await ProjectModel.aggregate([

@@ -100,7 +100,7 @@ const Login = () => {
               />
             </div>
             <p>
-              Don't have an Account? <a href=""> Register</a>
+              Don't have an Account? <a href="/"> Register</a>
             </p>
             <br />
             <p style={{ marginTop: '-20px' }}>
