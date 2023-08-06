@@ -23,7 +23,8 @@ loginRouter.post('/login', async (req, res) => {
           if(oldUser.role==0){
             return res.status(200).json({sucess:true,
                 error:false,
-                role:oldUser.role, 
+                role:oldUser.role,
+               
                 login_id:oldUser._id,
                 detailes:oldUser
           })

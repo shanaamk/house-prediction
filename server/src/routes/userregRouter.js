@@ -97,9 +97,9 @@ userregRouter.get('/view-users', async (req, res) => {
                     '_id':"$_id",
                     'name':{"$first":"$name"},
                     'gender':{"$first":"$gender"},
-                    'Address':{"$first":"$Address"},
+                    'address':{"$first":"$address"},
                     'email':{"$first":"$email"},
-                    'phoneNo':{"$first":"$phoneNo"},
+                    'phoneno':{"$first":"$phoneno"},
                     'status':{"$first":"$login.status"},
                     'login_id':{"$first":"$login._id"},
                 }

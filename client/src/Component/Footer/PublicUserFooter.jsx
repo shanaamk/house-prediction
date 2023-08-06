@@ -23,9 +23,9 @@ const PublicUserFooter = () => {
           </p>
           <p>
             <i className="fa fa-envelope me-2" />
-            info@example.com
+            buildscape@example.com
           </p>
-          <div className="d-flex justify-content-start mt-4">
+          {/* <div className="d-flex justify-content-start mt-4">
             <a
               className="btn btn-lg btn-primary btn-lg-square rounded-0 me-2"
               href="#"
@@ -50,14 +50,14 @@ const PublicUserFooter = () => {
             >
               <i className="fab fa-instagram" />
             </a>
-          </div>
+          </div> */}
         </div>
         <div className="col-lg-6 ps-lg-5">
           <div className="row g-5">
             <div className="col-sm-6">
               <h6 className="text-blacktext-uppercase mb-4">Quick Links</h6>
               <div className="d-flex flex-column justify-content-start">
-                <a className="text-black-50 mb-2" href="#">
+                <a className="text-black-50 mb-2" href="/">
                   <i className="fa fa-angle-right me-2" />
                   Home
                 </a>

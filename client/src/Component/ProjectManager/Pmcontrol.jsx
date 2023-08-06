@@ -91,7 +91,7 @@ const Pmcontrol = () => {
         </div>
       </div>
       <div className="col-md-6" />
-      <div className="col-md-12 no-padding lib-item" data-category="ui">
+      <div className="col-md-9 no-padding lib-item" data-category="ui">
         <div className="lib-panel">
           <div className="row box-shadow">
             <div className="col-md-6">

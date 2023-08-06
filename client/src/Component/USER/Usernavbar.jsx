@@ -54,11 +54,11 @@ const Usernavbar = () => {
           </a> */}
           {/* <a href="" class="nav-item nav-link">Requirement</a> */}
           
-          <a href="notfctn" className="nav-item nav-link">
+          {/* <a href="notfctn" className="nav-item nav-link">
             Notifications
-          </a>
+          </a> */}
           
-          <a   href="box"className="nav-item nav-link"><i className='far fa-comments' style={{fontSize:36}}></i></a>
+          {/* <a   href="box"className="nav-item nav-link"><i className='far fa-comments' style={{fontSize:36}}></i></a> */}
           <a onClick={logout} className="nav-item nav-link">
             LOGOUT
           </a>

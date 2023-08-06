@@ -84,7 +84,7 @@ const Adminusermanageslider = () => {
                 <td>{user.gender}</td>
                 <td>{user.address}</td>
                 <td>{user.email}</td>
-                <td>{user.phoneNo}</td>
+                <td>{user.phoneno}</td>
                 <td className="text-center">
                 {user.status === '0' ? (
                    <>

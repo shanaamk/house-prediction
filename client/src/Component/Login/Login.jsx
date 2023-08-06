@@ -45,6 +45,12 @@ const Login = () => {
           localStorage.setItem('role', data.data.role);
           navigate('/workershome');
         }
+        else if (data.data.role === '0') {
+          localStorage.setItem('login_id', data.data.login_id);
+          localStorage.setItem('role', data.data.role);
+          navigate('/adminhome');
+        }
+       
       })
       .catch((error) => {
         console.error(error);

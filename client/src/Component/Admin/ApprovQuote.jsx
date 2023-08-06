@@ -33,15 +33,15 @@ const ApprovQuote = () => {
         <div className="p-3 bg-white text-center" style={{color:'black'}}>
           <div>
             <img src="" />
-            <h4>Plan for Aprovel</h4>
+            <h4>Plan for Approvel</h4>
           </div>
-          <p >
+          {/* <p >
             Follow some beautiful soul who&nbsp;
             <br />
             have some interests like you!
             <br />
             <br />
-          </p>
+          </p> */}
           {archreq
   .filter(archreq => archreq.adminaprvl_status === '0')
   .map((archreq) => (

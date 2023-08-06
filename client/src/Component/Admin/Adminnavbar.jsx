@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Adminnavbar = () => {
+  const navigate = useNavigate()
+  const logout = () => {
+    localStorage.removeItem('login_id')
+    localStorage.removeItem('role')
+    localStorage.removeItem('name')
+    navigate('/')
+  }
+  useEffect(() => {
+    const login_id = localStorage.getItem('login_id')
+    if (!login_id) {
+      navigate('/')
+    }
+  }, [])
+  const login_id=localStorage.getItem('login_id')
+  if (!login_id) {
+    navigate('/login')
+  }
   return (
     <div className="container-fluid sticky-top bg-white bg-light-radial shadow-sm px-5 pe-lg-0">
   <nav className="navbar navbar-expand-lg  bg-white bg-light-radial  navbar-dark py-3 py-lg-0">
@@ -27,7 +45,7 @@ const Adminnavbar = () => {
          Notifications
         </a>
        
-        <a href="/" className="nav-item nav-link">
+        <a href="/" onClick={logout} className="nav-item nav-link">
           LOGOUT
         </a>
       </div>

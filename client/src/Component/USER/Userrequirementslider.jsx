@@ -188,10 +188,10 @@ const Userrequirementslider = () => {
                </div>
                <div style={{ width: "100%" }}>
         <p>Message</p>
-        <textarea name="Message" value={inputs.Message || ""} onChange={setRegister} className="inputfield" placeholder="Enter your message here" />
+        <textarea name="message" value={inputs.message || ""} onChange={setRegister} className="inputfield" placeholder="Enter your message here" />
       </div>
                
-         <button type="button" className="btn btn-dark" >
+         <button type="reset" className="btn btn-dark" >
            Reset
          </button>
          <button type="submit" className="btn btn-dark"  style={{marginLeft:20}}>

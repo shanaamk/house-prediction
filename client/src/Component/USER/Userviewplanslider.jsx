@@ -106,12 +106,10 @@ console.log(requirements);
   return (
     <>
       <div className="container">
-        <div className="row">
+        <div className="row" style={{marginTop:20}}>
           <h4>
-            Plan Details
-            {/* So I've worked on a new project and came up with this UI. Here you can use
-        it. :) Follow me on twitter:{" "} */}
-            <a href="https://twitter.com/AlexMahrt/"></a>
+            <center>HOUSE PLAN</center>
+           
           </h4>
         </div>
         <hr />

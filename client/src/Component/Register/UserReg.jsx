@@ -7,14 +7,14 @@ import { useNavigate } from 'react-router-dom';
 const UserReg = () => {
   const navigate = useNavigate()
 const[input,setInput]=useState({
-  // Name: '',
-  // Gender:'',
-  // Address:'',
-  // PhoneNo:'',
-  // Email:'',
-  // Username:'',
-  // Password:'',
-  // ConformPassword:''
+  Name: '',
+  Gender:'',
+  Address:'',
+  PhoneNo:'',
+  Email:'',
+  Username:'',
+  Password:'',
+  ConformPassword:''
 
 })
 
@@ -103,9 +103,10 @@ const submit = (e)=>{
           <label htmlFor="">Gender</label>
           <div className="form-holder select">
             <select name="Gender" className="form-control" value={input.Gender || ""} onChange={inputChange}>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
+            <option value="choose gender">Gender</option>
+              <option value="Male" >Male</option>
+              <option value="Female" >Female</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </div>

@@ -39,22 +39,23 @@ const Viewproject = () => {
     <>
     
  <div className="container">
- <div className="row justify-content-center"  style={{color:'black'}}>
-   <h2><center>Your Projects</center></h2>
-   <div className="[ col-xs-12 col-md-6 col-sm-offset-2 col-sm-8 ]" >
+ <div className="row justify-content-center"  style={{color:'black',marginTop:20}}>
+   <h3><center>YOUR PROJECTS</center></h3>
+  
+   <div className="[ col-xs-12 col-md-6 col-sm-offset-2 col-sm-8 ]"  style={{marginTop:20}}>
   
      <ul className="event-list">
      {currentViewprojects.filter(viewproject => viewproject.user_id.toString() === user_id).map((viewproject, index) => (
        <li   key={index}>
-         <time dateTime="2014-07-20">
-           <span className="day">21</span>
-           <span className="month">Jul</span>
+         <time dateTime="2023-08-8">
+           <span className="day">8</span>
+           <span className="month">Aug</span>
            <span className="year">2023</span>
            <span className="time">ALL DAY</span>
          </time>
         
          <div className="info">
-           <Link to={`/userviewplan/${viewproject._id}`}><h3 className="title">{viewproject.project_name}</h3></Link>
+         <h3 className="title"> <Link to={`/userviewplan/${viewproject._id}`}>{viewproject.project_name}</Link></h3>
            
            <p className="desc">{viewproject.location}</p>
            {/* <ul>

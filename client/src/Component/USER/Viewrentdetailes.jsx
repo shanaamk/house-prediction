@@ -57,7 +57,7 @@ const Viewrentdetailes = () => {
                 <strong>Area:</strong> {rental.area}
               </li>
               <li className="list-group-item">
-                <strong>Contact us:234555555</strong> {rental.contact}
+                <strong>Contact us:9037749090</strong> {rental.contact}
               </li>
               <li className="list-group-item">
                 <strong>Email:shana@gmail.com</strong> {rental.email}
