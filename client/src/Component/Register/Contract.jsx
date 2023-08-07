@@ -93,10 +93,10 @@ const validate = (values) => {
       data.append('file', file);
       data.append('name', filename);
 
-      const errors = validate(input);
-      setFormErrors(errors);
-      setIsSubmit(true);
-      if (Object.keys(errors).length === 0) {
+      // const errors = validate(input);
+      // setFormErrors(errors);
+      // setIsSubmit(true);
+      // if (Object.keys(errors).length === 0) {
       axios.post('http://localhost:5000/register/upload', data)
         .then((response) => {
           console.log(response);
@@ -110,7 +110,7 @@ const validate = (values) => {
     })
    
 
-  }}
+  }
   return (
     <div className="page-content">
   <div className="regcontform-v5-content">
