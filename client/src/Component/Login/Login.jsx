@@ -109,9 +109,9 @@ const Login = () => {
               Don't have an Account? <a href="/"> Register</a>
             </p>
             <br />
-            <p style={{ marginTop: '-20px' }}>
+            {/* <p style={{ marginTop: '-20px' }}>
               <a href="">Forgot Password?</a>
-            </p>
+            </p> */}
             <div className="regcontform-row-last">
               <button className="register" onClick={submit}>
                 Login

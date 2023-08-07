@@ -195,6 +195,7 @@ console.log(input);
         <label htmlFor="">Architecture</label>
         <div className="form-holder select">
           <select name="architecture_id" onChange={inputChange} className="form-control">
+          <option value="">Select Architecture</option>
             {category.map((data) => (
               <option key={data._id} value={data._id}>{data.name}</option>
             ))}
@@ -235,6 +236,7 @@ console.log(input);
         <label htmlFor="">Project Manager</label>
         <div className="form-holder select">
           <select name="projectmanager_id" onChange={inputChange2} className="form-control">
+          <option value="">Select Project Manager</option>
             {manager.map((data) => (
               <option key={data._id} value={data._id}>{data.name}</option>
             ))}
@@ -249,9 +251,9 @@ console.log(input);
       </button>
     </div>
 :'User not Approved the Given Plan,Then Only Project manager can be assigned!!'}
-    <div className="col-md-4">
+    {/* <div className="col-md-4">
       <img className="lib-img" src="img/pic/planimg.jpg" alt="Plan" />
-    </div>
+    </div> */}
   </div>
 </div>
 

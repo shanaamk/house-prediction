@@ -28,7 +28,7 @@ const PrjctRequestcontrol = () => {
     <Adminnavbar/>
     <div className='container'>
     <div className='row'>
-        <h1>User Name</h1>
+        {/* <h1>User Name</h1> */}
         <div className='col-md-4'>
         <table className="table table-striped custab" style={{color:'black'}}>
         <thead>
@@ -74,12 +74,12 @@ const PrjctRequestcontrol = () => {
         </tbody>
       </table>
       {/* <a href='adminstatus'>Approve Status</a> */}
-      <Link to={`/adminstatus/${id}`}><h2 className="title">Approve Status</h2></Link>
+      <Link to={`/adminstatus/${id}`}><h2 className="title">View Status</h2></Link>
         </div>
        
-        <div className='col-md-4'>
+        {/* <div className='col-md-4'>
      <Link to={`/plan/${user_id}`}><button >View plan</button></Link>  
-        </div>
+        </div> */}
         
         </div>
     </div>

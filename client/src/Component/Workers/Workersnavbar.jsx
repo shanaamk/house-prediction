@@ -42,9 +42,9 @@ const Workersnavbar = () => {
           <a href="" className="nav-item nav-link active">
             Home
           </a>         
-          <a href="worknotfctn" className="nav-item nav-link">
+          {/* <a href="worknotfctn" className="nav-item nav-link">
            Notifications
-          </a>
+          </a> */}
           <a onClick={logout} className="nav-item nav-link">
             Logout
           </a>

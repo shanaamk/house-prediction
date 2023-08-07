@@ -129,13 +129,13 @@ const WorkStatus = () => {
       <div style={{ display: "flex", width: "100%" ,color:'black'}}>
         <form onSubmit={registersubmit} className="statusformrequirement">
         <div style={{ width: "100%" ,}}>
-                 <p>status_date</p>
+                 {/* <p>status_date</p> */}
                  <input type="date" name="status_date" value={inputs.status_date || ""}
               onChange={setRegister} className="custom-select" autofocus="" />
                </div>
                
                <div style={{ width: "100%" }}>
-        <p>Status_description</p>
+        {/* <p>Status_description</p> */}
         <textarea name="status_description" value={inputs.status_description || ""}
               onChange={setRegister} className="custom-select" placeholder="Status description" />
       </div>
@@ -165,8 +165,10 @@ const WorkStatus = () => {
           </select>
           <br />
           <br />
-          <div className="regcontform1-row" >
-        <label htmlFor="full-name"  className='costlabel'>home image</label>   
+          
+          <div style={{ width: "100%" }}>
+        <p>home image</p>
+         
   <div className="input-group js-input-file" style={{color:'black'}}>
     <input className="input-file" type="file" name="home_img" id="file"  onChange={(e) => {
       setFile(e.target.files[0]);

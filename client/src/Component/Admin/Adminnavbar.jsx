@@ -41,9 +41,9 @@ const Adminnavbar = () => {
         <a href="ongoing" className="nav-item nav-link active">
           Home
         </a>
-        <a href="not" className="nav-item nav-link">
+        {/* <a href="not" className="nav-item nav-link">
          Notifications
-        </a>
+        </a> */}
        
         <a href="/" onClick={logout} className="nav-item nav-link">
           LOGOUT
